@@ -1,5 +1,31 @@
 import pytest
-from democracia_em_dados import ResultadoEleitoral
+from src.dominio import Candidato, ResultadoEleitoral
+
+def test_constroi_candidato_valido():
+    c = Candidato(nome="Lula", partido="PT", uf="SP", genero="M")
+    assert c.nome == "Lula"
+    assert c.partido == "PT"
+    assert c.uf == "SP"
+
+
+def test_nome_invalido():
+    with pytest.raises(ValueError, match="nome inválido"):
+        Candidato(nome="", partido="PT", uf="SP")
+
+
+def test_partido_invalido():
+    with pytest.raises(ValueError, match="partido inválido"):
+        Candidato(nome="Lula", partido="", uf="SP")
+
+
+def test_uf_invalida():
+    with pytest.raises(ValueError, match="UF inválida"):
+        Candidato(nome="Lula", partido="PT", uf="XX")
+
+
+def test_genero_invalido():
+    with pytest.raises(ValueError, match="gênero inválido"):
+        Candidato(nome="Lula", partido="PT", uf="SP", genero="X")
 
 
 @pytest.fixture

@@ -1,5 +1,9 @@
+"""Domínio: representação de resultados eleitorais municipais."""
+
 from dataclasses import dataclass, field
 from typing import Dict, Optional
+
+from src.dominio.candidato import UFS_VALIDAS
 
 
 @dataclass
@@ -27,12 +31,7 @@ class ResultadoEleitoral:
             )
 
     def _validar_uf(self) -> None:
-        ufs_validas = {
-            "AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO",
-            "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR",
-            "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO"
-        }
-        if self.uf not in ufs_validas:
+        if self.uf not in UFS_VALIDAS:
             raise ValueError(f"UF inválida: {self.uf}")
 
     def _validar_ano(self) -> None:
@@ -67,7 +66,6 @@ class ResultadoEleitoral:
     def vencedor(self) -> Optional[str]:
         if not self.votos_por_candidato or self.total_votos == 0:
             return None
-
         max_votos = max(self.votos_por_candidato.values())
         vencedores = [
             nome for nome, votos in self.votos_por_candidato.items()
@@ -85,21 +83,19 @@ class ResultadoEleitoral:
     def margem_de_vitoria(self) -> float:
         if self.total_votos == 0:
             return 0.0
-
         votos_ordenados = sorted(self.votos_por_candidato.values(), reverse=True)
         if len(votos_ordenados) < 2:
             return 1.0
-
         primeiro, segundo = votos_ordenados[0], votos_ordenados[1]
         return (primeiro - segundo) / self.total_votos
 
     def numero_efetivo_candidatos(self) -> float:
         if self.total_votos == 0:
             return 0.0
-
-        proporcoes = [v / self.total_votos for v in self.votos_por_candidato.values()]
+        proporcoes = [
+            v / self.total_votos for v in self.votos_por_candidato.values()
+        ]
         soma_quadrados = sum(p ** 2 for p in proporcoes)
-
         if soma_quadrados == 0:
             return 0.0
         return 1.0 / soma_quadrados

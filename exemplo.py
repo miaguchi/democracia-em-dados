@@ -1,4 +1,4 @@
-from democracia_em_dados import ResultadoEleitoral
+from src.dominio import ResultadoEleitoral
 
 r = ResultadoEleitoral(
     codigo_ibge=3550308,
