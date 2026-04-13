@@ -16,6 +16,7 @@ class TSEDownloader:
     TIPOS: Dict[str, str] = {
         "votacao_partido_munzona": "votacao_partido_munzona/votacao_partido_munzona_{ano}.zip",
         "consulta_cand": "consulta_cand/consulta_cand_{ano}.zip",
+        "votacao_secao": "votacao_secao/votacao_secao_{ano}_{uf}.zip",
     }
 
     CSV_ENCODING = "latin-1"
@@ -27,23 +28,41 @@ class TSEDownloader:
         self.raw_dir.mkdir(parents=True, exist_ok=True)
         self.processed_dir.mkdir(parents=True, exist_ok=True)
 
-    def url(self, tipo: str, ano: int) -> str:
+    def url(self, tipo: str, ano: int, uf: str | None = None) -> str:
         if tipo not in self.TIPOS:
             raise ValueError(
                 f"tipo inválido: {tipo!r}. Válidos: {sorted(self.TIPOS)}"
             )
-        return f"{self.BASE_URL}/{self.TIPOS[tipo].format(ano=ano)}"
+        template = self.TIPOS[tipo]
+        if "{uf}" in template:
+            if uf is None:
+                raise ValueError(f"tipo {tipo!r} exige uf")
+            caminho = template.format(ano=ano, uf=uf.upper())
+        else:
+            caminho = template.format(ano=ano)
+        return f"{self.BASE_URL}/{caminho}"
 
-    def download(self, tipo: str, ano: int, *, force: bool = False) -> Path:
-        destino = self.raw_dir / f"{tipo}_{ano}.zip"
+    def download(
+        self, tipo: str, ano: int, *, uf: str | None = None, force: bool = False
+    ) -> Path:
+        sufixo_uf = f"_{uf.upper()}" if uf and "{uf}" in self.TIPOS[tipo] else ""
+        destino = self.raw_dir / f"{tipo}_{ano}{sufixo_uf}.zip"
         if destino.exists() and not force:
             return destino
-        resposta = requests.get(self.url(tipo, ano), stream=True, timeout=60)
+        resposta = requests.get(self.url(tipo, ano, uf), stream=True, timeout=(30, 300))
         resposta.raise_for_status()
-        with destino.open("wb") as f:
-            for chunk in resposta.iter_content(chunk_size=8192):
+        esperado = int(resposta.headers.get("Content-Length", 0)) or None
+        parcial = destino.with_suffix(destino.suffix + ".part")
+        with parcial.open("wb") as f:
+            for chunk in resposta.iter_content(chunk_size=1024 * 1024):
                 if chunk:
                     f.write(chunk)
+        if esperado is not None and parcial.stat().st_size != esperado:
+            parcial.unlink()
+            raise IOError(
+                f"download incompleto: {parcial.stat().st_size}/{esperado} bytes"
+            )
+        parcial.replace(destino)
         return destino
 
     def extract(self, zip_path: Path) -> Path:
@@ -70,7 +89,7 @@ class TSEDownloader:
         return parquet_path
 
     def ingerir(self, tipo: str, ano: int, uf: str | None = None) -> list[Path]:
-        zip_path = self.download(tipo, ano)
+        zip_path = self.download(tipo, ano, uf=uf)
         extraido = self.extract(zip_path)
         alvos = sorted(extraido.glob("*.csv"))
         if uf is not None:
