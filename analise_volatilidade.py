@@ -8,6 +8,7 @@ from src.ingestao.tse_downloader import TSEDownloader
 
 CODIGO_TSE_SAO_PAULO = 71072
 CARGO_VEREADOR = "VEREADOR"
+CARGO_PREFEITO = "PREFEITO"
 
 # Federações ativas em 2024 (obtidas do próprio parquet, coluna SG_FEDERACAO).
 # Cada membro da federação é agrupado sob o rótulo da federação, e o mesmo
@@ -49,18 +50,26 @@ def garantir_dados() -> None:
     d.ingerir("votacao_partido_munzona", 2024, uf="SP")
 
 
-def carregar_sp_vereador(ano: int) -> pd.DataFrame:
+def carregar_sp(ano: int, cargo: str = CARGO_VEREADOR) -> pd.DataFrame:
     parquet = Path(f"data/processed/votacao_partido_munzona_{ano}_SP.parquet")
     df = pd.read_parquet(parquet)
     filtro = (
         (df["CD_MUNICIPIO"] == CODIGO_TSE_SAO_PAULO)
-        & (df["DS_CARGO"].str.upper() == CARGO_VEREADOR)
+        & (df["DS_CARGO"].str.upper() == cargo.upper())
         & (df["NR_TURNO"] == 1)
     )
     sub = df.loc[filtro, ["NR_ZONA", "SG_PARTIDO", "QT_VOTOS_NOMINAIS_VALIDOS", "QT_VOTOS_LEGENDA_VALIDOS"]].copy()
     sub["VOTOS"] = sub["QT_VOTOS_NOMINAIS_VALIDOS"] + sub["QT_VOTOS_LEGENDA_VALIDOS"]
     sub["PARTIDO"] = sub["SG_PARTIDO"].map(normalizar_partido)
     return sub
+
+
+def carregar_sp_vereador(ano: int) -> pd.DataFrame:
+    return carregar_sp(ano, CARGO_VEREADOR)
+
+
+def carregar_sp_prefeito(ano: int) -> pd.DataFrame:
+    return carregar_sp(ano, CARGO_PREFEITO)
 
 
 def votos_por_partido(df: pd.DataFrame) -> pd.Series:
