@@ -1,6 +1,3 @@
-"""Domínio: representação de resultados eleitorais municipais."""
-
-from src.dominio.resultado import ResultadoEleitoral
 from dataclasses import dataclass, field
 from typing import Dict, Optional
 
@@ -89,9 +86,7 @@ class ResultadoEleitoral:
         if self.total_votos == 0:
             return 0.0
 
-        votos_ordenados = sorted(
-            self.votos_por_candidato.values(), reverse=True
-        )
+        votos_ordenados = sorted(self.votos_por_candidato.values(), reverse=True)
         if len(votos_ordenados) < 2:
             return 1.0
 
@@ -102,9 +97,7 @@ class ResultadoEleitoral:
         if self.total_votos == 0:
             return 0.0
 
-        proporcoes = [
-            v / self.total_votos for v in self.votos_por_candidato.values()
-        ]
+        proporcoes = [v / self.total_votos for v in self.votos_por_candidato.values()]
         soma_quadrados = sum(p ** 2 for p in proporcoes)
 
         if soma_quadrados == 0:
