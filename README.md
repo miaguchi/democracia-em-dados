@@ -18,6 +18,41 @@ Construir uma plataforma de análise eleitoral brasileira que integre dados do T
 
 ---
 
+## Primeiro achado — Volatilidade eleitoral por zona, SP vereador 2020→2024
+
+*First finding — Electoral volatility by zone, São Paulo city council 2020→2024*
+
+Usando `votacao_partido_munzona` do TSE, com normalização de partidos por federações 2024 (PT/PCdoB/PV, PSDB/Cidadania, PSOL/Rede) e fusões (DEM+PSL→União, etc.), calculamos o **Índice de Pedersen** para as eleições de vereador.
+
+| Métrica | Valor |
+|---|---|
+| Volatilidade da cidade | **0.257** |
+| Zonas analisadas | 57 |
+| Volatilidade média / mediana | 0.292 / 0.299 |
+| Mínima / máxima por zona | 0.165 / 0.376 |
+| **Moran I** (KNN, k=6, 999 perm) | **0.42** (p = 0.001) |
+
+### Mapa de pontos — volatilidade por zona
+
+![Mapa de volatilidade](outputs/mapa_volatilidade_sp_vereador_2020_2024.png)
+
+### Clusters LISA — onde estão os regimes distintos
+
+![Clusters LISA](outputs/lisa_volatilidade_sp_vereador_2020_2024.png)
+
+O Moran Local identifica **dois blocos territorialmente coerentes**, sem outliers espaciais:
+
+- **Cluster volátil (HH, 7 zonas) — periferia norte/noroeste**: Perus, Jaraguá, Brasilândia, Pirituba, Nossa Senhora do Ó, Tucuruvi, Lauzane Paulista.
+- **Cluster estável (LL, 8 zonas) — periferia sul**: Grajaú, Parelheiros, Capela do Socorro, Capão Redondo, Jardim São Luís, Campo Limpo, Piraporinha, Valo Velho.
+
+Resultado contraintuitivo: não é "centro vs periferia". São **duas periferias com comportamentos eleitorais opostos**. Ambas são regiões de renda mais baixa, mas a zona sul se mostrou substancialmente mais consistente partidariamente que a norte entre 2020 e 2024.
+
+*Replicate with:* `python analise_volatilidade.py` · `python mapa_volatilidade.py` · `python moran_volatilidade.py` · `python lisa_volatilidade.py`
+
+Geometria: [Locais de votação georreferenciados do CEM/USP](https://centrodametropole.fflch.usp.br/pt-br/download-de-dados) (EL2022_LV_ESP_CEM_V2).
+
+---
+
 ## Estrutura / Structure
 
 ```
