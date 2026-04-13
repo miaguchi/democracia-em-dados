@@ -49,6 +49,35 @@ Resultado contraintuitivo: não é "centro vs periferia". São **duas periferias
 
 *Replicate with:* `python analise_volatilidade.py` · `python mapa_volatilidade.py` · `python moran_volatilidade.py` · `python lisa_volatilidade.py`
 
+---
+
+### Segundo achado — Prefeito 1T, e a inversão dos regimes
+
+*Second finding — Mayor 1st round, and the regime inversion*
+
+Replicando exatamente o mesmo pipeline para a eleição **majoritária de prefeito (1º turno)**, o padrão muda drasticamente:
+
+| Métrica | Vereador | Prefeito 1T |
+|---|---:|---:|
+| Pedersen — cidade | 0.257 | **0.673** |
+| Volatilidade média por zona | 0.292 | 0.676 |
+| Amplitude (mín / máx) | 0.165 / 0.376 | 0.562 / 0.740 |
+| Moran I (KNN, k=6) | 0.42 (p = 0.001) | 0.40 (p = 0.001) |
+| Cluster HH (volátil) | 7 zonas — periferia norte | **1 zona** — São Miguel Paulista |
+| Cluster LL (estável) | 8 zonas — periferia sul | **8 zonas** — centro e oeste ricos |
+
+![Mapa prefeito](outputs/mapa_volatilidade_sp_prefeito_2020_2024.png)
+
+![LISA prefeito](outputs/lisa_volatilidade_sp_prefeito_2020_2024.png)
+
+O cluster estável do prefeito forma uma **mancha contígua no centro-oeste de alta renda**: Pinheiros, Bela Vista, Perdizes, Lapa, Butantã, Jardim Paulista, Santa Ifigênia, Rio Pequeno.
+
+**O achado central da comparação:** os regimes territoriais se **invertem** entre proporcional e majoritária. A periferia sul — partidariamente fiel no vereador — some do radar no prefeito. O centro rico — irrelevante no vereador — torna-se o único refúgio de estabilidade na disputa majoritária. **Fidelidade de legenda ≠ fidelidade de candidato.**
+
+A volatilidade do prefeito é ~2,6× maior que a do vereador em larga medida por rotação da *oferta*: PSDB/Cidadania saiu de 1.75M votos em 2020 para 112k em 2024; PRTB saltou de 12k para 1.7M (efeito Marçal); MDB emergiu de ~0 para 1.8M (Nunes). Em eleição majoritária, Pedersen mede mudança de eleitorado e mudança de oferta misturadas.
+
+*Replicate with:* `python mapa_lisa_prefeito.py`
+
 Geometria: [Locais de votação georreferenciados do CEM/USP](https://centrodametropole.fflch.usp.br/pt-br/download-de-dados) (EL2022_LV_ESP_CEM_V2).
 
 ---
