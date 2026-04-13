@@ -60,4 +60,37 @@ def test_uf_invalida():
 def test_turno_invalido():
     with pytest.raises(ValueError, match="turno deve ser 1 ou 2"):
         ResultadoEleitoral(3550308, "X", "SP", 2022, 3, {"A": 100})
-        
+
+
+def test_codigo_ibge_nao_inteiro():
+    with pytest.raises(TypeError):
+        ResultadoEleitoral("3550308", "X", "SP", 2022, 1, {"A": 100})
+
+
+def test_ano_impar():
+    with pytest.raises(ValueError, match="ano deve ser par"):
+        ResultadoEleitoral(3550308, "X", "SP", 2023, 1, {"A": 100})
+
+
+def test_votos_negativos():
+    with pytest.raises(ValueError, match="votos.*inválidos"):
+        ResultadoEleitoral(3550308, "X", "SP", 2022, 1, {"A": -1})
+
+
+def test_nome_candidato_vazio():
+    with pytest.raises(ValueError, match="nome de candidato inválido"):
+        ResultadoEleitoral(3550308, "X", "SP", 2022, 1, {"": 100})
+
+
+def test_total_votos_vazio():
+    r = ResultadoEleitoral(3550308, "X", "SP", 2022, 1, {})
+    assert r.total_votos == 0
+
+
+def test_percentual_candidato_inexistente(resultado_basico):
+    assert resultado_basico.percentual_de("CIRO") == 0.0
+
+
+def test_margem_candidato_unico():
+    r = ResultadoEleitoral(3550308, "X", "SP", 2022, 1, {"A": 1000})
+    assert r.margem_de_vitoria() == 1.0
