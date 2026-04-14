@@ -263,7 +263,139 @@ conteudo.append(p(
     "capacidade de mobilização digital — não com renda."
 ))
 
-conteudo.append(h1("7. Conexão com hipóteses gerais da literatura"))
+conteudo.append(PageBreak())
+conteudo.append(h1("7. Teste da hipótese alternativa: densidade institucional"))
+conteudo.append(p(
+    "As seções anteriores mostraram que renda explica menos de 9% da "
+    "variância do escore ideológico entre zonas eleitorais. Esta seção "
+    "operacionaliza quantitativamente a hipótese alternativa: o fator "
+    "explicativo é a <b>densidade de ambiente institucional educativo-"
+    "cultural-progressista</b>."
+))
+conteudo.append(h2("7.1 Construção do índice"))
+conteudo.append(p(
+    "Para cada zona eleitoral, identificamos quantos dos seus locais "
+    "de votação se enquadram em 4 categorias institucionais via "
+    "matching por palavras-chave no nome do local de votação (base "
+    "CEM/USP): "
+    "<b>(i) Universidades</b> (USP, Mackenzie, PUC, Uninove, FAAP, "
+    "FMU, Insper, Senac, Senai, Fatec); "
+    "<b>(ii) Escolas particulares progressistas</b> (Vera Cruz, Equipe, "
+    "Lumiar, Oswald de Andrade, Stella Maris, Escola da Vila, "
+    "Horizontes, Itaca); "
+    "<b>(iii) Escolas públicas de prestígio cultural</b> (Caetano de "
+    "Campos, Fernão Dias Paes, Godofredo Furtado, Amorim Lima, "
+    "Clorinda Danti); "
+    "<b>(iv) Instituições culturais internacionais</b> (Goethe, "
+    "Alliance Française, Dante Alighieri, Cervantes). "
+    "O índice final é a fração de locais da zona em pelo menos uma "
+    "categoria — um percentual entre 0% e 100%."
+))
+conteudo.append(h2("7.2 Resultado: correlação de −0,661"))
+conteudo.append(p(
+    "A correlação de Pearson entre índice institucional e escore "
+    "ideológico do vereador 2024 é <b>r = −0,661</b>, explicando "
+    "<b>43,7% da variância</b>. Para o prefeito 1T 2024, r = −0,600 "
+    "(R² = 36%). Em ambos os casos, o poder preditivo é cerca de "
+    "<b>cinco vezes maior</b> do que o da renda per capita."
+))
+conteudo.append(
+    Image(
+        "outputs/scatter_indice_institucional.png",
+        width=17 * cm, height=7.5 * cm, kind="proportional",
+    )
+)
+conteudo.append(Paragraph(
+    "Figura 2. Comparação direta dos dois preditores. À esquerda: "
+    "índice institucional cultural-progressista vs escore ideológico "
+    "de vereador 2024 (R² = 0,437). À direita: renda per capita "
+    "média do setor censitário (Censo 2010) vs escore (R² = 0,088). "
+    "Destacadas: Bela Vista (48% de locais institucionais), Pinheiros "
+    "(37%), Perdizes (17%) à esquerda-baixo; Indianópolis, Jardim "
+    "Paulista, Vila Mariana, Butantã no quadrante superior.",
+    st_leg,
+))
+
+dados_top_idx = [
+    [_cb("Zona"), _cb("Bairro"), _cb("Índice %"), _cb("Univ."),
+     _cb("Esc. prog."), _cb("Prestígio"), _cb("Internac."), _cb("Esc ver 24")],
+    [_c("1"), _c("<b>Bela Vista</b>"), _cc("<b>48,0</b>"), _cc("11"),
+     _cc("0"), _cc("1"), _cc("0"), _cc("5,52")],
+    [_c("251"), _c("<b>Pinheiros</b>"), _cc("<b>37,0</b>"), _cc("1"),
+     _cc("4"), _cc("3"), _cc("2"), _cc("5,53")],
+    [_c("3"), _c("Santa Ifigênia"), _cc("17,6"), _cc("3"),
+     _cc("0"), _cc("0"), _cc("0"), _cc("6,06")],
+    [_c("2"), _c("Perdizes"), _cc("16,7"), _cc("3"),
+     _cc("1"), _cc("1"), _cc("0"), _cc("5,71")],
+    [_c("346"), _c("Butantã"), _cc("13,5"), _cc("2"),
+     _cc("1"), _cc("1"), _cc("1"), _cc("6,16")],
+    [_c("6"), _c("Vila Mariana"), _cc("11,1"), _cc("2"),
+     _cc("0"), _cc("1"), _cc("0"), _cc("6,00")],
+    [_c("5"), _c("Jardim Paulista"), _cc("10,5"), _cc("1"),
+     _cc("0"), _cc("0"), _cc("1"), _cc("6,14")],
+    [_c("<b>258</b>"), _c("<b>Indianópolis</b>"), _cc("<b>0,0</b>"),
+     _cc("0"), _cc("0"), _cc("0"), _cc("0"), _cc("<b>6,39</b>")],
+]
+conteudo.append(tabela(dados_top_idx,
+    [1.1*cm, 3.2*cm, 1.7*cm, 1.3*cm, 1.5*cm, 1.7*cm, 1.7*cm, 2*cm]))
+conteudo.append(Spacer(1, 0.3 * cm))
+
+conteudo.append(h2("7.3 Pinheiros × Indianópolis: empate em renda, polos opostos em instituições"))
+conteudo.append(p(
+    "Pinheiros (Z251) e Indianópolis (Z258) são a 2ª e 3ª zonas mais "
+    "ricas da cidade, com R$ 3.819 e R$ 3.504 per capita em 2010. No "
+    "índice institucional, porém, estão em polos opostos: <b>Pinheiros "
+    "tem 37%</b> (1 universidade, 4 escolas progressistas, 3 "
+    "prestígio público, 2 culturais internacionais); <b>Indianópolis "
+    "tem exatamente 0%</b>. A diferença ideológica entre as duas é "
+    "de 0,86 pontos no escore do vereador — uma diferença ampla que "
+    "renda é incapaz de explicar (são essencialmente empatadas em "
+    "renda)."
+))
+
+conteudo.append(h2("7.4 Regressão multivariada"))
+conteudo.append(p(
+    "Em OLS com renda e índice institucional como preditores "
+    "simultâneos do escore de vereador 2024, os três modelos "
+    "produzem o seguinte quadro:"
+))
+dados_ols = [
+    [_cb("Modelo"), _cb("Variáveis"), _cb("R²"), _cb("Renda"), _cb("Índice instit.")],
+    [_c("Modelo 1"), _c("só renda"), _cc("0,088"), _cc("negativo"), _cc("—")],
+    [_c("Modelo 2"), _c("só índice institucional"), _cc("<b>0,437</b>"),
+     _cc("—"), _cc("<b>−0,0185</b>")],
+    [_c("Modelo 3"), _c("renda + índice"), _cc("0,439"),
+     _cc("+0,000011 (desprezível)"), _cc("−0,0185")],
+]
+conteudo.append(tabela(dados_ols, [2 * cm, 4.5 * cm, 1.5 * cm, 4 * cm, 3.5 * cm]))
+conteudo.append(Spacer(1, 0.3 * cm))
+conteudo.append(p(
+    "<b>Três observações:</b> (a) o R² adicional que renda acrescenta "
+    "depois de controlar por índice institucional é de apenas <b>0,002</b> "
+    "— praticamente zero; (b) o sinal do coeficiente de renda, quando "
+    "controlado por densidade institucional, vira ligeiramente positivo "
+    "(renda mais alta → escore um pouco mais à direita, como a teoria "
+    "clássica prevê), mas o efeito é numericamente desprezível; (c) o "
+    "coeficiente do índice institucional é robusto e sobrevive ao "
+    "controle por renda — cada ponto percentual de aumento na densidade "
+    "reduz o escore em 0,019. Para a diferença Bela Vista (48%) vs "
+    "Indianópolis (0%), isso produz um deslocamento esperado de "
+    "<b>0,91 pontos de escore</b>, mais do que o suficiente para "
+    "cruzar a fronteira centro/centro-direita na régua de Bolognesi."
+))
+conteudo.append(p(
+    "<b>Interpretação substantiva:</b> a renda, quando controlada pela "
+    "densidade institucional, perde todo o poder explicativo. A "
+    "variável relevante para o padrão ideológico das zonas eleitorais "
+    "de SP em 2024 é o quanto a zona é <b>densa em ambiente "
+    "educativo-cultural-progressista</b>, não o quanto é rica. "
+    "<b>Pinheiros e Indianópolis são empates em renda</b>, e o que "
+    "as separa é a presença física de universidades, escolas "
+    "construtivistas e instituições culturais internacionais como "
+    "locais de votação da zona."
+))
+conteudo.append(PageBreak())
+conteudo.append(h1("8. Conexão com hipóteses gerais da literatura"))
 conteudo.append(p(
     "O achado se conecta a duas tradições internacionais que o projeto "
     "de dissertação já cita:"
@@ -296,7 +428,7 @@ conteudo.append(p(
     "não de base social tradicional."
 ))
 
-conteudo.append(h1("8. Limitações"))
+conteudo.append(h1("9. Limitações"))
 conteudo.append(p(
     "<b>Censo 2010:</b> a renda por setor censitário usa dados de 2010, "
     "defasada 14 anos em relação à eleição analisada. A base Censo 2022 "
@@ -312,12 +444,17 @@ conteudo.append(p(
     "controles mais finos e é factível com os dados já coletados."
 ))
 conteudo.append(p(
-    "<b>Variável omitida:</b> a hipótese alternativa (ambiente "
-    "institucional) não foi medida quantitativamente neste relatório. "
-    "Um próximo passo é construir um índice de \"densidade institucional "
-    "cultural-progressista\" por zona (n. de universidades + museus + "
-    "centros culturais + escolas com tradição construtivista) e testar "
-    "se ele explica o resíduo que renda não explica."
+    "<b>Validade externa do índice institucional:</b> o índice da "
+    "seção 7 é construído por matching de palavras-chave nos nomes "
+    "dos locais de votação. Essa é uma proxy operacional válida, mas "
+    "sujeita a falsos negativos (escolas progressistas cujo nome não "
+    "contém palavra-chave reconhecida) e falsos positivos (escolas "
+    "particulares com nome parecido mas perfil pedagógico diferente). "
+    "Um refinamento futuro seria cruzar com base do Inep (cadastro "
+    "escolar) ou da Secretaria de Cultura (cadastro de instituições "
+    "culturais). A robustez do resultado (R² = 0,44) sugere que, "
+    "mesmo com a proxy imprecisa, o sinal é forte o suficiente para "
+    "dominar a análise."
 ))
 conteudo.append(p(
     "<b>Escolaridade:</b> a variável V009 capta renda, não "
@@ -327,7 +464,7 @@ conteudo.append(p(
     "<i>escore = α + β₁(renda) + β₂(escolaridade) + ε</i>."
 ))
 
-conteudo.append(h1("9. Reprodutibilidade"))
+conteudo.append(h1("10. Reprodutibilidade"))
 conteudo.append(p(
     "Código em <i>socioeconomia_zonas.py</i> + <i>grafico_renda_escore.py</i>. "
     "Dados primários: Base IBGE 2010 SP Capital "
