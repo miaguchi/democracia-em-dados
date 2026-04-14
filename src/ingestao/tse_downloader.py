@@ -17,6 +17,7 @@ class TSEDownloader:
         "votacao_partido_munzona": "votacao_partido_munzona/votacao_partido_munzona_{ano}.zip",
         "consulta_cand": "consulta_cand/consulta_cand_{ano}.zip",
         "votacao_secao": "votacao_secao/votacao_secao_{ano}_{uf}.zip",
+        "prestacao_contas_candidato": "prestacao_contas/prestacao_de_contas_eleitorais_candidatos_{ano}.zip",
     }
 
     CSV_ENCODING = "latin-1"
