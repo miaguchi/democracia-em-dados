@@ -394,6 +394,77 @@ conteudo.append(p(
     "construtivistas e instituições culturais internacionais como "
     "locais de votação da zona."
 ))
+conteudo.append(h2("7.5 Testes de robustez"))
+conteudo.append(p(
+    "Cinco testes de robustez foram aplicados ao achado da seção 7.2 "
+    "para verificar se a correlação observada é artefato metodológico "
+    "ou fenômeno real:"
+))
+conteudo.append(p(
+    "<b>(a) Leave-one-category-out.</b> Remove-se uma das 4 categorias "
+    "do índice de cada vez e recalcula-se a correlação. O índice "
+    "completo tem R² = 0,437. Removendo universidades, R² = 0,290; "
+    "sem escolas progressistas, R² = 0,376; sem prestígio público, "
+    "R² = 0,393; sem internacional-cultural, R² = 0,428. "
+    "<b>Todas as variantes preservam correlação moderada a forte</b>; "
+    "universidades é a categoria com maior contribuição marginal."
+))
+conteudo.append(p(
+    "<b>(b) Cada categoria isolada.</b> Usando só universidades, "
+    "r = −0,491 (R² = 0,241). Só escolas progressistas, r = −0,488 "
+    "(R² = 0,238, apesar de aparecer em apenas 7 zonas). Só prestígio "
+    "público, <b>r = −0,624</b> (R² = 0,390, aparece em só 6 zonas — "
+    "a categoria com maior potência unitária). Só internacional-"
+    "cultural, r = −0,323 (apenas 4 zonas têm instituições "
+    "internacionais). <b>O fenômeno não depende de uma categoria "
+    "específica</b>; há efeito acumulativo das 4."
+))
+conteudo.append(p(
+    "<b>(c) Bootstrap de intervalos de confiança.</b> Reamostras "
+    "(1000 iterações) do par (índice, escore) para construir IC 95% "
+    "do coeficiente de correlação: "
+    "<b>vereador 2024: [−0,816, −0,223]</b>; "
+    "<b>prefeito 1T 2024: [−0,783, −0,144]</b>; "
+    "<b>vereador 2020: [−0,690, −0,033]</b>. "
+    "Todos os intervalos excluem zero. A significância estatística "
+    "se mantém em 3 de 3 eleições testadas."
+))
+conteudo.append(p(
+    "<b>(d) Controle por densidade urbana.</b> Um confundidor "
+    "plausível seria: zonas centrais têm mais locais de votação no "
+    "total (e portanto mais universidades/escolas grandes), e "
+    "simultaneamente votariam mais à esquerda por outras razões "
+    "urbanas. Controlando pelo número total de locais da zona: o "
+    "modelo <i>escore ~ n_locais</i> sozinho tem R² = 0,003 — a "
+    "densidade urbana bruta <b>não prevê nada</b>. No modelo "
+    "<i>escore ~ índice + n_locais</i>, o β do índice se mantém em "
+    "−0,019 e β de n_locais é praticamente zero (−0,003). "
+    "<b>O achado não é artefato de centralidade urbana.</b>"
+))
+conteudo.append(p(
+    "<b>(e) Variável dependente alternativa.</b> Substitui-se o "
+    "escore médio ponderado (métrica contínua) pela porcentagem de "
+    "seções eleitorais da zona em que o bloco esquerda+centro-esquerda "
+    "superou o bloco direita+centro-direita em votos absolutos "
+    "(métrica bipartite de plurality). <b>A correlação do índice "
+    "institucional com essa variável é r = +0,814 (R² = 0,663)</b>. "
+    "Para comparação, a correlação da renda com a mesma variável é "
+    "r = +0,079 — praticamente zero. <b>Em um teste mais direto "
+    "(contagem de seções progressistas, não média ponderada), o "
+    "índice institucional explica 66% da variância entre zonas</b>, "
+    "a renda não explica praticamente nada."
+))
+conteudo.append(p(
+    "<b>Conclusão dos testes de robustez:</b> o achado é robusto a "
+    "variações na construção do índice, a controles por confundidores "
+    "plausíveis, a mudanças na variável dependente e a mudanças no "
+    "ano/cargo da eleição. A correlação negativa forte entre ambiente "
+    "institucional cultural-progressista e escore ideológico (ou, "
+    "equivalentemente, correlação positiva forte entre esse ambiente "
+    "e presença de voto progressista) é um fenômeno real e "
+    "empiricamente robusto nas zonas eleitorais de São Paulo em 2024."
+))
+
 conteudo.append(PageBreak())
 conteudo.append(h1("8. Conexão com hipóteses gerais da literatura"))
 conteudo.append(p(
