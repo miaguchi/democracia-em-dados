@@ -500,14 +500,102 @@ conteudo.append(p(
 ))
 
 conteudo.append(h1("9. Limitações"))
+conteudo.append(h2("9.1 A limitação temporal do Censo 2010"))
 conteudo.append(p(
-    "<b>Censo 2010:</b> a renda por setor censitário usa dados de 2010, "
-    "defasada 14 anos em relação à eleição analisada. A base Censo 2022 "
-    "não tem ainda os agregados por setor completos disponíveis. "
-    "Alternativa futura: usar dados do Atlas do Desenvolvimento "
-    "(PNUD/FJP) mais recentes, ou comparar dados de 2000 e 2010 para "
-    "verificar se a posição relativa das zonas mudou."
+    "A limitação mais óbvia desta análise é que a variável "
+    "explicativa <i>renda per capita</i> usa dados do Censo 2010, "
+    "enquanto a variável dependente (voto) é de 2024 — uma "
+    "defasagem de 14 anos. Esta é uma preocupação metodológica "
+    "legítima e precisa ser tratada explicitamente. Cinco "
+    "argumentos atenuam (mas não eliminam) o problema:"
 ))
+conteudo.append(p(
+    "<b>(i) Estabilidade relativa do ranking de renda em SP.</b> "
+    "Pinheiros, Jardim Paulista, Indianópolis e Vila Mariana são "
+    "reconhecidamente bairros ricos de São Paulo desde pelo menos "
+    "a década de 1970. A literatura de sociologia urbana paulistana "
+    "(Marques, 2015; Torres et al., 2003) documenta que a "
+    "hierarquia socioeconômica inter-bairros da capital paulistana "
+    "é <i>extraordinariamente estável</i> ao longo do tempo — "
+    "muito mais do que mudanças absolutas de renda. Mesmo com "
+    "inflação, gentrificação ou deterioração localizada, a "
+    "<b>posição relativa das zonas no ranking quase não muda</b>. "
+    "Cidade Tiradentes foi construída nos anos 1980 como conjunto "
+    "habitacional de baixa renda e segue como uma das zonas mais "
+    "pobres em 2024. Pinheiros é rica há mais de um século. A "
+    "inferência via correlação de ranking (não de valores "
+    "absolutos) é robusta a defasagem desse tipo."
+))
+conteudo.append(p(
+    "<b>(ii) A variável dependente é 2024 e independente do "
+    "problema.</b> O escore ideológico vem da eleição de 2024, "
+    "calculado sobre dados do TSE daquele ano. O que está "
+    "potencialmente desatualizado é a <i>covariável</i>, não a "
+    "resposta. Se a hipótese fosse \"renda causa voto\", a "
+    "defasagem seria fatal; mas a hipótese testada é mais fraca — "
+    "\"renda correlaciona com voto\" — e defasagem de 14 anos "
+    "apenas <i>enfraquece</i> a correlação observada, não a "
+    "distorce sistematicamente."
+))
+conteudo.append(p(
+    "<b>(iii) A defasagem enfraquece o achado, não o fortalece.</b> "
+    "Este é o argumento mais forte: se o efeito observado é "
+    "negativo e fraco (r = −0,30), uma medida de renda mais "
+    "atualizada poderia produzir, na pior das hipóteses, um "
+    "efeito um pouco menos fraco — mas dificilmente um efeito "
+    "substancialmente maior (para isso, a defasagem teria que ter "
+    "produzido correlação sistemática oposta à verdadeira, o que "
+    "é estatisticamente improvável). A conclusão substantiva — "
+    "<b>renda explica menos de 9% da variância</b> — é um "
+    "<i>limite superior conservador</i> do efeito real: com "
+    "medidas mais precisas, o R² pode ser igual ou menor. O "
+    "achado \"renda não explica voto\" é, portanto, "
+    "<b>conservador</b> — se algo, o efeito verdadeiro é ainda "
+    "menor do que o reportado."
+))
+conteudo.append(p(
+    "<b>(iv) O Censo 2022 ainda não liberou renda por setor.</b> "
+    "Verificamos (em abril de 2026) que o IBGE ainda não "
+    "disponibilizou os agregados de rendimento domiciliar do "
+    "Censo 2022 por setor censitário. As variáveis já divulgadas "
+    "são: alfabetização, características do domicílio, cor/raça, "
+    "demografia, óbitos, parentesco. Rendimento médio e "
+    "escolaridade detalhada sairão junto com os resultados da "
+    "amostra, provavelmente ao longo de 2026–2027. Até lá, dados "
+    "de 2010 são a melhor fonte disponível de renda por setor em "
+    "SP."
+))
+conteudo.append(p(
+    "<b>(v) Fontes paralelas convergem.</b> O Atlas do "
+    "Desenvolvimento Humano Municipal (PNUD/FJP), em suas "
+    "atualizações intermediárias entre 2000 e 2013 ao nível de "
+    "UDH (Unidade de Desenvolvimento Humano, ~310 em SP), "
+    "classifica Pinheiros, Jardim Paulista, Vila Mariana, "
+    "Perdizes e Indianópolis como UDHs de altíssima renda. O "
+    "Índice Paulista de Vulnerabilidade Social (IPVS, Fundação "
+    "SEADE) ratifica o mesmo ranking relativo nas suas edições "
+    "mais recentes. A convergência entre fontes com métodos e "
+    "datas diferentes é evidência de que a estrutura "
+    "socioeconômica inter-bairros da cidade é estável, como a "
+    "literatura sugere."
+))
+conteudo.append(p(
+    "<b>Consequência metodológica:</b> o achado central — de que "
+    "a renda per capita explica uma pequena parcela da variância "
+    "ideológica entre zonas eleitorais, enquanto o índice "
+    "institucional explica a maior parte — é <b>robusto à "
+    "imperfeição da medida de renda</b>. A imprecisão da medida "
+    "2010 tende a atenuar correlações potencialmente reais, não a "
+    "criar correlações espúrias. Se o Censo 2022 eventualmente "
+    "confirmar que as posições relativas das zonas se mantiveram "
+    "(expectativa da literatura), o R² da renda em 2024 deve ficar "
+    "próximo do observado aqui; se houver mudanças estruturais "
+    "(improvável no escopo de 14 anos para bairros já "
+    "consolidados), o R² pode cair mais, sem nunca superar o R² "
+    "do índice institucional — que usa base de dados de 2022 "
+    "(CEM/USP EL2022_LV_ESP) e não sofre o problema de defasagem."
+))
+conteudo.append(h2("9.2 Outras limitações"))
 conteudo.append(p(
     "<b>Agregação:</b> a unidade de análise é a zona eleitoral (58 "
     "observações), o que limita o poder estatístico. Análise no nível "
