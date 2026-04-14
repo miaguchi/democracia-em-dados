@@ -8,6 +8,7 @@ from reportlab.lib.pagesizes import A4
 from reportlab.lib.styles import ParagraphStyle, getSampleStyleSheet
 from reportlab.lib.units import cm
 from reportlab.platypus import (
+    Image,
     PageBreak,
     Paragraph,
     SimpleDocTemplate,
@@ -143,7 +144,156 @@ conteudo.append(
     )
 )
 
-conteudo.append(h1("2. Panorama do financiamento de vereador em SP 2024"))
+conteudo.append(h1("2. Trajetória temporal do financiamento (2012–2024)"))
+conteudo.append(
+    p(
+        "Antes da análise de 2024, é importante contextualizar com a "
+        "trajetória dos 4 ciclos municipais. O período cobre <b>três "
+        "eras regulatórias</b> distintas do financiamento eleitoral:"
+    )
+)
+conteudo.append(
+    p(
+        "<b>(i) 2012 — era da PJ.</b> Doação de pessoa jurídica ainda era "
+        "permitida. Construtoras, bancos e empresas de serviços dominavam "
+        "a lista de doadores em SP. Setores mais ativos (em valor doado a "
+        "vereadores): construção de edifícios (R$ 3,79 mi), incorporação "
+        "imobiliária (R$ 1,96 mi), obras de engenharia civil (R$ 1,96 mi), "
+        "bancos múltiplos (R$ 938 mil), construção de rodovias (R$ 734 mil). "
+        "É a fotografia clássica do financiamento empresarial denunciado "
+        "na literatura (Mancuso &amp; Speck, 2015)."
+    )
+)
+conteudo.append(
+    p(
+        "<b>(ii) 2016 — era transicional.</b> Reforma de 2015 proibiu "
+        "doação PJ. O FEFC (Fundo Especial de Financiamento de Campanha) "
+        "ainda não havia sido criado (surge só em 2018). O resultado foi "
+        "uma eleição anômala onde <b>pessoa física passou a dominar (41% "
+        "da receita)</b> e recursos próprios saltaram para 22%. Muitos "
+        "candidatos simplesmente <b>não tiveram dinheiro</b>: a receita "
+        "total de vereador em SP em 2016 foi de R$ 43,1 milhões — menos "
+        "da metade de 2012 e um quinto de 2024. Esse foi o único "
+        "momento em que a mobilização direta do eleitor-doador se "
+        "tornou estratégia central de financiamento."
+    )
+)
+conteudo.append(
+    p(
+        "<b>(iii) 2020/2024 — era do FEFC consolidado.</b> O Fundo "
+        "Especial foi criado em 2017 e cresceu a cada ciclo. Em 2020, "
+        "representava 65% do financiamento dos vereadores em SP. Em "
+        "2024, chegou a <b>86,7%</b>. A receita total quadruplicou em "
+        "relação a 2016 (R$ 209,4 milhões), mas a participação direta "
+        "do eleitor-doador (PF + crowdfunding) caiu para apenas "
+        "<b>9,5%</b> — menor do que em 2020 (25,8%) e muito menor do "
+        "que em 2016 (41%)."
+    )
+)
+conteudo.extend(
+    [
+        Image(
+            "outputs/grafico_trajetoria_financiamento.png",
+            width=16 * cm,
+            height=10 * cm,
+            kind="proportional",
+        ),
+        Paragraph(
+            "Figura 1. Trajetória das fontes de financiamento dos "
+            "vereadores de SP em quatro ciclos municipais (2012–2024). "
+            "Destaque: queda progressiva da participação de pessoa física "
+            "após 2016, compensada pelo aumento do FEFC via partido.",
+            ParagraphStyle(
+                "leg", parent=styles["Italic"], fontSize=8,
+                alignment=TA_CENTER,
+                textColor=colors.HexColor("#555"), spaceAfter=10,
+            ),
+        ),
+    ]
+)
+
+dados_trajetoria = [
+    [_cb("Ano"), _cb("Total R$ mi"), _cb("Partido %"), _cb("PF %"),
+     _cb("PJ %"), _cb("Próprio %"), _cb("FinColet %"), _cb("Era")],
+    [_c("2012"), _cc("93,1"), _cc("41,7"), _cc("0,0"), _cc("<b>23,8</b>"),
+     _cc("8,0"), _cc("0,0"), _c("Era PJ")],
+    [_c("2016"), _cc("43,1"), _cc("28,0"), _cc("<b>41,0</b>"), _cc("0,0"),
+     _cc("21,7"), _cc("0,0"), _c("Transição")],
+    [_c("2020"), _cc("84,0"), _cc("65,0"), _cc("23,7"), _cc("0,0"),
+     _cc("8,1"), _cc("2,1"), _c("FEFC inicial")],
+    [_c("2024"), _cc("<b>209,4</b>"), _cc("<b>86,7</b>"), _cc("9,1"), _cc("0,0"),
+     _cc("2,2"), _cc("0,4"), _c("FEFC consolidado")],
+]
+conteudo.append(
+    tabela_estilizada(
+        dados_trajetoria,
+        [1.5*cm, 2*cm, 2*cm, 1.5*cm, 1.5*cm, 1.8*cm, 2*cm, 2.7*cm],
+    )
+)
+conteudo.append(Spacer(1, 0.3 * cm))
+
+conteudo.append(h2("2.1 A trajetória partidária em Pinheiros e Indianópolis"))
+conteudo.append(
+    p(
+        "A análise de votos por partido nas zonas-chave do projeto ao "
+        "longo dos 4 ciclos revela um padrão notável: <b>Pinheiros "
+        "(Z251) e Indianópolis (Z258) começam no mesmo ponto em 2012 "
+        "(PSDB com ~48% do voto) e terminam em posições opostas em "
+        "2024</b>. A divergência interna ao próprio \"bairro rico\" "
+        "é possivelmente o achado mais relevante para a Hipótese 1 "
+        "do projeto."
+    )
+)
+
+dados_pin_ind = [
+    [_cb("Ano"), _cb("Pinheiros (Z251) — top partidos"), _cb("Indianópolis (Z258) — top partidos")],
+    [_c("2012"),
+     _c("PSDB 48% · PT 17% · PV 12% · PPS 9% · PSD 9% · PMDB 6%"),
+     _c("PSDB 47% · PV 13% · PSD 13% · PT 12% · PPS 8% · PMDB 8%")],
+    [_c("2016"),
+     _c("<b>PSDB 36%</b> · NOVO 20% · PT 19% · PSOL 12% · PV 8% · Rede 6%"),
+     _c("<b>PSDB 45%</b> · NOVO 19% · PT 13% · PV 10% · DEM 7% · PSOL 7%")],
+    [_c("2020"),
+     _c("<b>PSOL 28%</b> · NOVO 24% · PSDB 18% · PT 14% · Rede 8% · PSD 8%"),
+     _c("<b>NOVO 29%</b> · PSDB 24% · PSOL 17% · PSD 12% · PT 10% · Patriota 9%")],
+    [_c("2024"),
+     _c("<b>PSOL 28%</b> · NOVO 18% · PT 17% · PSB 13% · PL 12% · Rede 11%"),
+     _c("<b>PL 20%</b> · PSOL 18% · NOVO 18% · UNIÃO 17% · PP 14% · MDB 13%")],
+]
+conteudo.append(tabela_estilizada(dados_pin_ind, [1.5*cm, 7*cm, 7*cm]))
+conteudo.append(Spacer(1, 0.3 * cm))
+conteudo.append(
+    p(
+        "Em <b>Pinheiros</b>, o voto tucano migrou paulatinamente para "
+        "PSOL (que vira o partido #1 já em 2020) e o campo de esquerda "
+        "somado (PSOL + PT + PSB + Rede) chega a 69% do voto principal "
+        "em 2024. O Novo aparece como herdeiro parcial do PSDB, mas em "
+        "minoria. Em <b>Indianópolis</b>, o mesmo voto tucano fragmentou-"
+        "se à direita: PL, União, PP e MDB (partidos que em 2012 tinham "
+        "participação marginal ou inexistiam) somam 82% do voto "
+        "principal em 2024, enquanto a esquerda se reduz ao PSOL (18%) "
+        "sem PT nem PSB expressivos."
+    )
+)
+conteudo.append(
+    p(
+        "A <b>mesma origem eleitoral</b> (voto PSDB de classe alta "
+        "paulistana em 2012) gerou dois destinos opostos em 12 anos. "
+        "A variável diferenciadora não parece ser renda ou escolaridade "
+        "(ambos Pinheiros e Indianópolis estão entre os bairros mais "
+        "ricos e escolarizados da cidade) — o que sugere, como a análise "
+        "de redutos institucionais discutiu na seção anterior do "
+        "relatório principal, que o fator explicativo é <b>ambiente "
+        "institucional educativo-cultural</b>: Pinheiros tem USP, PUC, "
+        "Goethe-Institut, colégios progressistas (Vera Cruz, Equipe, "
+        "Lumiar, Oswald de Andrade); Indianópolis tem perfil mais "
+        "residencial-condominial, sem densidade equivalente de "
+        "instituições culturais progressistas."
+    )
+)
+
+conteudo.append(PageBreak())
+conteudo.append(h1("3. Panorama detalhado do financiamento em 2024"))
 conteudo.append(
     p(
         "A receita total declarada pelos 1.003 candidatos a vereador em "
@@ -179,7 +329,7 @@ conteudo.append(
     )
 )
 
-conteudo.append(h1("3. Recorte: candidatos com voto concentrado nas zonas-alvo"))
+conteudo.append(h1("4. Recorte: candidatos com voto concentrado nas zonas-alvo (2024)"))
 conteudo.append(
     p(
         "Para cada zona, tomamos os 6 candidatos a vereador com mais "
@@ -190,7 +340,7 @@ conteudo.append(
     )
 )
 
-conteudo.append(h2("3.1 Zonas ricas progressistas"))
+conteudo.append(h2("4.1 Zonas ricas progressistas"))
 dados_prog = [
     [_cb("Zona"), _cb("Candidato / Partido"), _cb("Votos"), _cb("Receita"), _cb("PF"), _cb("Partido"), _cb("FinColet")],
     [_c("Z1 Bela Vista"), _c("Amanda Paschoal (PSOL)"), _cc("2.348"), _cc("R$ 605k"), _cc("6%"), _cc("92%"), _cc("2%")],
@@ -228,7 +378,7 @@ conteudo.append(
     )
 )
 
-conteudo.append(h2("3.2 Zonas ricas conservadoras"))
+conteudo.append(h2("4.2 Zonas ricas conservadoras"))
 dados_cons = [
     [_cb("Zona"), _cb("Candidato / Partido"), _cb("Votos"), _cb("Receita"), _cb("PF"), _cb("Partido"), _cb("FinColet")],
     [_c("Z5 Jd Paulista"), _c("Cristina Monteiro (NOVO)"), _cc("4.032"), _cc("R$ 1.358k"), _cc("16%"), _cc("82%"), _cc("1%")],
@@ -277,7 +427,7 @@ conteudo.append(
 )
 
 conteudo.append(PageBreak())
-conteudo.append(h1("4. Comparação com zonas de controle"))
+conteudo.append(h1("5. Comparação com zonas de controle"))
 conteudo.append(
     p(
         "Para colocar os achados em contexto, comparamos o perfil de "
@@ -287,7 +437,7 @@ conteudo.append(
     )
 )
 
-conteudo.append(h2("4.1 Perfil médio por grupo de zonas"))
+conteudo.append(h2("5.1 Perfil médio por grupo de zonas"))
 dados_grupos = [
     [_cb("Grupo"), _cb("Zonas"), _cb("PF %"), _cb("Partido %"), _cb("FinColet %"), _cb("Próprio %")],
     [_c("Ricas progressistas"), _c("Bela Vista, Perdizes, Pinheiros"), _cc("13,6"), _cc("81,5"), _cc("<b>2,72</b>"), _cc("1,5")],
@@ -303,7 +453,7 @@ conteudo.append(
 )
 conteudo.append(Spacer(1, 0.3 * cm))
 
-conteudo.append(h2("4.2 Três padrões territoriais distintos"))
+conteudo.append(h2("5.2 Três padrões territoriais distintos"))
 conteudo.append(
     p(
         "A comparação entre grupos revela três padrões materiais de "
@@ -345,7 +495,7 @@ conteudo.append(
     )
 )
 
-conteudo.append(h1("5. Leitura substantiva para o projeto"))
+conteudo.append(h1("6. Leitura substantiva para o projeto"))
 conteudo.append(
     p(
         "Os achados permitem reforçar e qualificar as Hipóteses 3 e 4 "
@@ -404,14 +554,17 @@ conteudo.append(
     )
 )
 
-conteudo.append(h1("6. Limitações"))
+conteudo.append(h1("7. Limitações"))
 conteudo.append(
     p(
-        "<b>Temporal:</b> a análise cobre apenas 2024. A comparação "
-        "histórica (2012, 2016, 2020) exigirá download dos parquets de "
-        "prestação de contas desses anos e é o próximo passo natural "
-        "para testar a trajetória que a análise sugere (PSDB mudando "
-        "perfil de financiamento ao longo do tempo até desaparecer)."
+        "<b>Zonas ricas nas eleições pré-2018:</b> a análise temporal da "
+        "seção 2 cobre a cidade de São Paulo inteira, mas a comparação "
+        "entre candidatos específicos das zonas-alvo (seção 4) cobre só "
+        "2024. Estender o cruzamento zona × financiamento para 2012, "
+        "2016 e 2020 permitirá testar se o PSDB tucano em Pinheiros "
+        "tinha perfil de PF mais alto do que os candidatos PL/PP que "
+        "ocupam essa posição em 2024 — a principal hipótese causal "
+        "deste relatório, ainda não testada ao nível do candidato."
     )
 )
 conteudo.append(
@@ -438,7 +591,7 @@ conteudo.append(
     )
 )
 
-conteudo.append(h1("7. Reprodutibilidade"))
+conteudo.append(h1("8. Reprodutibilidade"))
 conteudo.append(
     p(
         "Os dados vêm do arquivo <i>receitas_candidatos_2024_SP.csv</i> "
