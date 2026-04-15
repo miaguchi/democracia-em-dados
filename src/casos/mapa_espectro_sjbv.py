@@ -12,7 +12,7 @@ import matplotlib.colors as mcolors
 import matplotlib.pyplot as plt
 import pandas as pd
 
-from src.partidario.analise_secao_sjbv import carregar_sjbv_secao
+from src.casos.analise_secao_sjbv import carregar_sjbv_secao
 from src.partidario.ideologia import ESCORE_BOLOGNESI
 
 SHAPEFILE_LV = Path("data/raw/shapes/EL2022_LV_ESP_CEM_V2/EL2022_LV_ESP_CEM_V2.shp")

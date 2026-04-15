@@ -16,7 +16,7 @@ import geopandas as gpd
 import numpy as np
 import pandas as pd
 
-from src.partidario.indice_institucional import PADROES, classificar, normalizar
+from src.urbano.indice_institucional import PADROES, classificar, normalizar
 
 SHAPEFILE_LV = Path("data/raw/shapes/EL2022_LV_ESP_CEM_V2/EL2022_LV_ESP_CEM_V2.shp")
 SOCIO = pd.read_csv("outputs/socioeconomia_por_zona.csv").set_index("NR_ZONA")
