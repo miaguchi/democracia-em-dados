@@ -966,7 +966,77 @@ conteudo.append(p(
     "<i>Evidência para H4. Agenda: ecologia eleitoral, sociologia "
     "urbana, ambientes institucionais. Ferramental afinado com a "
     "agenda do prof. Eduardo Marques (FLS 6195 — Cidades, Governo e "
-    "Políticas Públicas).</i>"
+    "Políticas Públicas) e dialogando com a escola paulistana de "
+    "sociologia urbana (Marques, Torres et al., Torres, Bichir).</i>"
+))
+
+conteudo.append(h1("3.0 Moldura teórica: a escola paulistana e o ambiente institucional"))
+conteudo.append(p(
+    "A agenda de pesquisa sobre estratificação socioeconômica do "
+    "espaço metropolitano de São Paulo, consolidada no grupo "
+    "Marques–Torres–Bichir (ver Marques, 2015; Torres, Marques, "
+    "Ferreira &amp; Bichir, 2003; Marques, Scalon &amp; Oliveira, "
+    "2018), estabeleceu três teses empíricas que moldam este "
+    "capítulo:"
+))
+conteudo.append(p(
+    "<b>(i) A hierarquia socioeconômica intra-metropolitana de SP "
+    "é extraordinariamente estável no tempo.</b> Torres et al. "
+    "(2003), usando dados de 1991 e 2000, mostram que os bairros "
+    "de alta renda do centro-oeste paulistano (Pinheiros, Jardim "
+    "Paulista, Itaim, Vila Olímpia, Morumbi) mantêm sua posição "
+    "relativa no ranking de renda há décadas. Marques (2015) "
+    "estende esse argumento até os anos 2010, mostrando que a "
+    "segregação por renda é um atributo quase invariante da "
+    "estrutura urbana paulistana. Isso é o que justifica usar "
+    "dados do Censo 2010 como proxy razoável para a posição "
+    "relativa das zonas em 2024 — um argumento metodológico "
+    "desenvolvido em detalhe na seção 9.1."
+))
+conteudo.append(p(
+    "<b>(ii) Mas a segregação de renda não é a única dimensão "
+    "relevante do espaço urbano.</b> Marques (2015) argumenta "
+    "que, além do gradiente de renda, a cidade se estrutura por "
+    "<i>redes de equipamentos e instituições</i> — serviços "
+    "públicos, escolas, universidades, centros culturais — cuja "
+    "distribuição territorial é <b>independente</b> da "
+    "distribuição de renda em muitos casos. Um bairro de renda "
+    "alta pode ter alta ou baixa densidade institucional; um "
+    "bairro de renda média pode ter equipamentos de prestígio "
+    "cultural. A tese é que <b>o efeito político-territorial "
+    "do espaço urbano não vem só da renda dos moradores — vem "
+    "também do que o ambiente institucional oferece</b>."
+))
+conteudo.append(p(
+    "<b>(iii) Ambientes institucionais educativo-culturais "
+    "funcionam como infraestrutura de socialização política.</b> "
+    "Marques (2015) e Hoyler, Gelape &amp; Silotto (2021) "
+    "argumentam, seguindo uma tradição mais ampla que vai de "
+    "Tocqueville a Putnam, que frequentar ambientes educativos-"
+    "culturais específicos (universidades, escolas "
+    "construtivistas, centros culturais) produz <b>vínculos "
+    "político-territoriais específicos</b> — tanto de "
+    "identificação quanto de mobilização. Esta tese, entretanto, "
+    "raramente foi testada quantitativamente no contexto "
+    "paulistano. Este capítulo faz exatamente isso: operacionaliza "
+    "a hipótese do ambiente institucional como preditor do voto "
+    "e a compara empiricamente com a hipótese alternativa "
+    "(renda/classe)."
+))
+conteudo.append(p(
+    "<b>A ponte com Inglehart &amp; Norris.</b> A agenda da escola "
+    "paulistana tem, neste capítulo, uma conexão inesperada com a "
+    "literatura internacional recente sobre clivagem cultural no "
+    "voto contemporâneo (Inglehart &amp; Norris, 2016, 2019). Se "
+    "Marques argumenta que o ambiente institucional é uma dimensão "
+    "independente da segregação urbana, Inglehart &amp; Norris "
+    "argumentam que a educação e o cosmopolitismo — produzidos "
+    "justamente pelos ambientes institucionais — tornam-se "
+    "progressivamente o eixo organizador do voto em democracias "
+    "contemporâneas. As duas tradições se encontram na hipótese "
+    "empiricamente testável: <b>na SP pós-2016, a presença de "
+    "ambiente institucional educativo-cultural explica o voto "
+    "melhor do que a renda</b>."
 ))
 
 conteudo.append(h1("3.1 Renda não explica o voto ideológico em SP 2024"))
@@ -1028,6 +1098,154 @@ conteudo.extend(fig(
     legenda="Figura 3.1 — Comparação direta: índice institucional "
     "(esquerda, R² = 0,437) vs renda per capita (direita, R² = 0,088) "
     "como preditores do escore ideológico de vereador 2024 por zona.",
+))
+
+conteudo.append(h2("3.2.1 Os locais específicos que compõem o índice"))
+conteudo.append(p(
+    "Para dar concretude aos números, vale enumerar exatamente "
+    "quais locais de votação compõem o índice institucional nas "
+    "zonas mais relevantes:"
+))
+conteudo.append(p(
+    "<b>Bela Vista (Z1) — 48,0% dos locais são categorizados, o "
+    "maior índice da cidade.</b> A zona tem 25 locais, dos quais "
+    "11 são universitários (!): Mackenzie em múltiplos prédios "
+    "(Consolação, Itambé, Prédio 45, Prédio 09), PUC-SP "
+    "Consolação, PUC-SP Ciências Exatas, FMU, Senac Consolação, "
+    "Faculdade Phorte, Uniban, Uninove Paulista. Adicionalmente, "
+    "a EE Caetano de Campos (histórica escola pública "
+    "paulistana, em seu prédio tradicional na Consolação) entra "
+    "como prestígio público. É o caso mais extremo da "
+    "\"concentração educativo-cultural\" em uma única zona: "
+    "<b>quase metade dos locais de votação de Bela Vista são "
+    "campus universitários ou escolas públicas tradicionais</b>."
+))
+conteudo.append(p(
+    "<b>Pinheiros (Z251) — 37,0% dos locais, segundo maior índice "
+    "da cidade.</b> A zona tem 27 locais, distribuídos de forma "
+    "muito mais diversificada que Bela Vista:"
+))
+dados_pinheiros = [
+    [_cb("Categoria"), _cb("N"), _cb("Locais específicos")],
+    [_c("Universidade"), _cc("1"),
+     _c("Uninove Pinheiros")],
+    [_c("Escola progressista"), _cc("4"),
+     _c("Colégio Vera Cruz, Escola Lumiar, Escola Oswald de "
+       "Andrade, Colégio Horizontes")],
+    [_c("Prestígio público"), _cc("3"),
+     _c("EE Fernão Dias Paes, EE Godofredo Furtado, EE Antonio "
+       "Alves Cruz")],
+    [_c("Internacional cultural"), _cc("2"),
+     _c("Goethe-Institut, Colégio Stella Maris")],
+]
+conteudo.append(tabela(dados_pinheiros, [3.5*cm, 1*cm, 11*cm]))
+conteudo.append(Spacer(1, 0.2 * cm))
+conteudo.append(p(
+    "A lista acima é politicamente reveladora. <b>Colégio Vera "
+    "Cruz, Escola Lumiar, Escola Oswald de Andrade</b> e <b>Colégio "
+    "Horizontes</b> são as quatro escolas particulares "
+    "historicamente associadas à pedagogia construtivista/"
+    "progressista de classe média alta paulistana. Seu público-"
+    "alvo é bem definido: filhos de profissionais liberais, "
+    "acadêmicos, jornalistas, artistas, advogados — exatamente o "
+    "perfil do \"cosmopolitismo educado\" que Inglehart &amp; "
+    "Norris descrevem. <b>EE Fernão Dias Paes</b> e <b>EE "
+    "Godofredo Furtado</b> são escolas estaduais de prestígio "
+    "histórico na região, frequentadas por filhos de servidores "
+    "públicos e professores da rede. <b>Goethe-Institut</b> é o "
+    "centro cultural alemão — ponto focal da cena cosmopolita "
+    "paulistana. Somados, esses locais capturam boa parte do que "
+    "se entende, na sociologia urbana paulistana, como "
+    "\"ambiente cultural progressista de Pinheiros\"."
+))
+conteudo.append(p(
+    "<b>Indianópolis (Z258) — 0,0% dos locais, o menor índice da "
+    "cidade.</b> A zona tem 31 locais de votação, e nenhum "
+    "deles é categorizado em nossa lista. Não há universidades, "
+    "não há escolas particulares progressistas de tradição "
+    "reconhecida, não há escolas públicas de prestígio cultural "
+    "nacional, e não há instituições culturais internacionais. "
+    "Os locais de votação de Indianópolis são <b>escolas "
+    "estaduais e municipais regulares, colégios particulares de "
+    "bairro e centros comunitários</b> — instituições de ensino "
+    "que servem a população local em sua vida cotidiana, mas sem "
+    "a dimensão de prestígio cultural-intelectual que marca os "
+    "locais de Pinheiros e Bela Vista. Isto é substantivamente "
+    "notável: a renda per capita de Indianópolis é praticamente "
+    "idêntica à de Pinheiros (R$ 3.504 vs R$ 3.819), mas o perfil "
+    "institucional do território é <b>radicalmente diferente</b>. "
+    "É um bairro rico <i>residencial</i> — sem grande "
+    "infraestrutura cultural-universitária pública ou privada. "
+    "Essa <b>diferença territorial em dimensão ortogonal à "
+    "renda</b> é exatamente o que Marques (2015) prevê quando "
+    "argumenta que a distribuição de equipamentos institucionais "
+    "é parcialmente independente da distribuição de renda."
+))
+
+conteudo.append(h2("3.2.2 O mecanismo: como o ambiente \"fala\" politicamente?"))
+conteudo.append(p(
+    "Identificado o sinal correlacional forte (r = −0,66), "
+    "resta perguntar <b>por que</b> o ambiente institucional "
+    "produziria voto mais à esquerda. Quatro mecanismos "
+    "plausíveis, compatíveis com a literatura:"
+))
+conteudo.append(p(
+    "<b>(a) Mecanismo de composição populacional.</b> A versão "
+    "mais \"bruta\": universidades, escolas construtivistas e "
+    "instituições culturais atraem <b>moradores</b> com perfil "
+    "específico (professores, estudantes, funcionários "
+    "administrativos, artistas). O voto da zona reflete esse "
+    "perfil moradores — não um efeito do ambiente em si. Nesse "
+    "caso, ambiente é proxy de composição demográfica "
+    "específica."
+))
+conteudo.append(p(
+    "<b>(b) Mecanismo de socialização política.</b> Frequentar "
+    "ambientes universitários ou escolas progressistas produz "
+    "exposição a valores, debates e normas políticas específicas "
+    "(pós-materialismo, cosmopolitismo, tolerância ao "
+    "pluralismo, etc.). Ao longo de anos de convivência, o "
+    "eleitor internaliza parcialmente esses valores e os traduz "
+    "em escolha eleitoral. Essa é a formulação clássica de "
+    "Inglehart &amp; Norris (2019) para democracias "
+    "contemporâneas."
+))
+conteudo.append(p(
+    "<b>(c) Mecanismo de rede e mobilização.</b> Universidades e "
+    "escolas de elite cultural são também <b>lócus de recrutamento "
+    "político</b>: alunos e professores se engajam em campanhas, "
+    "formam grupos de apoio, distribuem materiais, organizam "
+    "debates. O ambiente institucional cria redes de ativismo que "
+    "se expressam eleitoralmente nas proximidades. Essa é a leitura "
+    "de Hoyler, Gelape &amp; Silotto (2021) sobre construção de "
+    "vínculos político-territoriais em SP."
+))
+conteudo.append(p(
+    "<b>(d) Mecanismo de identidade cultural deflagrado.</b> "
+    "Após choques políticos nacionais (impeachment 2016, eleição "
+    "Bolsonaro 2018), a identidade cultural-cosmopolita que "
+    "ambientes universitários sempre produziram torna-se "
+    "<b>politicamente saliente</b>. A variável que antes era "
+    "latente (ser universitário em Pinheiros não distinguia seu "
+    "voto) torna-se mobilizada (ser universitário em Pinheiros "
+    "implica se opor ao bolsonarismo). Este mecanismo é o que "
+    "explica melhor o achado da seção 3.6 (teste temporal): a "
+    "correlação entre índice e voto <b>cresce</b> ao longo do "
+    "tempo, consistente com ativação recente."
+))
+conteudo.append(p(
+    "Os quatro mecanismos não são mutuamente exclusivos e "
+    "provavelmente operam simultaneamente. <b>A dissertação não "
+    "consegue, com os dados atuais, distinguir definitivamente "
+    "entre eles.</b> Mas a combinação de evidências do teste "
+    "temporal (3.6) com o padrão de candidatos (Parte IV) "
+    "sugere que (d) + (c) são os mecanismos dominantes — o "
+    "ambiente institucional funciona como <i>lócus de "
+    "coordenação política recente</i>, não como atributo "
+    "estrutural antigo. A hipótese (a), de composição, não "
+    "poderia explicar por que o sinal era nulo em 2016 e "
+    "emergiu em 2020 — a composição populacional das zonas "
+    "muda devagar demais."
 ))
 
 conteudo.append(h1("3.3 O caso Pinheiros × Indianópolis"))
