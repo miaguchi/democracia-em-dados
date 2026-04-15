@@ -34,11 +34,11 @@ Usando `votacao_partido_munzona` do TSE, com normalização de partidos por fede
 
 ### Mapa de pontos — volatilidade por zona
 
-![Mapa de volatilidade](outputs/mapa_volatilidade_sp_vereador_2020_2024.png)
+![Mapa de volatilidade](outputs/figures/mapa_volatilidade_sp_vereador_2020_2024.png)
 
 ### Clusters LISA — onde estão os regimes distintos
 
-![Clusters LISA](outputs/lisa_volatilidade_sp_vereador_2020_2024.png)
+![Clusters LISA](outputs/figures/lisa_volatilidade_sp_vereador_2020_2024.png)
 
 O Moran Local identifica **dois blocos territorialmente coerentes**, sem outliers espaciais:
 
@@ -66,9 +66,9 @@ Replicando exatamente o mesmo pipeline para a eleição **majoritária de prefei
 | Cluster HH (volátil) | 7 zonas — periferia norte | **1 zona** — São Miguel Paulista |
 | Cluster LL (estável) | 8 zonas — periferia sul | **8 zonas** — centro e oeste ricos |
 
-![Mapa prefeito](outputs/mapa_volatilidade_sp_prefeito_2020_2024.png)
+![Mapa prefeito](outputs/figures/mapa_volatilidade_sp_prefeito_2020_2024.png)
 
-![LISA prefeito](outputs/lisa_volatilidade_sp_prefeito_2020_2024.png)
+![LISA prefeito](outputs/figures/lisa_volatilidade_sp_prefeito_2020_2024.png)
 
 O cluster estável do prefeito forma uma **mancha contígua no centro-oeste de alta renda**: Pinheiros, Bela Vista, Perdizes, Lapa, Butantã, Jardim Paulista, Santa Ifigênia, Rio Pequeno.
 
