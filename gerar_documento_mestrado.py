@@ -1626,6 +1626,55 @@ conteudo.append(p(
 conteudo.append(PageBreak())
 conteudo.append(parte("Parte V — Convergência temporal e síntese"))
 
+conteudo.append(h1("5.0 Visão sintética: a convergência em uma figura"))
+conteudo.append(p(
+    "Antes de descer aos detalhes, é útil apresentar os achados "
+    "das três partes empíricas em uma única figura. A Figura 5.1 "
+    "mostra os indicadores-chave de cada eixo para Pinheiros ao "
+    "longo dos quatro ciclos municipais. O painel inferior-direito "
+    "normaliza os três indicadores em uma escala 0–1 comum, para "
+    "visualizar graficamente sua ativação simultânea:"
+))
+conteudo.extend(fig(
+    "outputs/grafico_convergencia_temporal.png",
+    w_cm=17,
+    legenda="Figura 5.1 — Convergência temporal dos três eixos "
+    "empíricos em Pinheiros, 2012–2024. Painéis: (superior-esq.) "
+    "colapso do PSDB e ascensão do PSOL; (superior-dir.) "
+    "volatilidade das fontes de financiamento dos top-6 candidatos; "
+    "(inferior-esq.) emergência do índice institucional como "
+    "preditor do escore ideológico; (inferior-dir.) síntese "
+    "normalizada dos três indicadores. A janela amarela destaca o "
+    "período do choque político nacional (impeachment 2016 → "
+    "eleição Bolsonaro 2018).",
+))
+conteudo.append(p(
+    "A leitura visual é direta: <b>os três indicadores compartilham "
+    "a mesma inflexão temporal</b>. Nenhum deles mostra padrão "
+    "estável-desde-2012 nem trajetória linear. Todos apresentam "
+    "<i>joelho</i> entre 2016 e 2020 e consolidação em 2024. Em "
+    "2012, nenhum dos fenômenos contemporâneos estava presente "
+    "(PSDB ainda dominava, financiamento era empresarial, índice "
+    "institucional era politicamente mudo). Em 2016, emergem "
+    "sinais iniciais — PSDB começa a declinar (36%), pessoa física "
+    "explode como mecanismo transicional (68%), mas o índice "
+    "institucional ainda não explica nada (R² = 0,01). Em 2020, "
+    "os três indicadores se movem simultaneamente para seu "
+    "regime contemporâneo. Em 2024, o padrão se consolida."
+))
+conteudo.append(p(
+    "<b>A simultaneidade é improvável sob hipótese de "
+    "independência.</b> A probabilidade de três fenômenos "
+    "empíricos com naturezas muito distintas — rotação partidária, "
+    "ciclo regulatório de financiamento, ativação de uma variável "
+    "contextual — mostrarem o mesmo ponto de inflexão por acaso é "
+    "baixa. A explicação mais econômica é que há <b>um mecanismo "
+    "comum subjacente</b>, e a hipótese mais plausível é o choque "
+    "político nacional do período 2016–2018 (impeachment de Dilma, "
+    "Lava Jato, eleição de Bolsonaro, reorganização do eixo "
+    "ideológico do Brasil)."
+))
+
 conteudo.append(h1("5.1 Os três eixos se ativam simultaneamente"))
 conteudo.append(p(
     "Um achado colateral importante deste trabalho é que as "
@@ -1759,7 +1808,169 @@ conteudo.append(p(
     "de 4 ciclos municipais."
 ))
 
-conteudo.append(h1("5.4 Limitações"))
+conteudo.append(h1("5.4 Implicações teóricas: três contribuições"))
+conteudo.append(p(
+    "O conjunto de achados deste rascunho sugere três contribuições "
+    "teóricas a serem desenvolvidas na dissertação — uma para cada "
+    "literatura central convocada pelo projeto original:"
+))
+
+conteudo.append(h2("5.4.1 Contribuição à literatura de sistemas partidários brasileiros"))
+conteudo.append(p(
+    "A principal contribuição ao debate sobre reorganização da "
+    "direita brasileira (Limongi &amp; Mesquita, 2008; Power, "
+    "2010, 2019; Rocha, 2019; Curi, 2022) é a demonstração de "
+    "que a <b>trajetória do voto PSDB nos bairros ricos de SP "
+    "não é linear nem pendular</b>. A decomposição de Pedersen "
+    "conforme Bartolini &amp; Mair (1990) mostra que 94–97% da "
+    "volatilidade bruta observada entre 2020 e 2024 é "
+    "<i>intra-campo</i>, não entre campos ideológicos — resultado "
+    "que contraria tanto a narrativa jornalística de "
+    "\"virada à direita\" quanto a interpretação estrutural de "
+    "reorganização ideológica do eleitor. O que observamos é "
+    "<b>rotação da oferta partidária sem realinhamento do "
+    "eleitorado</b>."
+))
+conteudo.append(p(
+    "Mais especificamente, o colapso do PSDB paulistano não "
+    "produziu <i>uma</i> herdeira, produziu <b>três herdeiros "
+    "simultâneos</b> com perfis materiais e simbólicos distintos "
+    "(NOVO, MDB de Nunes, PL/PP). Esta multiplicidade é invisível "
+    "em análises agregadas por município. Só aparece quando "
+    "descemos ao nível da zona eleitoral e cruzamos trajetória "
+    "individual dos candidatos com dados de financiamento. A "
+    "contribuição à literatura é, portanto, <b>metodológica "
+    "(granularidade intra-municipal) antes de ser teórica</b> — "
+    "a teoria da reorganização da direita brasileira precisa ser "
+    "reformulada para contemplar que o mesmo voto PSDB pode se "
+    "dispersar em direções distintas e que essa dispersão segue "
+    "lógicas institucionais identificáveis."
+))
+
+conteudo.append(h2("5.4.2 Contribuição à literatura de financiamento eleitoral"))
+conteudo.append(p(
+    "A segunda contribuição dialoga com Speck &amp; Mancuso (2014), "
+    "Mancuso &amp; Speck (2015), Sacchet &amp; Speck (2012) e "
+    "Speck (2013). O achado central é que <b>a reforma do "
+    "financiamento eleitoral de 2015 não produziu a democratização "
+    "material que seus defensores esperavam</b>. A janela 2016 teve, "
+    "de fato, aumento dramático de pessoa física como fonte de "
+    "recursos (41% do total dos vereadores SP em 2016 vs. 0% em "
+    "2012) — o que seria interpretado, em isolamento, como "
+    "sucesso reformista. Mas a criação do FEFC em 2017 e sua "
+    "inflação nos ciclos 2018-2024 <b>reocupou o espaço aberto "
+    "pela reforma pelo caminho institucional-partidário, sem "
+    "passar pelo doador individual</b>. Em 2024, pessoa física é "
+    "9,1% e Fundo Especial é 86,7%."
+))
+conteudo.append(p(
+    "Esta é uma leitura historicamente mais precisa do que "
+    "\"reforma de 2015 democratizou o financiamento\" ou "
+    "\"reforma de 2015 falhou\". A leitura correta é: <b>a "
+    "reforma proibiu o doador empresarial, e o Estado — via "
+    "FEFC — assumiu o lugar dos doadores empresariais, sem "
+    "produzir transição sustentada para financiamento "
+    "popular</b>. Essa é uma hipótese nova para testes em outras "
+    "capitais: a mesma dinâmica se repete em Rio, Belo "
+    "Horizonte, Porto Alegre? Se sim, trata-se de um resultado "
+    "regulatório generalizado e merece atenção teórica como "
+    "padrão brasileiro. Se não, há especificidades locais a "
+    "investigar."
+))
+conteudo.append(p(
+    "Além disso, a análise de trajetória individual dos "
+    "candidatos (Parte II.2) revela que os novos partidos que "
+    "ocuparam o espaço do PSDB nas zonas ricas — PL, PP, "
+    "Republicanos — <b>não herdaram a infraestrutura de "
+    "doadores individuais</b>. Dependem quase exclusivamente do "
+    "FEFC. A exceção é o NOVO, que manteve modelo de captação "
+    "digital de PF (Janaína Carla com 99% PF, Cristina Monteiro "
+    "com 16% PF). Isto sugere que <b>diferentes partidos "
+    "brasileiros responderam à reforma com modelos de "
+    "financiamento distintos</b>, e que o \"modelo PF\" pode "
+    "ainda ter vitalidade em partidos específicos — achado que "
+    "abre agenda de pesquisa sobre variação intra-partidária no "
+    "uso das fontes permitidas pela legislação."
+))
+
+conteudo.append(h2("5.4.3 Contribuição à sociologia política urbana brasileira"))
+conteudo.append(p(
+    "A terceira e mais original contribuição é à agenda do "
+    "grupo paulistano de sociologia urbana (Marques 2015; Torres, "
+    "Marques, Ferreira &amp; Bichir 2003). A tese de Marques "
+    "sobre a existência de <b>dimensões independentes de "
+    "estratificação do espaço urbano</b> — renda de um lado, "
+    "equipamentos institucionais de outro — recebe aqui "
+    "<b>formalização quantitativa e teste empírico direto</b>. "
+    "O índice institucional construído neste trabalho opera "
+    "exatamente a intuição de Marques: mede uma dimensão do "
+    "território (presença de equipamentos educativo-culturais) "
+    "que é parcialmente independente da renda e produz efeitos "
+    "políticos próprios."
+))
+conteudo.append(p(
+    "O R² de 0,44 (escore médio) e 0,66 (plurality bipartite) do "
+    "índice institucional sobre o voto ideológico das zonas é, "
+    "até onde vai a literatura empírica consultada, o <b>teste "
+    "quantitativo mais robusto</b> da tese de Marques-Torres-"
+    "Bichir em dados eleitorais. Ao mesmo tempo, a descoberta de "
+    "que a correlação <b>emerge temporalmente</b> após 2016 "
+    "adiciona uma qualificação importante: a tese estática "
+    "(equipamentos produzem política) deve ser reformulada como "
+    "tese dinâmica (equipamentos produzem política <i>quando "
+    "politicamente ativados</i>)."
+))
+conteudo.append(p(
+    "A integração desta descoberta com a literatura de Inglehart "
+    "&amp; Norris (2016, 2019) é imediata: a ativação temporal "
+    "que observamos em SP é uma instância brasileira do "
+    "fenômeno geral descrito por eles para democracias "
+    "contemporâneas. A <i>cleavage</i> cultural (educação, "
+    "cosmopolitismo, valores pós-materialistas versus "
+    "nacionalismo, tradicionalismo) substitui gradualmente a "
+    "<i>cleavage</i> econômica como organizador principal do "
+    "voto, e esse processo é desencadeado por choques políticos "
+    "específicos. No caso brasileiro, o choque foi o ciclo "
+    "2016–2018 (impeachment, Lava Jato, Bolsonaro), e a "
+    "<i>cleavage</i> cultural ativada é mediada territorialmente "
+    "por ambientes institucionais educativo-culturais "
+    "historicamente constituídos. <b>A escola paulistana de "
+    "sociologia urbana encontra-se, aqui, com a literatura "
+    "internacional sobre realinhamento pós-2016</b>, e este "
+    "encontro é, em si, uma contribuição teórica potencial que "
+    "a dissertação pode explorar como argumento central."
+))
+
+conteudo.append(h2("5.4.4 Contribuição metodológica: o que granularidade intra-municipal revela"))
+conteudo.append(p(
+    "Há também uma contribuição metodológica transversal aos "
+    "três eixos. A literatura dominante sobre voto e sistema "
+    "partidário em SP opera no nível do município (LIMONGI &amp; "
+    "MESQUITA, 2008; POWER &amp; RODRIGUES-SILVEIRA, 2019). A "
+    "análise no nível da zona eleitoral — 58 zonas em SP, com "
+    "aproximadamente 150 mil a 600 mil eleitores cada — permite "
+    "observar fenômenos que são invisíveis na agregação "
+    "municipal: a divergência Pinheiros × Indianópolis, a "
+    "correspondência ambiente-candidato, a variação interna ao "
+    "bloco de bairros ricos. Ainda mais fino, a análise no nível "
+    "de seção eleitoral (17.000+ seções, ~400-800 eleitores "
+    "cada) começa a aproximar-se do que Power &amp; "
+    "Rodrigues-Silveira (2019) chamam de \"bairros, ou até "
+    "mesmo quarteirões\"."
+))
+conteudo.append(p(
+    "A contribuição metodológica é <b>mostrar que essa "
+    "granularidade vale a pena</b>. As análises reportadas nos "
+    "relatórios técnicos consolidados neste documento são "
+    "reprodutíveis com ferramental open-source padrão (Python + "
+    "geopandas + libpysal/esda + reportlab), e o repositório "
+    "público fornece templates que outros pesquisadores podem "
+    "aplicar a Rio de Janeiro, Belo Horizonte, Brasília ou "
+    "qualquer outra capital com dados do TSE. A replicação é um "
+    "próximo passo natural e parte da agenda (seção 5.6)."
+))
+
+conteudo.append(h1("5.5 Limitações"))
 conteudo.append(p(
     "<b>(a) Censo 2010.</b> A variável \"renda\" usa dados de 2010, "
     "14 anos antes do voto analisado. Mitigações: (1) a "
@@ -1798,7 +2009,7 @@ conteudo.append(p(
     "Horizonte, Recife) testaria a generalidade do mecanismo."
 ))
 
-conteudo.append(h1("5.5 Agenda de pesquisa"))
+conteudo.append(h1("5.6 Agenda de pesquisa"))
 conteudo.append(p(
     "Cinco próximos passos metodológicos para a dissertação:"
 ))
@@ -1835,7 +2046,7 @@ conteudo.append(p(
 # ====================================================================
 # REPRODUTIBILIDADE
 # ====================================================================
-conteudo.append(h1("5.6 Reprodutibilidade"))
+conteudo.append(h1("5.7 Reprodutibilidade"))
 conteudo.append(p(
     "Todo o código e os dados processados estão em repositório "
     "público: "
