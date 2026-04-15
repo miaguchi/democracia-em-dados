@@ -338,31 +338,211 @@ conteudo.append(p(
 
 conteudo.append(h1("1.2 Volatilidade Pedersen e decomposição por bloco"))
 conteudo.append(p(
-    "A volatilidade bruta de Pedersen entre 2020 e 2024 nas 57 "
-    "zonas de SP tem média <b>0,26</b> no vereador e <b>0,67</b> no "
-    "prefeito 1º turno. Quando decomposta conforme Bartolini &amp; "
-    "Mair (1990) em blocos ideológicos (usando escala quintipartite "
-    "de Bolognesi et al.):"
+    "A métrica clássica de volatilidade eleitoral é o <b>Índice de "
+    "Pedersen</b> (Pedersen, 1979), definido entre dois pleitos "
+    "consecutivos como:"
 ))
-dados_ped = [
-    [_cb("Cargo"), _cb("V_total"), _cb("V_entre blocos"),
-     _cb("V_dentro blocos"), _cb("% entre")],
-    [_c("Vereador"), _cc("0,26"), _cc("0,007"), _cc("0,25"), _cc("<b>2,6%</b>")],
-    [_c("Prefeito 1T"), _cc("0,67"), _cc("0,04"), _cc("0,63"), _cc("<b>6,2%</b>")],
+conteudo.append(p(
+    "<i>V = (1/2) · Σᵢ |pᵢ,t+1 − pᵢ,t|</i>, onde <i>pᵢ,t</i> é a "
+    "proporção de votos do partido <i>i</i> no tempo <i>t</i>."
+))
+conteudo.append(p(
+    "Pedersen vai de 0 (nenhuma mudança) a 1 (substituição total "
+    "dos partidos). Aplicado ao voto de vereador em SP entre 2020 e "
+    "2024, a média da volatilidade bruta das 57 zonas é <b>0,257</b> "
+    "— na faixa \"alta\" da literatura europeia clássica de "
+    "sistemas partidários. No prefeito 1º turno, a média é ainda "
+    "maior: <b>0,673</b>."
+))
+conteudo.append(p(
+    "Mas Pedersen bruto <b>não distingue</b> mudança substantiva de "
+    "mudança cosmética. Se um eleitor troca PT por PSOL, isso conta "
+    "como volatilidade da mesma forma que se troca PT por PL — "
+    "apesar das implicações ideológicas serem radicalmente "
+    "distintas. <b>Bartolini &amp; Mair (1990)</b> propõem decompor "
+    "Pedersen em dois componentes:"
+))
+conteudo.append(p(
+    "<i>V_total = V_entre_blocos + V_dentro_blocos</i>"
+))
+conteudo.append(p(
+    "Onde <i>V_entre_blocos</i> é a volatilidade calculada sobre os "
+    "agregados dos partidos em blocos ideológicos (esquerda, "
+    "centro, direita), e <i>V_dentro_blocos</i> é o restante — "
+    "rotação interna a cada bloco. A interpretação teórica é direta: "
+    "<b>V_entre mede realinhamento ideológico genuíno; V_dentro "
+    "mede reordenamento interno sem mudança de lado</b>."
+))
+
+conteudo.append(h2("1.2.1 Classificação dos partidos: escala Bolognesi et al. (2023)"))
+conteudo.append(p(
+    "Para decompor, precisamos classificar os partidos em blocos. "
+    "Usamos os escores do <b>expert survey da ABCP</b> conduzido "
+    "por Bolognesi, Ribeiro &amp; Codato (2023), que posicionam "
+    "cada partido em uma escala contínua 0–10 (0 = extrema-esquerda, "
+    "10 = extrema-direita). A tabela a seguir mostra os escores dos "
+    "principais partidos presentes no voto de SP 2020–2024, "
+    "aplicados retroativamente aos partidos hoje reagrupados em "
+    "federações:"
+))
+dados_bolognesi = [
+    [_cb("Partido"), _cb("Escore"), _cb("Bloco tripartite"),
+     _cb("Bloco quintipartite")],
+    [_c("PSOL"), _cc("1,28"), _c("esquerda"), _c("esquerda")],
+    [_c("PCdoB"), _cc("1,92"), _c("esquerda"), _c("esquerda")],
+    [_c("PT"), _cc("2,97"), _c("esquerda"), _c("esquerda")],
+    [_c("Fed. PSOL/Rede (média)"), _cc("3,03"), _c("esquerda"), _c("centro-esquerda")],
+    [_c("Fed. PT/PCdoB/PV (média)"), _cc("3,39"), _c("esquerda"), _c("centro-esquerda")],
+    [_c("PDT"), _cc("3,92"), _c("esquerda"), _c("centro-esquerda")],
+    [_c("PSB"), _cc("4,05"), _c("esquerda"), _c("centro-esquerda")],
+    [_c("Rede (isolado)"), _cc("4,77"), _c("centro"), _c("centro")],
+    [_c("Cidadania"), _cc("4,92"), _c("centro"), _c("centro")],
+    [_c("PV"), _cc("5,29"), _c("centro"), _c("centro")],
+    [_c("Fed. PSDB/Cidadania (média)"), _cc("6,02"), _c("direita"), _c("centro-direita")],
+    [_c("PTB"), _cc("6,10"), _c("direita"), _c("centro-direita")],
+    [_c("Avante"), _cc("6,32"), _c("direita"), _c("centro-direita")],
+    [_c("<b>MDB</b>"), _cc("<b>7,01</b>"), _c("<b>direita</b>"), _c("<b>direita</b>*")],
+    [_c("PSD"), _cc("7,09"), _c("direita"), _c("direita")],
+    [_c("PSDB (isolado)"), _cc("7,11"), _c("direita"), _c("direita")],
+    [_c("PL (ex-PR)"), _cc("7,78"), _c("direita"), _c("direita")],
+    [_c("Republicanos"), _cc("7,78"), _c("direita"), _c("direita")],
+    [_c("PSL"), _cc("8,11"), _c("direita"), _c("direita")],
+    [_c("NOVO"), _cc("8,13"), _c("direita"), _c("direita")],
+    [_c("PP (Progressistas)"), _cc("8,20"), _c("direita"), _c("direita")],
+    [_c("União Brasil (DEM+PSL)"), _cc("8,34"), _c("direita"), _c("extrema-direita")],
+    [_c("Patriota"), _cc("8,55"), _c("direita"), _c("extrema-direita")],
+    [_c("DEM"), _cc("8,57"), _c("direita"), _c("extrema-direita")],
 ]
-conteudo.append(tabela(dados_ped, [3*cm, 3*cm, 3*cm, 3*cm, 2.5*cm]))
+conteudo.append(tabela(dados_bolognesi, [4.5*cm, 1.5*cm, 3*cm, 4*cm]))
+conteudo.append(Spacer(1, 0.2 * cm))
+conteudo.append(p(
+    "<i>*MDB cai em 7,01, a 0,01 pontos do limiar entre centro-"
+    "direita (5,51–7,00) e direita (7,01–8,50). Esta sensibilidade "
+    "é discutida em 1.2.3.</i>"
+))
+conteudo.append(p(
+    "Os limiares usados pelo próprio paper de Bolognesi et al. "
+    "dividem a escala em 7 blocos: extrema-esquerda (0–1,50), "
+    "esquerda (1,51–3,00), centro-esquerda (3,01–4,49), centro "
+    "(4,50–5,50), centro-direita (5,51–7,00), direita (7,01–8,50) "
+    "e extrema-direita (8,51–10). Para a decomposição de Pedersen, "
+    "testamos duas agregações: <b>tripartite</b> (esquerda / centro / "
+    "direita) e <b>quintipartite</b> (esquerda / centro-esquerda / "
+    "centro / centro-direita / direita)."
+))
+
+conteudo.append(h2("1.2.2 Decomposição em duas escalas"))
+conteudo.append(p(
+    "A decomposição produz resultados <b>dramaticamente diferentes</b> "
+    "conforme a granularidade do agrupamento:"
+))
+dados_ped_2 = [
+    [_cb("Cargo"), _cb("V_total"), _cb("Tripartite V_entre"),
+     _cb("Tripartite %"), _cb("Quintipartite V_entre"),
+     _cb("Quintipartite %")],
+    [_c("Vereador"), _cc("0,257"), _cc("0,007"), _cc("<b>2,6%</b>"),
+     _cc("0,144"), _cc("<b>55,8%</b>")],
+    [_c("Prefeito 1T"), _cc("0,673"), _cc("0,042"), _cc("<b>6,2%</b>"),
+     _cc("0,352"), _cc("<b>52,3%</b>")],
+]
+conteudo.append(tabela(dados_ped_2, [2.5*cm, 1.5*cm, 2.3*cm, 2*cm, 2.7*cm, 2.3*cm]))
 conteudo.append(Spacer(1, 0.3 * cm))
 conteudo.append(p(
-    "<b>97% da volatilidade no vereador é intra-campo</b>, não entre "
-    "blocos. No prefeito, 94% também. O colapso do PSDB, o "
-    "surgimento do NOVO, o crescimento do MDB e do PRTB — tudo isso "
-    "parece \"alta volatilidade\" ao olhar partido a partido, mas "
-    "substantivamente é <b>rotação interna ao campo de direita</b>, "
-    "não realinhamento entre campos opostos. A esquerda+centro-"
-    "esquerda soma 31% tanto em 2020 quanto em 2024 no vereador "
-    "(diferença de 0 ponto). <b>O eleitorado paulistano entre 2020 "
-    "e 2024 não mudou de campo — mudou a identidade institucional "
-    "dos partidos que ocupam cada campo.</b>"
+    "<b>A leitura tripartite sugere que quase toda a volatilidade "
+    "é intra-campo</b> — só 2,6% no vereador e 6,2% no prefeito "
+    "vêm de cruzamento entre esquerda, centro e direita. A "
+    "interpretação seria: \"o eleitorado paulistano não mudou de "
+    "lado ideológico; apenas trocou de legenda dentro do mesmo "
+    "campo\". Essa é uma leitura <i>conservadora</i> — que contraria "
+    "narrativas de \"virada à direita\" que a imprensa costuma "
+    "usar — mas ela depende criticamente do limiar usado."
+))
+conteudo.append(p(
+    "<b>A leitura quintipartite muda completamente o quadro.</b> "
+    "Quando separamos centro-esquerda de centro e centro-direita "
+    "de direita, mais da metade da volatilidade aparece como "
+    "<i>entre</i> blocos: <b>55,8% no vereador e 52,3% no prefeito</b>. "
+    "A diferença entre as duas leituras não é um artefato "
+    "matemático — é uma consequência direta de onde colocamos os "
+    "partidos. E uma classe de partidos em particular faz quase "
+    "toda a diferença entre as duas leituras: os partidos com "
+    "escore em torno do limiar 7,0."
+))
+
+conteudo.append(h2("1.2.3 O problema do MDB: sensibilidade ao limiar de 0,01 ponto"))
+conteudo.append(p(
+    "O MDB recebe escore <b>7,01</b> na escala de Bolognesi et al. — "
+    "<b>um centésimo acima do limiar</b> que separa \"centro-"
+    "direita\" de \"direita\" na régua do próprio paper. É o "
+    "partido mais borderline da amostra brasileira. Em 2024, "
+    "Ricardo Nunes (MDB) recebeu 1,80 milhão de votos como "
+    "candidato a prefeito de São Paulo — mais do que qualquer "
+    "outro partido recebeu em 2020. Isso significa que a "
+    "classificação do MDB <b>sozinha</b> move dramaticamente os "
+    "resultados da decomposição:"
+))
+dados_sens = [
+    [_cb("Limiar C-DIR/DIR"), _cb("Classe do MDB"),
+     _cb("Vereador V_entre %"), _cb("Prefeito V_entre %")],
+    [_c("7,00 (Bolognesi original)"), _c("<b>direita</b>"),
+     _cc("<b>55,8%</b>"), _cc("<b>52,3%</b>")],
+    [_c("7,05"), _c("centro-direita"), _cc("29,8%"), _cc("<b>8,5%</b>")],
+    [_c("7,10"), _c("centro-direita"), _cc("29,1%"), _cc("10,8%")],
+    [_c("7,20"), _c("centro-direita"), _cc("29,1%"), _cc("10,8%")],
+    [_c("7,50"), _c("centro-direita"), _cc("34,4%"), _cc("22,5%")],
+]
+conteudo.append(tabela(dados_sens, [4*cm, 3*cm, 3.5*cm, 3.5*cm]))
+conteudo.append(Spacer(1, 0.3 * cm))
+conteudo.append(p(
+    "No caso do prefeito, mover o MDB para centro-direita (limiar "
+    "7,05) faz a volatilidade entre-blocos <b>despencar de 52,3% "
+    "para 8,5%</b>. É uma diferença de <b>44 pontos percentuais</b> "
+    "produzida por uma única decisão binária sobre um único "
+    "partido. A razão é que o MDB de Nunes concentrou cerca de "
+    "30% dos votos de prefeito em 2024 — e colocá-lo em um bloco "
+    "ou outro determina quase sozinho se há realinhamento aparente "
+    "ou não."
+))
+conteudo.append(p(
+    "<b>Por que isso importa?</b> Do ponto de vista substantivo, "
+    "o MDB de Ricardo Nunes em SP 2024 é herdeiro institucional "
+    "direto do ciclo covista/serrista — Nunes foi vice-prefeito de "
+    "Covas, assumiu o cargo com a morte de Covas em 2021, e "
+    "construiu sua candidatura em 2024 como continuidade do "
+    "projeto PSDB anterior, inclusive em alianças partidárias e "
+    "base de apoio. Classificá-lo como \"direita plena\" junto "
+    "com PL, NOVO e PP é uma escolha metodológica que <b>depende "
+    "do recorte teórico de Bolognesi et al. em 2018</b> — "
+    "escorado em survey realizado antes do ciclo Bolsonaro — e "
+    "não necessariamente reflete a posição substantiva do MDB "
+    "paulistano em 2024."
+))
+conteudo.append(p(
+    "<b>Consequência metodológica:</b> ambas as leituras "
+    "(tripartite e quintipartite com limiar 7,00) são defensáveis "
+    "e reportamos as duas explicitamente. A leitura tripartite "
+    "é mais conservadora e produz o achado \"quase toda a "
+    "volatilidade é intra-campo\". A leitura quintipartite com "
+    "limiar original é mais polarizante e produz \"metade é "
+    "realinhamento entre blocos\". A leitura quintipartite com "
+    "limiar 7,05 produz resultado quase igual à tripartite — "
+    "sugerindo que <b>o que a Bolognesi chama de \"direita\" e "
+    "\"centro-direita\" não é uma distinção empiricamente "
+    "rigorosa para o voto majoritário em SP 2024</b>, sendo "
+    "dependente de onde colocamos um único partido borderline."
+))
+conteudo.append(p(
+    "Para propósitos da dissertação, o achado substantivo robusto "
+    "à escolha é: <b>o campo esquerda+centro-esquerda tem "
+    "proporção estável em 2020 e 2024 em todas as escalas</b> "
+    "(vereador SP: 31,1% → 31,4%; prefeito SP: 43,2% → 39,0%). "
+    "A oscilação mais relevante ocorre <i>dentro</i> do espaço "
+    "não-esquerda — ou seja, entre candidatos e partidos que "
+    "competem pelo eleitor de centro-direita/direita. A "
+    "classificação exata desses partidos em subcategorias é "
+    "sensível a decisões metodológicas, mas a conclusão de que "
+    "<b>a esquerda não cresceu nem encolheu substancialmente</b> "
+    "sobrevive a todas as escolhas testadas."
 ))
 
 conteudo.append(h1("1.3 Mapa espacial da volatilidade"))
@@ -374,6 +554,60 @@ conteudo.extend(fig(
     "(p = 0,001, k = 6 vizinhos, 999 permutações). Clusters "
     "HH (voláteis) na periferia norte-noroeste; clusters LL "
     "(estáveis) na periferia sul.",
+))
+
+conteudo.append(h1("1.4 Mapas do espectro ideológico por zona"))
+conteudo.append(p(
+    "Enquanto a volatilidade Pedersen responde \"quanto o voto "
+    "mudou\", o mapa do escore médio ponderado (Bolognesi et al.) "
+    "responde \"onde está o centro de gravidade ideológico de cada "
+    "zona\". Os dois mapas abaixo usam escala contínua centrada em "
+    "5,0 via <i>TwoSlopeNorm</i>, com convenção política brasileira "
+    "(vermelho = esquerda, azul = direita):"
+))
+conteudo.extend(fig(
+    "outputs/mapa_escore_prefeito_2020_2024.png",
+    w_cm=16,
+    legenda="Figura 1.2 — Escore ideológico médio ponderado por voto, "
+    "prefeito 1º turno, SP 2020 (esquerda) e 2024 (direita). "
+    "Escala centrada em 5,0 (centro); vermelho = esquerda, azul = "
+    "direita. Entre os dois painéis a cidade se desloca +0,40 "
+    "pontos no eixo ideológico.",
+))
+conteudo.extend(fig(
+    "outputs/mapa_escore_vereador_2020_2024.png",
+    w_cm=16,
+    legenda="Figura 1.3 — Escore ideológico médio ponderado por voto, "
+    "vereador, SP 2020 e 2024. A cidade inteira está do lado "
+    "direito do centro (escore > 5) em ambos os anos, mas com "
+    "gradiente visível. Bela Vista e Pinheiros (centro oeste) são "
+    "as mais à esquerda da cidade nos dois ciclos.",
+))
+conteudo.append(p(
+    "<b>Interpretação substantiva:</b> o deslocamento da média da "
+    "cidade entre 2020 e 2024 é <b>+0,40 pontos</b> no prefeito e "
+    "<b>+0,19 pontos</b> no vereador — ambos pequenos em uma "
+    "escala 0–10 mas coerentes com a narrativa de \"direitização\" "
+    "do voto paulistano no ciclo recente. O efeito é, porém, "
+    "muito mais acentuado no executivo (prefeito) do que no "
+    "legislativo (vereador), refletindo a dinâmica de rotação da "
+    "oferta majoritária (Covas → Nunes, emergência de Marçal) "
+    "em relação à maior estabilidade da composição legislativa."
+))
+conteudo.append(p(
+    "<b>Alerta de leitura:</b> os mapas são dominados por tons "
+    "claros (próximos de 5) porque a distribuição real do voto "
+    "médio ponderado entre as zonas de SP fica concentrada entre "
+    "5,0 e 6,7 — ou seja, todas as zonas da cidade ficam em "
+    "alguma versão do centro ou do centro-direita na escala "
+    "Bolognesi. A variação intra-cidade é relevante (até 1 ponto "
+    "de escore entre zona mais à esquerda e mais à direita), mas "
+    "é numericamente pequena em relação à escala 0–10 completa. "
+    "Isto é consistente com o achado de 1.2: o eleitorado "
+    "paulistano não transita entre campos opostos — ele se "
+    "reorganiza dentro de um corredor ideológico relativamente "
+    "estreito, com a variação relevante ocorrendo dentro do que "
+    "Bolognesi chama de \"centro-direita e direita\"."
 ))
 
 # ====================================================================
