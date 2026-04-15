@@ -722,6 +722,241 @@ conteudo.append(p(
     "por uma janela de 4-8 anos e foi estatizado.</b>"
 ))
 
+conteudo.append(h1("2.3 Quem eram os doadores empresariais em 2012?"))
+conteudo.append(p(
+    "A categoria \"recursos de pessoa jurídica\" que somou R$ 22,2 "
+    "milhões para vereadores de SP em 2012 não é abstrata — "
+    "é composta por 1.574 doações individuais de empresas a "
+    "candidatos. A análise setorial dessas doações revela um "
+    "padrão bem conhecido na literatura brasileira (Mancuso &amp; "
+    "Speck, 2015): dominância absoluta de setores ligados à "
+    "infraestrutura, construção civil e serviços financeiros:"
+))
+dados_setores = [
+    [_cb("Setor econômico do doador"), _cb("R$ total"), _cb("N. doações")],
+    [_c("Construção de edifícios"), _cc("R$ 3.791.200"), _cc("75")],
+    [_c("Incorporação de empreendimentos imobiliários"), _cc("R$ 1.964.500"), _cc("50")],
+    [_c("Outras obras de engenharia civil"), _cc("R$ 1.960.000"), _cc("25")],
+    [_c("Bancos múltiplos com carteira comercial"), _cc("R$ 938.500"), _cc("19")],
+    [_c("Construção de rodovias e ferrovias"), _cc("R$ 733.920"), _cc("25")],
+    [_c("Obras de montagem industrial"), _cc("R$ 715.000"), _cc("5")],
+    [_c("Atividades de organizações políticas"), _cc("R$ 508.080"), _cc("81")],
+    [_c("Edição e impressão de cadastros"), _cc("R$ 409.370"), _cc("119")],
+    [_c("Comércio varejista de combustíveis"), _cc("R$ 360.086"), _cc("20")],
+    [_c("Serviços de engenharia"), _cc("R$ 298.180"), _cc("20")],
+    [_c("Vigilância e segurança privada"), _cc("R$ 256.360"), _cc("6")],
+]
+conteudo.append(tabela(dados_setores, [9*cm, 3.5*cm, 2.5*cm]))
+conteudo.append(Spacer(1, 0.2 * cm))
+conteudo.append(p(
+    "<b>Construção civil e imobiliário somados (edifícios, "
+    "incorporação, engenharia civil, rodovias, montagem industrial) "
+    "respondem por R$ 9,9 milhões — 45% de todo o financiamento "
+    "empresarial de vereadores em SP 2012</b>. A participação dos "
+    "bancos é de R$ 938 mil (4%). Os demais setores (combustíveis, "
+    "vigilância, engenharia) são relevantes mas menores. Há uma "
+    "concentração setorial notável: <b>construtoras financiavam a "
+    "política municipal paulistana</b> — um padrão coerente com a "
+    "intersecção entre licenciamento urbanístico, contratos de "
+    "obras públicas e decisões de plano diretor no âmbito da "
+    "Câmara Municipal."
+))
+conteudo.append(p(
+    "<b>No nível das empresas individualmente</b>, os 10 maiores "
+    "doadores concentravam R$ 6,1 milhões:"
+))
+dados_empresas = [
+    [_cb("Empresa"), _cb("R$ total doado")],
+    [_c("WTORRE ENGENHARIA E CONSTRUÇÃO S.A."), _cc("R$ 900.000")],
+    [_c("CONSTRUTORA OAS LTDA"), _cc("R$ 900.000")],
+    [_c("ITAÚ UNIBANCO S.A."), _cc("R$ 838.000")],
+    [_c("UTC ENGENHARIA S/A"), _cc("R$ 700.000")],
+    [_c("S.A. PAULISTA DE CONSTRUÇÕES E COMÉRCIO"), _cc("R$ 545.000")],
+    [_c("CONSTRUTORA PASSARELLI LTDA"), _cc("R$ 505.000")],
+    [_c("DP BARROS PAVIMENTAÇÃO E CONSTRUÇÃO"), _cc("R$ 450.000")],
+    [_c("WIN WORK PINHEIROS EMPREENDIMENTO IMOBILIÁRIO"), _cc("R$ 450.000")],
+    [_c("SARDENHA INCORPORAÇÃO SPE LTDA"), _cc("R$ 400.000")],
+    [_c("MPC ENGENHARIA LTDA"), _cc("R$ 396.000")],
+]
+conteudo.append(tabela(dados_empresas, [10*cm, 4*cm]))
+conteudo.append(Spacer(1, 0.2 * cm))
+conteudo.append(p(
+    "Duas das dez maiores doadoras de vereadores de SP em 2012 — "
+    "<b>OAS</b> e <b>UTC Engenharia</b> — viriam a ser citadas "
+    "centralmente nos desdobramentos da Operação Lava Jato a partir "
+    "de 2014, que terminaria por justificar a reforma do "
+    "financiamento eleitoral de 2015. <b>WTorre</b>, <b>S.A. "
+    "Paulista</b>, <b>Passarelli</b> e <b>MPC Engenharia</b> são "
+    "construtoras paulistanas tradicionais, parte do tecido "
+    "empresarial-político do município. <b>Itaú Unibanco</b> é o "
+    "único banco no top 10 — e sua presença evidencia que o "
+    "financiamento empresarial não era restrito a empreiteiras."
+))
+conteudo.append(p(
+    "<b>Relevância para a dissertação:</b> este padrão não é "
+    "surpresa na literatura (Mancuso, 2012; Mancuso &amp; Speck, "
+    "2015; Sacchet &amp; Speck, 2012), mas os dados individualizados "
+    "por candidato em SP — cruzados com os resultados eleitorais das "
+    "seções anteriores — permitem dimensionar <b>quanto da "
+    "infraestrutura material dos vereadores do corredor das "
+    "universidades vinha diretamente dessas empresas</b>. Em 2012, "
+    "praticamente metade do financiamento dos vereadores PSDB mais "
+    "votados em Pinheiros e Indianópolis era <b>construtora</b> ou "
+    "<b>banco</b>. Não era \"doador individual de classe média\"."
+))
+
+conteudo.append(h1("2.4 A trajetória dinástica: Matarazzo, Covas, Monteiro"))
+conteudo.append(p(
+    "A Parte I deste documento mostrou que Pinheiros e Indianópolis "
+    "começam a série com PSDB 47–48% em 2012 e terminam com PSOL "
+    "ou PL dominando em 2024. Mas essa transição partidária "
+    "esconde uma história de <b>sucessão institucional</b> que "
+    "vale detalhar, porque ela toca diretamente na H3 (recomposição "
+    "da direita) e na discussão sobre continuidade entre o "
+    "antigo \"voto PSDB\" e o novo \"voto Novo\":"
+))
+dados_trajetoria = [
+    [_cb("Ano"), _cb("Pinheiros (Z251) — top 3"),
+     _cb("Indianópolis (Z258) — top 3")],
+    [_c("<b>2012</b>"),
+     _c("<b>Ângelo Matarazzo (PSDB)</b> 9.606v · "
+       "Nabil Bonduki (PT) 4.742v · "
+       "Floriano Pesaro (PSDB) 3.392v"),
+     _c("<b>Ângelo Matarazzo (PSDB)</b> 11.968v · "
+       "Mario Covas Neto (PSDB) 5.046v · "
+       "José Alvarenga (PV) 4.907v")],
+    [_c("<b>2016</b>"),
+     _c("<b>Eduardo Suplicy (PT)</b> 5.392v · "
+       "Daniel Annenberg (PSDB) 2.849v · "
+       "Mario Covas Neto (PSDB) 2.785v"),
+     _c("<b>Eduardo Suplicy (PT)</b> 5.881v · "
+       "Mario Covas Neto (PSDB) 5.752v · "
+       "Fernando Bispo (DEM) 3.116v")],
+    [_c("<b>2020</b>"),
+     _c("Eduardo Suplicy (PT) 2.324v · "
+       "<b>Janaína Carla (NOVO)</b> 2.070v · "
+       "Erika Silva (PSOL) 1.807v"),
+     _c("<b>Janaína Carla (NOVO)</b> 3.322v · "
+       "Felipe Becari (PSD) 2.675v · "
+       "Eduardo Suplicy (PT) 2.587v")],
+    [_c("<b>2024</b>"),
+     _c("<b>Cristina Monteiro (NOVO)</b> 5.552v · "
+       "<b>Marina Bragante (Rede)</b> 5.286v · "
+       "Nabil Bonduki (PT) 3.534v"),
+     _c("<b>Cristina Monteiro (NOVO)</b> 6.553v · "
+       "Janaína Paschoal (PP) 3.773v · "
+       "Lucas Pavanato (PL) 3.535v")],
+]
+conteudo.append(tabela(dados_trajetoria, [1.5*cm, 7*cm, 7*cm]))
+conteudo.append(Spacer(1, 0.3 * cm))
+conteudo.append(p(
+    "<b>A trajetória em 4 atos.</b> Em 2012, <b>Ângelo Andrea "
+    "Matarazzo</b> (PSDB, sobrinho do ex-deputado Andrea Matarazzo "
+    "e integrante da tradicional família de empresários paulistanos "
+    "Matarazzo) é o vereador mais votado em ambas as zonas-chave, "
+    "com quase 22 mil votos somados. O segundo mais votado em "
+    "Indianópolis é <b>Mario Covas Neto</b> — sobrinho-neto do "
+    "ex-prefeito/ex-governador Mario Covas e do então prefeito "
+    "Bruno Covas. Ou seja: em 2012, <b>duas dinastias paulistanas "
+    "tradicionais (Matarazzo e Covas) dominavam a representação de "
+    "Pinheiros e Indianópolis pelo PSDB</b>, em forma quase "
+    "literal de continuidade familiar-partidária."
+))
+conteudo.append(p(
+    "Em 2016, já aparece o primeiro sinal de reorganização: "
+    "<b>Eduardo Matarazzo Suplicy (PT)</b>, senador histórico do "
+    "PT e ele próprio herdeiro da família Matarazzo por lado "
+    "materno, entra na disputa de vereador como estratégia "
+    "simbólica do PT para \"reocupar\" os bairros ricos. Suplicy "
+    "vence em Pinheiros (5.392 votos) e Indianópolis (5.881 "
+    "votos), derrotando os candidatos do PSDB. O PSDB mantém "
+    "presença via Daniel Annenberg e, curiosamente, Mario Covas "
+    "Neto em ambas as zonas — mas em posições secundárias."
+))
+conteudo.append(p(
+    "Em 2020, acontece a primeira aparição no topo de <b>Janaína "
+    "Carla de Lima</b>, candidata do NOVO com captação "
+    "<b>99% pessoa física</b> e perfil de \"renovação liberal "
+    "jovem\". Ela assume a 2ª posição em Pinheiros e a 1ª em "
+    "Indianópolis. O PSDB não aparece mais no top 3 em nenhuma "
+    "das zonas. Suplicy (PT) ainda está presente mas cai de "
+    "posição. O PSOL entra com Erika Silva em Pinheiros — "
+    "primeira aparição no top 3 da zona."
+))
+conteudo.append(p(
+    "Em 2024, a transição se consolida. <b>Cristina Monteiro "
+    "(NOVO)</b> — ex-PSDB, migrou para o Novo em 2018, "
+    "vereadora atual em seu segundo mandato — é a mais votada em "
+    "ambas as zonas, com 12.105 votos somados. <b>Marina Bragante "
+    "(Rede)</b>, psicóloga, é a 2ª em Pinheiros. O PT sobrevive "
+    "pela figura de <b>Nabil Bonduki</b> — professor titular da "
+    "FAU-USP, arquiteto-urbanista — que é a mesma pessoa que "
+    "apareceu no top 3 de Pinheiros em 2012. Bonduki é o elo "
+    "simbólico de continuidade do PT em Pinheiros ao longo dos "
+    "12 anos, embora agora ocupando posição secundária."
+))
+conteudo.append(p(
+    "<b>O significado substantivo da transição Matarazzo → "
+    "Monteiro:</b> o voto do eleitor \"rico tradicional\" "
+    "(Jardim Paulista, Indianópolis, Pinheiros) manteve — em "
+    "termos de perfil sociológico e de quem ele é — um "
+    "<b>padrão de continuidade</b>. Mudaram os nomes dos candidatos "
+    "e mudou o partido carregador (PSDB → NOVO), mas a estrutura "
+    "de representação institucional preservada é reconhecível: "
+    "candidata-celebridade de direita-liberal cosmopolita (Cristina "
+    "Monteiro hoje, Ângelo Matarazzo em 2012) com voto "
+    "concentrado nos mesmos locais de votação. O caso análogo no "
+    "Executivo é <b>Ricardo Nunes (MDB)</b> — vice-prefeito de "
+    "Bruno Covas, assumiu com sua morte em 2021, elege-se em 2024: "
+    "continuidade institucional quase literal do ciclo Covas, por "
+    "dentro de um partido diferente. A reorganização partidária é "
+    "<b>cosmética</b> no sentido de que as <i>pessoas</i> e as "
+    "<i>famílias</i> que exerciam a representação política dos "
+    "bairros ricos em 2012 (ou seus herdeiros institucionais "
+    "diretos) continuam exercendo em 2024 — só que agora via "
+    "legendas diferentes."
+))
+
+conteudo.append(h1("2.5 Implicações para a H3 do projeto"))
+conteudo.append(p(
+    "A Hipótese 3 afirmava que <i>\"o recrutamento e as disputas "
+    "intrapartidárias da centro-direita ao longo do tempo "
+    "influenciaram o novo comportamento eleitoral marcado pela "
+    "contestação. Destarte, a centro-direita foi atraída pelo "
+    "campo da direita e extrema-direita\"</i>. Os achados das "
+    "seções 2.1–2.4 permitem reformular a hipótese com maior "
+    "precisão empírica:"
+))
+conteudo.append(p(
+    "<b>A centro-direita brasileira pós-2020 é uma fase específica "
+    "no ciclo regulatório do financiamento</b>, não um movimento "
+    "autônomo do eleitorado. O PSDB de SP perde base em quatro "
+    "dimensões simultâneas: (a) <i>eleitoral</i>, via colapso do "
+    "voto de vereador e prefeito; (b) <i>institucional</i>, via "
+    "migração de quadros para Novo, MDB e PL; (c) <i>material</i>, "
+    "via perda da infraestrutura de financiamento empresarial "
+    "(PJ proibida em 2015) sem reconstrução do canal pessoa "
+    "física (reocupado pelo FEFC em 2020-2024); (d) <i>simbólica</i>, "
+    "via substituição das dinastias familiares tradicionais "
+    "(Matarazzo, Covas) por candidatos-celebridade de perfil "
+    "liberal cosmopolita vinculados ao Novo ou ao próprio MDB."
+))
+conteudo.append(p(
+    "<b>Mas — e isto é central — a H3 na formulação original "
+    "parece sugerir que a centro-direita foi \"absorvida\" pela "
+    "direita pura e dura. Os dados mostram algo mais sutil</b>: "
+    "a centro-direita paulistana da era Covas/Serra foi absorvida "
+    "em partes por diferentes destinos. Parte migrou para o Novo "
+    "(voto \"renovação liberal\" que capta PF ativamente — Cristina "
+    "Monteiro, Janaína Carla). Parte para o MDB de Nunes "
+    "(continuidade institucional direta do ciclo Covas, via "
+    "sucessor indicado). Parte para o PL/PP (voto conservador "
+    "duro, captação 100% FEFC). O \"ataque à direita\" existe, "
+    "mas é uma dispersão — não uma absorção unilateral. O "
+    "colapso do PSDB é real; a reorganização da oferta "
+    "partidária ocorre em <b>múltiplas direções simultâneas</b>."
+))
+
 # ====================================================================
 # PARTE III — SOCIOLOGIA URBANA INSTITUCIONAL (EIXO MARQUES)
 # ====================================================================
