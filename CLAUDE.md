@@ -25,6 +25,10 @@ Serve simultaneamente como base empírica para dissertação de mestrado
 - data/raw/ — dados brutos do TSE/IBGE/CEM, imutáveis, no .gitignore
 - data/processed/ — output dos pipelines, regenerável
 - src/ — módulos Python organizados por eixo (partidario, financiamento, urbano)
+- src/sintese/ — análises transversais que combinam mais de um eixo
+- src/casos/<cidade>/ — replicações e cidades-caso (uma subpasta por cidade)
+- src/ingestao/, src/dominio/ — infraestrutura compartilhada
+- scripts/ — geradores de PDF e utilitários executáveis
 - notebooks/ — exploração apenas, não entram em resultados finais
 - reports/ — markdown e PDFs versionados
 - outputs/figures, outputs/tables, outputs/logs
