@@ -13,8 +13,8 @@ import matplotlib.colors as mcolors
 import matplotlib.pyplot as plt
 import pandas as pd
 
-from analise_volatilidade import carregar_sp_prefeito, carregar_sp_vereador
-from ideologia import ESCORE_BOLOGNESI
+from src.partidario.analise_volatilidade import carregar_sp_prefeito, carregar_sp_vereador
+from src.partidario.ideologia import ESCORE_BOLOGNESI
 
 ZONAS_ALVO = {
     1: "Bela Vista",

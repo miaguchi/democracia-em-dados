@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 from esda.moran import Moran_Local
 from libpysal.weights import KNN
 
-from analise_volatilidade import (
+from src.partidario.analise_volatilidade import (
     carregar_sp_prefeito,
     pedersen_por_zona,
     votos_por_zona_partido,

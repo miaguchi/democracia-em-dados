@@ -12,8 +12,8 @@ import matplotlib.patches as mpatches
 import matplotlib.pyplot as plt
 import pandas as pd
 
-from analise_volatilidade import normalizar_partido
-from ideologia import bloco_quintipartite, ESCORE_BOLOGNESI
+from src.partidario.analise_volatilidade import normalizar_partido
+from src.partidario.ideologia import bloco_quintipartite, ESCORE_BOLOGNESI
 
 # Mapa NR_PARTIDO → sigla (construído em runtime)
 MAPA_PARTIDO: dict[int, str] = {}

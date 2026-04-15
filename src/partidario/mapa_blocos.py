@@ -11,8 +11,8 @@ import geopandas as gpd
 import matplotlib.patches as mpatches
 import matplotlib.pyplot as plt
 
-from analise_volatilidade import carregar_sp_vereador, carregar_sp_prefeito
-from ideologia import classificar, usar_quintipartite
+from src.partidario.analise_volatilidade import carregar_sp_vereador, carregar_sp_prefeito
+from src.partidario.ideologia import classificar, usar_quintipartite
 
 usar_quintipartite()
 

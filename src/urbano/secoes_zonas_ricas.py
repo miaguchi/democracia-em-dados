@@ -12,8 +12,8 @@ from pathlib import Path
 
 import pandas as pd
 
-from analise_volatilidade import normalizar_partido
-from ideologia import bloco_quintipartite, ESCORE_BOLOGNESI
+from src.partidario.analise_volatilidade import normalizar_partido
+from src.partidario.ideologia import bloco_quintipartite, ESCORE_BOLOGNESI
 
 ZONAS_ALVO = {
     1: "Bela Vista",

@@ -14,7 +14,7 @@ from pathlib import Path
 
 import pandas as pd
 
-from trajetoria_financiamento import carregar_todos as carregar_receitas
+from src.financiamento.trajetoria_financiamento import carregar_todos as carregar_receitas
 
 ZONAS_ALVO = {
     1: "Bela Vista",

@@ -19,8 +19,8 @@ from pathlib import Path
 import matplotlib.pyplot as plt
 import pandas as pd
 
-from analise_volatilidade import CODIGO_TSE_SAO_PAULO, normalizar_partido
-from ideologia import ESCORE_BOLOGNESI, bloco_quintipartite
+from src.partidario.analise_volatilidade import CODIGO_TSE_SAO_PAULO, normalizar_partido
+from src.partidario.ideologia import ESCORE_BOLOGNESI, bloco_quintipartite
 
 ZONAS_ALVO = {
     1: "Bela Vista",

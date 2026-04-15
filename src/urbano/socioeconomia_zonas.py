@@ -22,8 +22,8 @@ import geopandas as gpd
 import matplotlib.pyplot as plt
 import pandas as pd
 
-from analise_volatilidade import carregar_sp_vereador, carregar_sp_prefeito
-from ideologia import ESCORE_BOLOGNESI
+from src.partidario.analise_volatilidade import carregar_sp_vereador, carregar_sp_prefeito
+from src.partidario.ideologia import ESCORE_BOLOGNESI
 
 CSV_BASICO = Path(
     "data/raw/censo2010/extraido/Basico_SP1.csv"

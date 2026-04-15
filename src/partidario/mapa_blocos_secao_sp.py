@@ -16,8 +16,8 @@ import matplotlib.patches as mpatches
 import matplotlib.pyplot as plt
 import pandas as pd
 
-from analise_volatilidade import normalizar_partido
-from ideologia import ESCORE_BOLOGNESI, bloco_quintipartite
+from src.partidario.analise_volatilidade import normalizar_partido
+from src.partidario.ideologia import ESCORE_BOLOGNESI, bloco_quintipartite
 
 SHAPEFILE_LV = Path("data/raw/shapes/EL2022_LV_ESP_CEM_V2/EL2022_LV_ESP_CEM_V2.shp")
 CODIGO_IBGE_SP = 3550308

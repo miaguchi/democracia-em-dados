@@ -15,7 +15,7 @@ from esda.moran import Moran
 from libpysal.weights import KNN
 from splot.esda import moran_scatterplot
 
-from analise_volatilidade import (
+from src.partidario.analise_volatilidade import (
     carregar_sp_vereador,
     pedersen_por_zona,
     votos_por_zona_partido,

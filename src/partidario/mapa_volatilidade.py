@@ -10,7 +10,7 @@ from pathlib import Path
 import geopandas as gpd
 import matplotlib.pyplot as plt
 
-from analise_volatilidade import (
+from src.partidario.analise_volatilidade import (
     carregar_sp_vereador,
     pedersen_por_zona,
     votos_por_zona_partido,

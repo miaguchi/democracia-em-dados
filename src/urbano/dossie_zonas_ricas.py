@@ -19,13 +19,13 @@ from pathlib import Path
 
 import pandas as pd
 
-from analise_volatilidade import (
+from src.partidario.analise_volatilidade import (
     carregar_sp_prefeito,
     carregar_sp_vereador,
     pedersen,
     votos_por_partido,
 )
-from ideologia import (
+from src.partidario.ideologia import (
     ESCORE_BOLOGNESI,
     bloco_quintipartite,
     usar_quintipartite,

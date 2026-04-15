@@ -13,8 +13,8 @@ import matplotlib.colors as mcolors
 import matplotlib.pyplot as plt
 import pandas as pd
 
-from analise_volatilidade import carregar_sp_vereador, carregar_sp_prefeito
-from ideologia import ESCORE_BOLOGNESI
+from src.partidario.analise_volatilidade import carregar_sp_vereador, carregar_sp_prefeito
+from src.partidario.ideologia import ESCORE_BOLOGNESI
 
 SHAPEFILE = Path("data/raw/shapes/EL2022_LV_ESP_CEM_V2/EL2022_LV_ESP_CEM_V2.shp")
 SAIDA_VEREADOR = Path("outputs/mapa_escore_vereador_2020_2024.png")

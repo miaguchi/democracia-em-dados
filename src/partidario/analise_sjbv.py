@@ -8,8 +8,8 @@ from pathlib import Path
 
 import pandas as pd
 
-from analise_volatilidade import normalizar_partido, pedersen
-from ideologia import (
+from src.partidario.analise_volatilidade import normalizar_partido, pedersen
+from src.partidario.ideologia import (
     ESCORE_BOLOGNESI,
     usar_quintipartite,
     usar_tripartite,

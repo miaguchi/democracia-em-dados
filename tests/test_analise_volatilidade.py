@@ -3,7 +3,7 @@
 import pandas as pd
 import pytest
 
-from analise_volatilidade import (
+from src.partidario.analise_volatilidade import (
     normalizar_partido,
     pedersen,
     pedersen_por_zona,

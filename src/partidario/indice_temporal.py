@@ -10,9 +10,9 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-from analise_volatilidade import carregar_sp_vereador, carregar_sp_prefeito
-from ideologia import ESCORE_BOLOGNESI
-from indice_institucional import construir_indice
+from src.partidario.analise_volatilidade import carregar_sp_vereador, carregar_sp_prefeito
+from src.partidario.ideologia import ESCORE_BOLOGNESI
+from src.partidario.indice_institucional import construir_indice
 
 SAIDA_CSV = Path("outputs/indice_temporal_correlacoes.csv")
 
