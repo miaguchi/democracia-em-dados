@@ -1380,16 +1380,22 @@ conteudo.append(parte("Parte IV — Perfil dos candidatos"))
 conteudo.append(p(
     "<i>Complemento sociológico aos três eixos. Analisa a "
     "correspondência entre oferta partidária (candidato) e demanda "
-    "eleitoral (zona) via metadados de ocupação e partido.</i>"
+    "eleitoral (zona) via metadados de ocupação e partido. Esta "
+    "parte conecta diretamente com os mecanismos (c) e (d) "
+    "discutidos em 3.2.2 — se o ambiente institucional funciona "
+    "como lócus de mobilização política, ele também é lócus de "
+    "produção de candidatos.</i>"
 ))
+
 conteudo.append(h1("4.1 O tipo de candidato que emerge espelha o eleitorado"))
 conteudo.append(p(
     "Para cada um dos 547 candidatos a vereador em SP 2024 com "
     "mais de 500 votos, calculamos a porcentagem do seu voto que "
-    "vem de zonas com alta densidade institucional. A distribuição "
-    "de ocupações declaradas é dramaticamente distinta entre os "
-    "candidatos \"territorialmente periféricos\" e os "
-    "\"territorialmente culturais\":"
+    "vem de zonas com alta densidade institucional (índice > 15%) "
+    "e classificamos sua ocupação declarada (via TSE consulta_cand) "
+    "em categorias temáticas. O resultado é uma diferenciação "
+    "dramática entre candidatos \"territorialmente periféricos\" e "
+    "candidatos \"territorialmente culturais\":"
 ))
 
 conteudo.extend(fig(
@@ -1398,35 +1404,220 @@ conteudo.extend(fig(
     legenda="Figura 4.1 — Distribuição de categoria ocupacional dos "
     "candidatos a vereador SP 2024 (≥500 votos), por perfil "
     "territorial do voto. Academia/cultura/imprensa triplica entre "
-    "voto periférico (7,9%) e voto misto (19,7%).",
+    "voto periférico (7,9%) e voto misto (19,7%). Profissional "
+    "liberal cresce de 12,7% para 21,4%.",
 ))
 
+dados_dist = [
+    [_cb("Categoria de ocupação"), _cb("Voto periférico (<10%)"),
+     _cb("Voto misto (10-25%)"), _cb("Voto cultural (>25%)")],
+    [_c("Academia / cultura / imprensa"), _cc("7,9%"),
+     _cc("<b>19,7%</b>"), _cc("14,3%")],
+    [_c("Profissional liberal (médico, adv.)"), _cc("12,7%"),
+     _cc("18,4%"), _cc("<b>21,4%</b>")],
+    [_c("Empresário / comerciante"), _cc("17,1%"), _cc("15,8%"),
+     _cc("14,3%")],
+    [_c("Servidor público"), _cc("3,9%"), _cc("6,6%"), _cc("0,0%")],
+    [_c("Político incumbente"), _cc("10,7%"), _cc("6,6%"), _cc("7,1%")],
+    [_c("Religioso"), _cc("1,1%"), _cc("0,0%"), _cc("0,0%")],
+    [_c("Outros (inclui apelidos populares)"), _cc("<b>43,8%</b>"),
+     _cc("32,9%"), _cc("42,9%")],
+]
+conteudo.append(tabela(dados_dist, [6*cm, 3*cm, 3*cm, 3*cm]))
+conteudo.append(Spacer(1, 0.3 * cm))
 conteudo.append(p(
-    "<b>Candidatos cujo voto concentra em zonas institucionais</b> "
-    "são profissionais de mercado educado com identidade "
-    "cosmopolita: Marina Bragante (Rede, psicóloga), Cris Monteiro "
-    "(NOVO, vereadora), Claudia Visoni (PV, jornalista), Veronica "
-    "Bilyk (PSB, publicitária), Carmen Silva (PSB), Nabil Bonduki "
-    "(PT, professor-arquiteto), Luna Zarattini (PT, jornalista), "
-    "Eduardo Suplicy (PT, economista), Eduardo Dourado (PRD, "
-    "advogado), Dr. David Zylbergeld (PL, médico)."
+    "Três padrões emergem da tabela: <b>(i)</b> a categoria "
+    "<i>academia, cultura e imprensa</i> triplica entre candidatos "
+    "com voto periférico e candidatos com voto misto (7,9% → "
+    "19,7%), confirmando que o ambiente institucional cultural "
+    "produz candidatos, não só eleitores; <b>(ii)</b> a categoria "
+    "<i>profissional liberal</i> (médicos, advogados, engenheiros, "
+    "arquitetos) cresce linearmente conforme o voto se concentra "
+    "em zonas densas (12,7% → 18,4% → 21,4%); <b>(iii)</b> a "
+    "categoria <i>religioso</i> desaparece completamente nas zonas "
+    "culturais — não há pastores, padres ou bispos no topo "
+    "eleitoral dessas zonas. A categoria \"outros\" é dominada por "
+    "<b>apelidos populares de bairro</b> na periferia, o que "
+    "pulveriza a classificação mas revela um padrão qualitativo "
+    "distinto."
+))
+
+conteudo.append(h1("4.2 Os candidatos territorialmente culturais — lista nominal"))
+conteudo.append(p(
+    "Com perfis por categoria estabelecidos, vale nomear os "
+    "candidatos concretos que aparecem no topo dos dois perfis "
+    "territoriais. A tabela abaixo lista os 10 candidatos com "
+    "maior percentual de votos concentrados em zonas de alta "
+    "densidade institucional (Pinheiros, Bela Vista, Perdizes, "
+    "Vila Mariana, Butantã), entre candidatos com pelo menos 500 "
+    "votos no total:"
+))
+dados_top_cultural = [
+    [_cb("%"), _cb("Candidato"), _cb("Partido"), _cb("Ocupação"), _cb("Total votos")],
+    [_cc("43,1"), _c("Dr. David Zylbergeld Neto"), _c("PL"), _c("Médico"), _cc("999")],
+    [_cc("42,5"), _c("Henry Kadima"), _c("PL"), _c("Empresário"), _cc("2.002")],
+    [_cc("40,9"), _c("Neti Araújo"), _c("PT"), _c("—"), _cc("1.954")],
+    [_cc("39,5"), _c("Leandro Mofsovich"), _c("NOVO"), _c("Empresário"), _cc("1.390")],
+    [_cc("34,3"), _c("Veronica Bilyk"), _c("PSB"), _c("Publicitária"), _cc("3.369")],
+    [_cc("33,5"), _c("Carmen Silva"), _c("PSB"), _c("—"), _cc("9.781")],
+    [_cc("33,4"), _c("Eduardo Dourado"), _c("PRD"), _c("Advogado"), _cc("806")],
+    [_cc("28,1"), _c("Marcão do Esporte"), _c("PV"), _c("—"), _cc("569")],
+    [_cc("27,5"), _c("<b>Marina Bragante</b>"), _c("Rede"), _c("Psicóloga"), _cc("<b>39.147</b>")],
+    [_cc("26,3"), _c("<b>Claudia Visoni</b>"), _c("PV"), _c("Jornalista"), _cc("<b>6.006</b>")],
+    [_cc("26,2"), _c("<b>Cristina Monteiro</b>"), _c("NOVO"), _c("Vereadora"), _cc("<b>56.904</b>")],
+    [_cc("25,7"), _c("Sidney Stahl"), _c("NOVO"), _c("Advogado"), _cc("716")],
+    [_cc("25,0"), _c("Takeda"), _c("PRD"), _c("Advogado"), _cc("801")],
+]
+conteudo.append(tabela(dados_top_cultural, [1.2*cm, 5*cm, 2*cm, 3.5*cm, 2.5*cm]))
+conteudo.append(Spacer(1, 0.3 * cm))
+conteudo.append(p(
+    "<b>Observações:</b> Marina Bragante (Rede, psicóloga) é a "
+    "candidata com maior volume absoluto (39.147 votos) entre "
+    "aqueles com concentração territorial cultural alta. Cristina "
+    "Monteiro (NOVO, vereadora) tem 56.904 votos — é de longe a "
+    "mais votada da categoria e, como discutido na Parte II.4, é "
+    "a herdeira institucional do voto Matarazzo/Covas via migração "
+    "PSDB→NOVO. Claudia Visoni (PV, jornalista) é outro exemplo "
+    "paradigmático — vem da cena ambientalista-urbana paulistana "
+    "e capta voto de perfil educado-progressista. Dois dos quatro "
+    "médicos e três dos quatro advogados no top 13 são do <b>PL "
+    "ou PRD</b>, sugerindo que a correspondência ocupação × "
+    "ideologia não é unívoca: há \"profissional liberal de "
+    "direita\" tanto quanto \"profissional liberal de esquerda\", "
+    "e ambos competem pelo mesmo eleitorado educado."
 ))
 conteudo.append(p(
-    "<b>Candidatos cujo voto é periférico</b> são figuras "
-    "comunitárias com apelidos de bairro e conexões clientelistas: "
-    "Roni da Limpeza (PSD), Tio Waltinho (Avante), Kéké Espetinhos "
-    "(PODE), Gil do Celular (PRD), Alemão do Conselho (União), "
-    "Pastora Lilian (Republicanos), Eliel Alves (PODE, técnico de "
-    "enfermagem), Negro Edson (Solidariedade)."
+    "É também notável a <b>ausência</b> de alguns perfis esperados "
+    "na lista. Não há professores universitários famosos (exceto "
+    "Nabil Bonduki, que aparece um pouco abaixo do corte com 24%). "
+    "Não há políticos incumbentes de carreira longa — o topo é "
+    "dominado por <b>candidatos de primeira ou segunda geração "
+    "de visibilidade pública</b>, não por ocupantes estabelecidos. "
+    "Esse padrão é coerente com a tese de ativação recente do "
+    "ambiente institucional: os candidatos que captam esse voto "
+    "emergiram nos últimos ciclos, não são fósseis da "
+    "representação paulistana tradicional."
+))
+
+conteudo.append(h1("4.3 Os candidatos territorialmente periféricos — lista nominal"))
+conteudo.append(p(
+    "A simetria inversa: os 15 candidatos com maior porcentagem "
+    "de votos vindos <b>exclusivamente</b> de zonas de baixa "
+    "densidade institucional (praticamente 100%):"
+))
+dados_top_periferia = [
+    [_cb("% baixa"), _cb("Candidato"), _cb("Partido"), _cb("Ocupação")],
+    [_cc("100,0"), _c("Roni da Limpeza"), _c("PSD"), _c("Empresário")],
+    [_cc("99,9"), _c("Fernando Manso"), _c("PRD"), _c("Cabeleireiro e barbeiro")],
+    [_cc("99,9"), _c("Alemão do Conselho"), _c("União"), _c("—")],
+    [_cc("99,8"), _c("Coletivo Pastora Lilian Alves"), _c("Republicanos"), _c("Comerciante")],
+    [_cc("99,8"), _c("Negro Edson"), _c("Solidariedade"), _c("—")],
+    [_cc("99,8"), _c("Eliel Alves"), _c("Pode"), _c("Técnico de enfermagem")],
+    [_cc("99,8"), _c("Miltão"), _c("PT"), _c("—")],
+    [_cc("99,7"), _c("Anadethy Caravanista"), _c("MDB"), _c("Pedagoga")],
+    [_cc("99,7"), _c("Gil do Celular"), _c("PRD"), _c("Comerciante")],
+    [_cc("99,7"), _c("Tio Waltinho"), _c("Avante"), _c("Comerciante")],
+    [_cc("99,7"), _c("Professor Alves"), _c("PRD"), _c("Professor")],
+    [_cc("99,6"), _c("Yes da ZL"), _c("Solidariedade"), _c("Motorista particular")],
+    [_cc("99,6"), _c("Kéké Espetinhos"), _c("Pode"), _c("Empresário")],
+    [_cc("99,6"), _c("Mallu Mattos"), _c("União"), _c("—")],
+    [_cc("99,6"), _c("Natal Líder Comunitário"), _c("PSB"), _c("Empresário")],
+]
+conteudo.append(tabela(dados_top_periferia, [1.5*cm, 6*cm, 3*cm, 4.5*cm]))
+conteudo.append(Spacer(1, 0.3 * cm))
+conteudo.append(p(
+    "<b>Três padrões visíveis.</b> Primeiro, os nomes de urna: "
+    "<i>Roni da Limpeza, Fernando Manso \"cabeleireiro\", Alemão "
+    "do Conselho, Pastora Lilian, Gil do Celular, Tio Waltinho, "
+    "Kéké Espetinhos, Yes da ZL, Natal Líder Comunitário</i>. São "
+    "apelidos que indicam <b>origem profissional local</b> "
+    "(cabeleireiro, motorista, comerciante), função comunitária "
+    "(conselheiro, pastora, líder comunitário) ou marcador "
+    "territorial (\"da ZL\" = Zona Leste). Nenhum desses padrões "
+    "aparece entre os candidatos territorialmente culturais."
 ))
 conteudo.append(p(
-    "<b>A diferença não é só ideológica — é sociológica e é "
-    "recíproca.</b> O ambiente institucional cria tanto o eleitor "
-    "(que se identifica com perfil universitário/cultural) quanto "
-    "o candidato (que emerge dos mesmos ambientes). A periferia "
-    "cria simultaneamente eleitor comunitário e candidato "
-    "comunitário. São dois circuitos de representação política "
-    "distintos operando na mesma cidade."
+    "Segundo, a ocupação. A maioria são <b>empresários de pequeno "
+    "porte</b> (Roni, Natal, Kéké — donos de estabelecimentos "
+    "locais), <b>comerciantes</b> (Gil, Tio Waltinho), "
+    "<b>prestadores de serviço</b> (Fernando Manso, Yes da ZL), "
+    "<b>técnicos de nível médio</b> (Eliel Alves, Professor Alves), "
+    "e <b>pastores evangélicos</b> (Pastora Lilian). É o perfil "
+    "clássico do \"vereador de bairro\" descrito por Almeida &amp; "
+    "Carneiro (2003): figura conhecida localmente, com vínculo "
+    "direto e cotidiano com o eleitor."
+))
+conteudo.append(p(
+    "Terceiro, os partidos. A distribuição atravessa ideologias: "
+    "<b>PSD, PRD, União, Republicanos, Solidariedade, Pode, MDB, "
+    "PT, Avante, PSB</b> — praticamente todos os partidos com "
+    "estrutura nacional aparecem. Isso confirma que o "
+    "\"vereador de bairro periférico\" é uma <b>categoria "
+    "sociológica</b> antes de ser uma categoria ideológica: "
+    "existem candidatos progressistas e candidatos conservadores "
+    "competindo pelo mesmo espaço, com a mesma forma de vínculo "
+    "territorial-comunitário. O que os une não é o programa "
+    "político — é o tipo de relação social com o eleitorado."
+))
+
+conteudo.append(h1("4.4 A tese da dupla produção: ambiente institucional produz eleitor e candidato"))
+conteudo.append(p(
+    "Se juntarmos os achados das Partes III e IV, emerge uma "
+    "tese mais forte e teoricamente articulada do que a hipótese "
+    "original do projeto (H4). A H4 dizia que \"o voto de "
+    "esquerda nos bairros ricos aponta para outras variáveis "
+    "independentes do que a renda ou a escolaridade\". O achado "
+    "deste rascunho é mais específico: <b>o ambiente institucional "
+    "cultural-progressista produz simultaneamente eleitores de "
+    "perfil específico E candidatos de perfil espelho</b>, e a "
+    "relação entre os dois é reforçada pela ativação política "
+    "recente."
+))
+conteudo.append(p(
+    "<b>O mecanismo dual funciona assim:</b> (i) universidades, "
+    "escolas construtivistas, instituições culturais internacionais "
+    "produzem <b>eleitores</b> com repertório cultural-cosmopolita "
+    "específico, acumulado ao longo dos anos de convivência no "
+    "ambiente; (ii) os mesmos ambientes produzem <b>candidatos</b> "
+    "— psicólogos, jornalistas, publicitários, advogados de "
+    "nicho, profissionais ligados a ONGs, academia, imprensa — "
+    "que partilham o repertório cultural dos eleitores; (iii) "
+    "após o choque político 2016–2018, essa correspondência "
+    "latente se ativa como identidade política saliente, e "
+    "ambos os lados convergem na produção de um circuito de "
+    "representação territorial coeso; (iv) nas zonas sem "
+    "infraestrutura institucional — mesmo em renda equivalente — "
+    "nem eleitores nem candidatos desse perfil são produzidos, "
+    "e o voto segue lógicas distintas (clientelista, religiosa, "
+    "personalista de bairro)."
+))
+conteudo.append(p(
+    "<b>Dois circuitos paralelos de representação política operam "
+    "na mesma cidade de São Paulo:</b> um <b>circuito "
+    "institucional-cultural</b>, produzindo eleitores progressistas "
+    "educados e candidatos profissionais liberais de nicho, "
+    "concentrado no corredor das universidades; e um <b>circuito "
+    "comunitário-personalista</b>, produzindo eleitores de base "
+    "local e candidatos com apelidos de bairro, distribuído pela "
+    "periferia e por zonas sem densidade institucional "
+    "significativa. A oposição entre os dois não é primariamente "
+    "ideológica (há progressistas e conservadores em ambos), é "
+    "<b>sociologicamente estrutural</b> — a forma da relação "
+    "candidato-eleitor é distinta. E a única variável que "
+    "distingue empiricamente de onde cada circuito emerge é o "
+    "<b>ambiente institucional</b>."
+))
+conteudo.append(p(
+    "<b>Isto é o argumento substantivo central da dissertação "
+    "que emerge desta análise.</b> Não é uma tese sobre "
+    "ideologia — é uma tese sobre como <i>ambientes institucionais "
+    "produzem representação política</i>. A H4 original, "
+    "formulada como \"o voto de esquerda nos bairros ricos aponta "
+    "para outras variáveis\", é um caso particular desta tese "
+    "mais geral: o voto progressista nos bairros ricos aponta "
+    "para ambiente institucional, e o ambiente institucional "
+    "produz candidatos espelho que ativam esse voto. A "
+    "reciprocidade é o mecanismo."
 ))
 
 # ====================================================================
