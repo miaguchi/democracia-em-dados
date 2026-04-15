@@ -465,6 +465,104 @@ conteudo.append(p(
     "empiricamente robusto nas zonas eleitorais de São Paulo em 2024."
 ))
 
+conteudo.append(h2("7.6 Teste temporal: o índice é preditor estável ou crescente?"))
+conteudo.append(p(
+    "Um teste adicional importante é verificar se o poder explicativo "
+    "do índice institucional é estável ao longo do tempo ou varia entre "
+    "ciclos eleitorais. Um achado de R² = 0,44 em 2024 poderia ser "
+    "artefato de uma eleição específica. Para testar, aplicamos a "
+    "mesma correlação (índice institucional × escore ideológico médio "
+    "por zona) para as três eleições municipais disponíveis na série "
+    "(2016, 2020 e 2024), mantendo o índice fixo (construído sobre a "
+    "base CEM/USP 2022)."
+))
+conteudo.extend([
+    Image(
+        "outputs/indice_temporal_trajetoria.png",
+        width=14 * cm, height=7.5 * cm, kind="proportional",
+    ),
+    Paragraph(
+        "Figura 3. Correlação de Pearson do índice institucional com o "
+        "escore ideológico médio ponderado por zona eleitoral, nos três "
+        "ciclos municipais 2016-2024. Vereador (azul) e prefeito 1T "
+        "(vermelho). O índice é mantido fixo (base CEM/USP 2022); "
+        "apenas o voto varia.",
+        st_leg,
+    ),
+])
+
+dados_temporal = [
+    [_cb("Ano"), _cb("Cargo"), _cb("r (Pearson)"), _cb("R²"), _cb("Escore médio")],
+    [_c("2016"), _c("Vereador"), _cc("<b>+0,108</b>"), _cc("0,012"), _cc("5,41")],
+    [_c("2016"), _c("Prefeito 1T"), _cc("<b>−0,012</b>"), _cc("0,000"), _cc("5,27")],
+    [_c("2020"), _c("Vereador"), _cc("<b>−0,500</b>"), _cc("0,250"), _cc("6,07")],
+    [_c("2020"), _c("Prefeito 1T"), _cc("<b>−0,249</b>"), _cc("0,062"), _cc("5,28")],
+    [_c("2024"), _c("Vereador"), _cc("<b>−0,661</b>"), _cc("<b>0,437</b>"), _cc("6,26")],
+    [_c("2024"), _c("Prefeito 1T"), _cc("<b>−0,600</b>"), _cc("<b>0,360</b>"), _cc("5,68")],
+]
+conteudo.append(tabela(dados_temporal, [1.5 * cm, 2.5 * cm, 3 * cm, 2 * cm, 3 * cm]))
+conteudo.append(Spacer(1, 0.3 * cm))
+
+conteudo.append(p(
+    "<b>Achado central deste teste:</b> o índice institucional <b>não "
+    "é um preditor estável no tempo</b> — ele é um <b>preditor "
+    "crescente</b>. Em 2016, a correlação é praticamente zero nas "
+    "duas variáveis dependentes (vereador: r = +0,11; prefeito: "
+    "r = −0,01). Em 2020, o sinal emerge na proporcional "
+    "(r = −0,50) e aparece de forma tímida na majoritária "
+    "(r = −0,25). Em 2024, a correlação é máxima em ambos os cargos "
+    "(r = −0,66 e r = −0,60)."
+))
+
+conteudo.append(h2("7.7 Implicação: o ambiente institucional foi politicamente ativado"))
+conteudo.append(p(
+    "Esse padrão é substantivamente importante. Ele desmonta uma "
+    "interpretação possível do achado da seção 7 — a de que Pinheiros "
+    "e Bela Vista \"são progressistas por causa das universidades\" "
+    "como um atributo histórico estável. <b>Até 2016, as universidades "
+    "e as escolas construtivistas já existiam, mas não se "
+    "correlacionavam com padrão de voto distinto</b>. Pinheiros era "
+    "tucana em 2012 (PSDB com 48% do voto na zona) como o resto dos "
+    "bairros ricos paulistanos. A diferença emergiu depois."
+))
+conteudo.append(p(
+    "A interpretação compatível com o dado é que o ambiente "
+    "institucional cultural-progressista <b>sempre existiu como "
+    "atributo latente</b>, mas só começou a <b>\"falar\" politicamente</b> "
+    "depois de um período de ativação ideológica: o impeachment de "
+    "2016, a eleição de Bolsonaro em 2018, a polarização Lula-Bolsonaro "
+    "em 2022. Antes disso, os eleitores das áreas universitárias "
+    "alinhavam seu voto com o resto dos bairros ricos "
+    "paulistanos — porque não havia incentivo para diferenciação. "
+    "Após a polarização, passaram a expressar nas urnas a identidade "
+    "cultural-cosmopolita que já possuíam, e a diferenciação ganhou "
+    "expressão territorial."
+))
+conteudo.append(p(
+    "Este mecanismo é exatamente o que <b>Inglehart &amp; Norris "
+    "(2016, 2019)</b> descrevem para as democracias ocidentais "
+    "contemporâneas: a <i>cleavage cultural</i> "
+    "(educação/cosmopolitismo/valores pós-materialistas vs "
+    "nacionalismo/tradicionalismo) substitui gradualmente a "
+    "<i>cleavage econômica</i> (renda/classe) como organizador "
+    "principal do voto — e esse processo é ativado por choques "
+    "políticos específicos (Brexit, Trump, impeachment de Dilma). Em "
+    "São Paulo, o ponto de inflexão observado empiricamente neste "
+    "relatório está <b>entre 2016 e 2020</b>."
+))
+conteudo.append(p(
+    "<b>O teste temporal reforça — não enfraquece — o achado central.</b> "
+    "Uma hipótese puramente estrutural (\"renda alta explica voto\") "
+    "teria produzido correlações estáveis entre os três anos. A "
+    "hipótese institucional-cultural na formulação de Inglehart &amp; "
+    "Norris prevê exatamente o padrão observado: <b>correlação "
+    "próxima de zero em 2016, emergente em 2020, consolidada em "
+    "2024</b>. O dado de SP é empiricamente compatível com essa "
+    "teoria geral, e adiciona um grão de evidência brasileira à "
+    "literatura internacional sobre reordenamento da clivagem "
+    "político-eleitoral pós-2016."
+))
+
 conteudo.append(PageBreak())
 conteudo.append(h1("8. Conexão com hipóteses gerais da literatura"))
 conteudo.append(p(
