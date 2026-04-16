@@ -223,3 +223,59 @@ Amostra aleatória (seed=42) para ilustrar a diversidade dos nomes:
 Nomes descritivos (ex: "Fada Azul", "Criança Feliz", "Jardim do Engenho",
 "Espírito Santo") são minoria e tendem a ser creches/escolas infantis
 ou instituições religiosas.
+
+## (d) Classificação dos locais para teste placebo
+
+Classificação decidida em 2026-04-16. Critério: "educacional" = qualquer
+instituição cuja função primária é ensino (inclui Sistema S, colégios
+confessionais, EJA, educação especial). CEUs com escola nomeada no tipo
+(CEU EMEF, CEU EMEI, CEU CEI, CEU CEE) são educacionais; CEU puro é
+não-educacional por ser equipamento multiuso.
+
+### Não-educacional (~161 locais)
+
+Candidatos ao grupo placebo.
+
+| Subgrupo | LV_TIPO | N |
+|---|---|---|
+| Prisional/socioeducativo | CDP (30), PENIT (27), FUND CASA (16), CPP (1) | 74 |
+| Associações/cooperativas | ASSOC (27), ASSOC CULT (3), COOP (3), ASSIST SOC (1) | 34 |
+| Saúde | POSTO SAUDE (22), UBS (1) | 23 |
+| Religioso | IGREJA (8), PASTORAL (1) | 9 |
+| Administrativo/público | AUTARQUIA (5), SECRETARIA (1) | 6 |
+| Esportivo | CLUBE (3), CLUBE ATL (1), CDC (1) | 5 |
+| Cultural | ESP CULT (1), BIBLI (1), GURI (1) | 3 |
+| Equipamento público | EQUIP PUB (3) | 3 |
+| Comunidade/assentamento | BAIRRO (3), ASSENT (1) | 4 |
+| Assistência social | CREAS (1), CCA (1) | 2 |
+| CEU puro | CEU (22) | 22 |
+| Nucleo assistencial | NUCLEO (1) | 1 |
+| Fundações não-educacionais | FUND: LAR ANALIA FRANCO, LAR MONSENHOR FILIPPO | 2 |
+
+**Total não-educacional: ~161 locais** (excluindo as 2 fundações que
+precisam ser filtradas por nome, não por LV_TIPO).
+
+### Educacional (~10.682 locais)
+
+Todo o restante, incluindo:
+- Escolas estaduais/municipais e variantes (EE, EMEF, EM, EMEI, EMEB, etc.)
+- Creches e educação infantil (CEI, CRECHE, CEMEI, CMEI, etc.)
+- Ensino superior (FAC, UNIV, FATEC, FECAP, ITB)
+- Ensino técnico (ETEC, ETE)
+- Sistema S (SESI=71, SENAI=13, SENAC=12, SEBRAE=1)
+- CEUs com escola (CEU EMEF=16, CEU EMEI=10, CEU CEI=6, CEU CEE=1)
+- EJA e educação especial (CEEJA, CIEJA, EJA, EMEE, CEE, APAE)
+- Fundações educacionais (13 das 15 FUND)
+- Institutos (INST=7, todos educacionais)
+- Associações educacionais (ASSOC ED=2)
+- Colégios e variantes (COLEGIO, COL MUN, LICEU, EXTERNATO, etc.)
+
+### Notas metodológicas
+
+1. O grupo não-educacional (~161) é pequeno frente ao educacional (~10.682),
+   o que limita poder estatístico do placebo.
+2. O subgrupo prisional (74 locais) tem eleitorado com perfil sociodemográfico
+   muito distinto — considerar análise separada ou controle adicional.
+3. Duas fundações (LAR ANALIA FRANCO, LAR MONSENHOR FILIPPO) precisam ser
+   filtradas por NOME_LV, não por LV_TIPO, pois as demais 13 FUND são
+   educacionais.
