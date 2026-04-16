@@ -1,0 +1,225 @@
+# Inventário da base CEM/USP EL2022_LV_ESP_CEM_V2
+
+Data: 2026-04-16
+Objetivo: mapear categorias de locais de votação para planejamento futuro de teste placebo.
+
+## (a) Estrutura da base
+
+- **Arquivo:** `data/raw/shapes/EL2022_LV_ESP_CEM_V2/EL2022_LV_ESP_CEM_V2.shp`
+- **Dimensões:** 10.843 linhas x 132 colunas
+- **Geometria:** POINT (coordenadas dos locais de votação)
+
+### Colunas descritivas
+
+| Coluna     | Tipo    | Descrição                          |
+|------------|---------|-------------------------------------|
+| ID         | int64   | Identificador                       |
+| ANO_ELE    | int64   | Ano da eleição (2022)               |
+| COD_LV     | int64   | Código do local de votação          |
+| NOME_LV    | str     | Nome do local de votação            |
+| LV_TIT     | str     | Título honorífico (Professor, etc.) |
+| LV_TIPO    | str     | Tipo/categoria do local             |
+| END_LV     | str     | Endereço                            |
+| CODESC     | float64 | Código da escola (quando aplicável) |
+| MUN_SIG    | str     | Sigla do município                  |
+| MUN_NOME   | str     | Nome do município                   |
+| CD_MUN_T   | int64   | Código do município (TSE)           |
+| CD_MUN_I   | int64   | Código do município (IBGE)          |
+| ZE_COD     | str     | Código da zona eleitoral            |
+| ZE_NUM     | int64   | Número da zona eleitoral            |
+| ZE_NOME    | str     | Nome da zona eleitoral              |
+| FR_LIM     | str     | Fronteira/limite                    |
+| ORIG_LL    | str     | Origem lat/lon (ex: TSE)            |
+
+### Colunas de resultados eleitorais
+
+Prefixos indicam turno e cargo:
+- `PS22_` — 1o turno, Presidente
+- `GO22_` — 1o turno, Governador
+- `SE22_` — 1o turno, Senador
+- `DF22_` — 1o turno, Deputado Federal
+- `DE22_` — 1o turno, Deputado Estadual
+
+Os sufixos numéricos correspondem a códigos de candidato/partido.
+
+## (b) Categorias de local de votação (LV_TIPO)
+
+A coluna `LV_TIPO` contém 188 categorias únicas. Abaixo as mais frequentes,
+organizadas por perfil funcional.
+
+### Educacionais (maioria)
+
+| LV_TIPO  | Contagem | Descrição provável                    |
+|----------|----------|----------------------------------------|
+| EE       | 4.502    | Escola Estadual                        |
+| EMEF     | 1.770    | Escola Municipal de Ensino Fundamental |
+| EM       | 1.127    | Escola Municipal                       |
+| EMEI     | 512      | Escola Municipal de Educação Infantil  |
+| EMEB     | 480      | Escola Municipal de Educação Básica    |
+| COLEGIO  | 466      | Colégio (genérico)                     |
+| EMEIEF   | 216      | EMEI + EF combinada                    |
+| EMEIF    | 110      | EMEI + EF combinada (variante)         |
+| FAC      | 107      | Faculdade                              |
+| UNIV     | 85       | Universidade                           |
+| ESCOLA   | 74       | Escola (genérica)                      |
+| UME      | 72       | Unidade Municipal de Educação          |
+| ETEC     | 70       | Escola Técnica Estadual                |
+| EMEFEI   | 56       | EMEF + EI combinada                    |
+| EPG      | 54       | Escola da Prefeitura de Guarulhos      |
+| EEPG     | 51       | Escola Estadual de 1o Grau             |
+| CEMEB    | 51       | Centro Municipal de Educação Básica    |
+| EEPSG    | 46       | Escola Estadual de 1o e 2o Grau        |
+
+### Educação infantil / creches
+
+| LV_TIPO      | Contagem |
+|--------------|----------|
+| CEI          | 106      |
+| CRECHE       | 45       |
+| CMEI         | 15       |
+| CRECHE MUN   | 22       |
+| CEMEI        | 36       |
+
+### CEUs (equipamentos multiuso)
+
+| LV_TIPO   | Contagem |
+|-----------|----------|
+| CEU       | 22       |
+| CEU EMEF  | 16       |
+| CEU EMEI  | 10       |
+| CEU CEI   | 6        |
+| CEU CEE   | 1        |
+
+### Sistema S e profissionalizantes
+
+| LV_TIPO | Contagem |
+|---------|----------|
+| SESI    | 71       |
+| SENAI   | 13       |
+| SENAC   | 12       |
+| FATEC   | 20       |
+| ETE     | 34       |
+
+### Sistema prisional / socioeducativo
+
+| LV_TIPO    | Contagem |
+|------------|----------|
+| CDP        | 30       |
+| PENIT      | 27       |
+| FUND CASA  | 16       |
+| CPP        | 1        |
+
+### Saúde
+
+| LV_TIPO      | Contagem |
+|--------------|----------|
+| POSTO SAUDE  | 22       |
+| UBS          | 1        |
+
+### Associações e entidades
+
+| LV_TIPO     | Contagem |
+|-------------|----------|
+| ASSOC       | 27       |
+| ASSOC CULT  | 3        |
+| ASSOC ED    | 2        |
+| APAE        | 11       |
+| COOP        | 3        |
+| ASSIST SOC  | 1        |
+
+### Religiosos
+
+| LV_TIPO   | Contagem |
+|-----------|----------|
+| IGREJA    | 8        |
+| PASTORAL  | 1        |
+
+### Esportivos / culturais / outros
+
+| LV_TIPO    | Contagem |
+|------------|----------|
+| CLUBE      | 3        |
+| CLUBE ATL  | 1        |
+| ESP CULT   | 1        |
+| BIBLI      | 1        |
+| GURI       | 1        |
+| EQUIP PUB  | 3        |
+| CREAS      | 1        |
+| CCA        | 1        |
+| SECRETARIA | 1        |
+| NUCLEO     | 1        |
+| CDC        | 1        |
+
+### Título honorífico (LV_TIT)
+
+A coluna `LV_TIT` contém o título do homenageado. As 5 mais frequentes:
+
+| LV_TIT      | Contagem |
+|-------------|----------|
+| (sem título)| 5.673    |
+| PROFESSOR   | 1.830    |
+| PROFESSORA  | 1.758    |
+| DOUTOR      | 425      |
+| PADRE       | 132      |
+
+## (c) Amostra de 50 nomes de locais de votação (NOME_LV)
+
+Amostra aleatória (seed=42) para ilustrar a diversidade dos nomes:
+
+| #  | Nome                                     |
+|----|------------------------------------------|
+| 1  | ROSENTINA FARIA SYLLOS                   |
+| 2  | PAULO KOELLE                             |
+| 3  | VILMA LEONE DAL POGETTO                  |
+| 4  | ENGENHEIRO GOULART                       |
+| 5  | ANIZIO DA SILVEIRA                       |
+| 6  | ASP NAYAN XAVIER RIBEIRO                 |
+| 7  | SUZANA DIAS                              |
+| 8  | BRUNO FLORENZANO                         |
+| 9  | ANHANGUERA EDUCACIONAL                   |
+| 10 | VICENTE DE PAULA ALMEIDA                 |
+| 11 | OLIVIO PEIXOTO                           |
+| 12 | ANTONIO ADIB CHAMMAS                     |
+| 13 | BENEDITINO                               |
+| 14 | JOEL ANTONIO DE LIMA GENESIO             |
+| 15 | MARIA ELENA COLONIA                      |
+| 16 | AYRES DE MOURA                           |
+| 17 | FADA AZUL                                |
+| 18 | BERNADETE DE LOURDES GOMES CLAUDIO       |
+| 19 | JOSE ARNONI                              |
+| 20 | MARIA CRISTINA DINIZ DE ALMEIDA          |
+| 21 | ROQUE CONCEICAO MARTINS                  |
+| 22 | JOSE BENEDITO LEITE BARTHOLOMEI          |
+| 23 | YONNE DIAS DE AGUIAR                     |
+| 24 | LAZARA ANTONINHA DA SILVA MILHORANCA     |
+| 25 | CRIANCA FELIZ                            |
+| 26 | JONAS PIRES                              |
+| 27 | ESPIRITO SANTO                           |
+| 28 | PRESCILIANO PINTO DE OLIVEIRA            |
+| 29 | JARDIM DO ENGENHO                        |
+| 30 | ANTONIO MARINHO DE CARVALHO FILHO        |
+| 31 | SEBASTIAO PEREIRA VIDAL                  |
+| 32 | ANTONIO MOLLON                           |
+| 33 | ANTONIO DE LOURDES RONDON                |
+| 34 | ALICE ROLIM DE MOURA HOLTZ               |
+| 35 | ABRAO BENJAMIM                           |
+| 36 | SAO LUIS                                 |
+| 37 | PAULINO CARLOS                           |
+| 38 | LUIZ GONZAGA HORTA LISBOA                |
+| 39 | PLINIO AYROSA                            |
+| 40 | DAVID ZEIGER                             |
+| 41 | ALICE ROSSITO CERVONE                    |
+| 42 | VITOR GERALDO SIMONSEN                   |
+| 43 | ANTONIO MIGUEL PEREIRA JUNIOR            |
+| 44 | TAUFIK DAUD KURBAN                       |
+| 45 | EDGARD PIMENTEL REZENDE                  |
+| 46 | CIVITATIS                                |
+| 47 | NELSON MANDELA                           |
+| 48 | ALTINA MAYNARDES ARAUJO                  |
+| 49 | JOSE TOMAZ NETO                          |
+| 50 | JOAQUIM PEREIRA DA SILVA                 |
+
+**Observação:** A grande maioria dos nomes são homenagens a pessoas.
+Nomes descritivos (ex: "Fada Azul", "Criança Feliz", "Jardim do Engenho",
+"Espírito Santo") são minoria e tendem a ser creches/escolas infantis
+ou instituições religiosas.
