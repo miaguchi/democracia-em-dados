@@ -30,14 +30,20 @@ FRAÇÃO de locais culturais-progressistas da zona.
 """
 
 from pathlib import Path
+import sys
+
+_ROOT = Path(__file__).resolve().parents[2]
+if str(_ROOT) not in sys.path:
+    sys.path.insert(0, str(_ROOT))
+
 import re
 import unicodedata
 import pandas as pd
 import geopandas as gpd
 
-SHAPEFILE_LV = Path("data/raw/shapes/EL2022_LV_ESP_CEM_V2/EL2022_LV_ESP_CEM_V2.shp")
-CSV_SOCIO = Path("outputs/socioeconomia_por_zona.csv")
-SAIDA = Path("outputs/indice_institucional_por_zona.csv")
+SHAPEFILE_LV = _ROOT / "data/raw/shapes/EL2022_LV_ESP_CEM_V2/EL2022_LV_ESP_CEM_V2.shp"
+CSV_SOCIO = _ROOT / "outputs/socioeconomia_por_zona.csv"
+SAIDA = _ROOT / "outputs/indice_institucional_por_zona.csv"
 
 
 def normalizar(s: str) -> str:

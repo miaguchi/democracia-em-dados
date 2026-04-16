@@ -12,6 +12,12 @@ import matplotlib.patches as mpatches
 import matplotlib.pyplot as plt
 import pandas as pd
 
+import sys
+
+_ROOT = Path(__file__).resolve().parents[3]
+if str(_ROOT) not in sys.path:
+    sys.path.insert(0, str(_ROOT))
+
 from src.partidario.analise_volatilidade import normalizar_partido
 from src.partidario.ideologia import bloco_quintipartite, ESCORE_BOLOGNESI
 
@@ -22,8 +28,8 @@ for ano in [2020, 2024]:
     for _, row in df_ref[["NR_PARTIDO", "SG_PARTIDO"]].drop_duplicates().iterrows():
         MAPA_PARTIDO[int(row["NR_PARTIDO"])] = row["SG_PARTIDO"]
 
-SHAPEFILE = Path("data/raw/shapes/EL2022_LV_ESP_CEM_V2/EL2022_LV_ESP_CEM_V2.shp")
-SAIDA = Path("outputs/mapa_blocos_sjbv_secao_2020_2024.png")
+SHAPEFILE = _ROOT / "data/raw/shapes/EL2022_LV_ESP_CEM_V2/EL2022_LV_ESP_CEM_V2.shp"
+SAIDA = _ROOT / "outputs/mapa_blocos_sjbv_secao_2020_2024.png"
 
 ORDEM = ["ESQUERDA", "CENTRO-ESQUERDA", "CENTRO", "CENTRO-DIREITA", "DIREITA", "DESCONHECIDO"]
 CORES = {
@@ -183,4 +189,5 @@ fig.suptitle(
 )
 SAIDA.parent.mkdir(parents=True, exist_ok=True)
 plt.savefig(SAIDA, dpi=150, bbox_inches="tight")
+plt.show()
 print(f"\nMapa salvo: {SAIDA}")

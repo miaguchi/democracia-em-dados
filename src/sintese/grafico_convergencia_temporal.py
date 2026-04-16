@@ -5,6 +5,12 @@ entre 2016 e 2020, consolidando-se em 2024.
 """
 
 from pathlib import Path
+import sys
+
+_ROOT = Path(__file__).resolve().parents[2]
+if str(_ROOT) not in sys.path:
+    sys.path.insert(0, str(_ROOT))
+
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -102,6 +108,7 @@ fig.suptitle(
     fontsize=14, fontweight="bold",
 )
 plt.tight_layout()
-saida = Path("outputs/grafico_convergencia_temporal.png")
+saida = _ROOT / "outputs/grafico_convergencia_temporal.png"
 plt.savefig(saida, dpi=150, bbox_inches="tight")
+plt.show()
 print(f"Gráfico salvo: {saida}")

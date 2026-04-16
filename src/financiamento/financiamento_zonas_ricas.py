@@ -30,6 +30,12 @@ posicionamento ideológico).
 """
 
 from pathlib import Path
+import sys
+
+_ROOT = Path(__file__).resolve().parents[2]
+if str(_ROOT) not in sys.path:
+    sys.path.insert(0, str(_ROOT))
+
 
 import pandas as pd
 
@@ -50,12 +56,10 @@ ZONAS_ALVO = {
     420: "Vila Sabrina",
 }
 
-CSV_RECEITAS = Path(
-    "data/raw/prestacao_contas/2024_SP/receitas_candidatos_2024_SP.csv"
-)
-PARQUET_VOTOS = Path("data/processed/votacao_secao_2024_SP.parquet")
-PARQUET_REC = Path("data/processed/receitas_vereador_sp_2024.parquet")
-SAIDA_CSV = Path("outputs/financiamento_zonas_ricas.csv")
+CSV_RECEITAS = _ROOT / "data/raw/prestacao_contas/2024_SP/receitas_candidatos_2024_SP.csv"
+PARQUET_VOTOS = _ROOT / "data/processed/votacao_secao_2024_SP.parquet"
+PARQUET_REC = _ROOT / "data/processed/receitas_vereador_sp_2024.parquet"
+SAIDA_CSV = _ROOT / "outputs/financiamento_zonas_ricas.csv"
 
 
 def processar_receitas_sp() -> pd.DataFrame:

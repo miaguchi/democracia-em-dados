@@ -1,12 +1,18 @@
 """Scatter: índice institucional × escore ideológico."""
 
 from pathlib import Path
+import sys
+
+_ROOT = Path(__file__).resolve().parents[2]
+if str(_ROOT) not in sys.path:
+    sys.path.insert(0, str(_ROOT))
+
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
-CSV = Path("outputs/indice_institucional_por_zona.csv")
-SAIDA = Path("outputs/scatter_indice_institucional.png")
+CSV = _ROOT / "outputs/indice_institucional_por_zona.csv"
+SAIDA = _ROOT / "outputs/scatter_indice_institucional.png"
 
 
 tab = pd.read_csv(CSV).set_index("NR_ZONA")
@@ -109,4 +115,5 @@ fig.suptitle(
 plt.tight_layout()
 SAIDA.parent.mkdir(parents=True, exist_ok=True)
 plt.savefig(SAIDA, dpi=150, bbox_inches="tight")
+plt.show()
 print(f"Gráfico salvo: {SAIDA}")

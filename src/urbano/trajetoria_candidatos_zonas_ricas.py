@@ -14,6 +14,12 @@ from pathlib import Path
 
 import pandas as pd
 
+import sys
+
+_ROOT = Path(__file__).resolve().parents[2]
+if str(_ROOT) not in sys.path:
+    sys.path.insert(0, str(_ROOT))
+
 from src.financiamento.trajetoria_financiamento import carregar_todos as carregar_receitas
 
 ZONAS_ALVO = {
@@ -29,7 +35,7 @@ ZONAS_ALVO = {
 CODIGO_TSE_SP = 71072
 ANOS = [2012, 2016, 2020, 2024]
 
-OUT = Path("outputs")
+OUT = _ROOT / "outputs"
 
 
 def carregar_votos_candidato(ano: int) -> pd.DataFrame:

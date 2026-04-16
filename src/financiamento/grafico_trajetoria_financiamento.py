@@ -1,12 +1,18 @@
 """Gráfico de trajetória de financiamento SP vereador 2012-2024."""
 
 from pathlib import Path
+import sys
+
+_ROOT = Path(__file__).resolve().parents[2]
+if str(_ROOT) not in sys.path:
+    sys.path.insert(0, str(_ROOT))
+
 
 import matplotlib.pyplot as plt
 import pandas as pd
 
-SAIDA = Path("outputs/grafico_trajetoria_financiamento.png")
-CSV = Path("outputs/financiamento_trajetoria_pct.csv")
+SAIDA = _ROOT / "outputs/grafico_trajetoria_financiamento.png"
+CSV = _ROOT / "outputs/financiamento_trajetoria_pct.csv"
 
 pct = pd.read_csv(CSV, index_col=0)
 pct.columns = pct.columns.str.strip()
@@ -55,4 +61,5 @@ ax.set_ylim(0, 100)
 SAIDA.parent.mkdir(parents=True, exist_ok=True)
 plt.tight_layout()
 plt.savefig(SAIDA, dpi=150, bbox_inches="tight")
+plt.show()
 print(f"Gráfico salvo: {SAIDA}")

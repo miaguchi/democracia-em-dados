@@ -4,6 +4,12 @@ from pathlib import Path
 
 import pandas as pd
 
+import sys
+
+_ROOT = Path(__file__).resolve().parents[2]
+if str(_ROOT) not in sys.path:
+    sys.path.insert(0, str(_ROOT))
+
 from src.ingestao.tse_downloader import TSEDownloader
 
 CODIGO_TSE_SAO_PAULO = 71072
@@ -44,7 +50,7 @@ def normalizar_partido(sigla: str) -> str:
 
 def garantir_dados() -> None:
     d = TSEDownloader(
-        raw_dir=Path("data/raw"), processed_dir=Path("data/processed")
+        raw_dir=_ROOT / "data/raw", processed_dir=_ROOT / "data/processed"
     )
     d.ingerir("votacao_partido_munzona", 2020, uf="SP")
     d.ingerir("votacao_partido_munzona", 2024, uf="SP")

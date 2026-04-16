@@ -12,11 +12,17 @@ import matplotlib.colors as mcolors
 import matplotlib.pyplot as plt
 import pandas as pd
 
+import sys
+
+_ROOT = Path(__file__).resolve().parents[3]
+if str(_ROOT) not in sys.path:
+    sys.path.insert(0, str(_ROOT))
+
 from src.casos.sjbv.analise_secao_sjbv import carregar_sjbv_secao
 from src.partidario.ideologia import ESCORE_BOLOGNESI
 
-SHAPEFILE_LV = Path("data/raw/shapes/EL2022_LV_ESP_CEM_V2/EL2022_LV_ESP_CEM_V2.shp")
-SAIDA = Path("outputs/mapa_espectro_sjbv_2024.png")
+SHAPEFILE_LV = _ROOT / "data/raw/shapes/EL2022_LV_ESP_CEM_V2/EL2022_LV_ESP_CEM_V2.shp"
+SAIDA = _ROOT / "outputs/mapa_espectro_sjbv_2024.png"
 CODIGO_IBGE_SJBV = 3549102
 
 
@@ -132,4 +138,5 @@ fig.suptitle(
 )
 SAIDA.parent.mkdir(parents=True, exist_ok=True)
 plt.savefig(SAIDA, dpi=150, bbox_inches="tight")
+plt.show()
 print(f"\nMapa salvo: {SAIDA}")

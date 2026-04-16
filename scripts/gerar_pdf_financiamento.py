@@ -1,6 +1,11 @@
 """Relatório PDF — Financiamento eleitoral dos vereadores das zonas ricas de SP, 2024."""
 
 from pathlib import Path
+import sys
+
+_ROOT = Path(__file__).resolve().parents[1]
+if str(_ROOT) not in sys.path:
+    sys.path.insert(0, str(_ROOT))
 
 from reportlab.lib import colors
 from reportlab.lib.enums import TA_CENTER, TA_JUSTIFY, TA_LEFT
@@ -17,7 +22,7 @@ from reportlab.platypus import (
     TableStyle,
 )
 
-SAIDA = Path("outputs/relatorio_financiamento_zonas_ricas.pdf")
+SAIDA = _ROOT / "outputs/relatorio_financiamento_zonas_ricas.pdf"
 
 styles = getSampleStyleSheet()
 st_titulo = ParagraphStyle(

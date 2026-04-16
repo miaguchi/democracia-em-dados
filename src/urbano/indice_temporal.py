@@ -10,11 +10,17 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
+import sys
+
+_ROOT = Path(__file__).resolve().parents[2]
+if str(_ROOT) not in sys.path:
+    sys.path.insert(0, str(_ROOT))
+
 from src.partidario.analise_volatilidade import carregar_sp_vereador, carregar_sp_prefeito
 from src.partidario.ideologia import ESCORE_BOLOGNESI
 from src.urbano.indice_institucional import construir_indice
 
-SAIDA_CSV = Path("outputs/indice_temporal_correlacoes.csv")
+SAIDA_CSV = _ROOT / "outputs/indice_temporal_correlacoes.csv"
 
 
 def escore_medio_ponderado_por_zona(ano: int, cargo: str) -> pd.Series:
@@ -96,7 +102,8 @@ if __name__ == "__main__":
     ax.legend(loc="upper right", fontsize=10)
     ax.set_ylim(-0.75, 0.1)
 
-    Path("outputs").mkdir(exist_ok=True)
+    (_ROOT / "outputs").mkdir(exist_ok=True)
     plt.tight_layout()
-    plt.savefig("outputs/indice_temporal_trajetoria.png", dpi=150, bbox_inches="tight")
+    plt.savefig(_ROOT / "outputs/indice_temporal_trajetoria.png", dpi=150, bbox_inches="tight")
+    plt.show()
     print("Gráfico: outputs/indice_temporal_trajetoria.png")

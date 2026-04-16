@@ -19,6 +19,12 @@ from pathlib import Path
 import matplotlib.pyplot as plt
 import pandas as pd
 
+import sys
+
+_ROOT = Path(__file__).resolve().parents[2]
+if str(_ROOT) not in sys.path:
+    sys.path.insert(0, str(_ROOT))
+
 from src.partidario.analise_volatilidade import CODIGO_TSE_SAO_PAULO, normalizar_partido
 from src.partidario.ideologia import ESCORE_BOLOGNESI, bloco_quintipartite
 
@@ -34,8 +40,8 @@ ZONAS_ALVO = {
 }
 
 ANOS_MUNICIPAIS = [2016, 2020, 2024]
-SAIDA_PNG = Path("outputs/trajetoria_zonas_ricas_2016_2024.png")
-SAIDA_CSV = Path("outputs/trajetoria_zonas_ricas.csv")
+SAIDA_PNG = _ROOT / "outputs/trajetoria_zonas_ricas_2016_2024.png"
+SAIDA_CSV = _ROOT / "outputs/trajetoria_zonas_ricas.csv"
 
 
 def carregar(ano: int, cargo: str) -> pd.DataFrame:
@@ -153,6 +159,7 @@ fig.suptitle(
 plt.tight_layout()
 SAIDA_PNG.parent.mkdir(parents=True, exist_ok=True)
 plt.savefig(SAIDA_PNG, dpi=150, bbox_inches="tight")
+plt.show()
 print(f"Gráfico salvo: {SAIDA_PNG}")
 
 # Resumo textual

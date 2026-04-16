@@ -11,6 +11,11 @@ Parte V  — Convergência temporal e síntese teórica
 """
 
 from pathlib import Path
+import sys
+
+_ROOT = Path(__file__).resolve().parents[1]
+if str(_ROOT) not in sys.path:
+    sys.path.insert(0, str(_ROOT))
 
 from reportlab.lib import colors
 from reportlab.lib.enums import TA_CENTER, TA_JUSTIFY, TA_LEFT
@@ -27,7 +32,7 @@ from reportlab.platypus import (
     TableStyle,
 )
 
-SAIDA = Path("outputs/documento_integrado_qualificacao.pdf")
+SAIDA = _ROOT / "outputs/documento_integrado_qualificacao.pdf"
 
 # ---------- estilos ----------
 styles = getSampleStyleSheet()

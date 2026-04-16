@@ -13,6 +13,12 @@ import matplotlib.colors as mcolors
 import matplotlib.pyplot as plt
 import pandas as pd
 
+import sys
+
+_ROOT = Path(__file__).resolve().parents[2]
+if str(_ROOT) not in sys.path:
+    sys.path.insert(0, str(_ROOT))
+
 from src.partidario.analise_volatilidade import carregar_sp_prefeito, carregar_sp_vereador
 from src.partidario.ideologia import ESCORE_BOLOGNESI
 
@@ -27,8 +33,8 @@ ZONAS_ALVO = {
     346: "Butantã",
 }
 
-SHAPEFILE_LV = Path("data/raw/shapes/EL2022_LV_ESP_CEM_V2/EL2022_LV_ESP_CEM_V2.shp")
-SAIDA = Path("outputs/mapa_corredor_universitario_2024.png")
+SHAPEFILE_LV = _ROOT / "data/raw/shapes/EL2022_LV_ESP_CEM_V2/EL2022_LV_ESP_CEM_V2.shp"
+SAIDA = _ROOT / "outputs/mapa_corredor_universitario_2024.png"
 CODIGO_IBGE_SP = 3550308
 
 
@@ -136,6 +142,7 @@ fig.suptitle(
 )
 SAIDA.parent.mkdir(parents=True, exist_ok=True)
 plt.savefig(SAIDA, dpi=150, bbox_inches="tight")
+plt.show()
 print(f"\nMapa salvo: {SAIDA}")
 print(f"\nEscore por zona (2024):")
 for zona, nome in ZONAS_ALVO.items():

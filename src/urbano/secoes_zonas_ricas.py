@@ -12,6 +12,12 @@ from pathlib import Path
 
 import pandas as pd
 
+import sys
+
+_ROOT = Path(__file__).resolve().parents[2]
+if str(_ROOT) not in sys.path:
+    sys.path.insert(0, str(_ROOT))
+
 from src.partidario.analise_volatilidade import normalizar_partido
 from src.partidario.ideologia import bloco_quintipartite, ESCORE_BOLOGNESI
 

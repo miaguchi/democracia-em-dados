@@ -16,10 +16,16 @@ import matplotlib.patches as mpatches
 import matplotlib.pyplot as plt
 import pandas as pd
 
+import sys
+
+_ROOT = Path(__file__).resolve().parents[2]
+if str(_ROOT) not in sys.path:
+    sys.path.insert(0, str(_ROOT))
+
 from src.partidario.analise_volatilidade import normalizar_partido
 from src.partidario.ideologia import ESCORE_BOLOGNESI, bloco_quintipartite
 
-SHAPEFILE_LV = Path("data/raw/shapes/EL2022_LV_ESP_CEM_V2/EL2022_LV_ESP_CEM_V2.shp")
+SHAPEFILE_LV = _ROOT / "data/raw/shapes/EL2022_LV_ESP_CEM_V2/EL2022_LV_ESP_CEM_V2.shp"
 CODIGO_IBGE_SP = 3550308
 
 ZONAS_ALVO = {
@@ -292,22 +298,23 @@ def gerar_mapa(cargo: str, focado: bool, saida: Path, rotular: bool = False):
     ax.legend(loc="lower left", fontsize=9, framealpha=0.92)
     saida.parent.mkdir(parents=True, exist_ok=True)
     plt.savefig(saida, dpi=150, bbox_inches="tight")
+    plt.show()
     plt.close(fig)
     print(f"Mapa salvo: {saida}")
     print(f"  Distribuição: {contagem.to_dict()}")
 
 
 print("\n--- Vereador (cidade toda) ---")
-gerar_mapa("VEREADOR", focado=False, saida=Path("outputs/mapa_blocos_secao_sp_vereador_2024.png"))
+gerar_mapa("VEREADOR", focado=False, saida=_ROOT / "outputs/mapa_blocos_secao_sp_vereador_2024.png")
 
 print("\n--- Prefeito (cidade toda) ---")
-gerar_mapa("PREFEITO", focado=False, saida=Path("outputs/mapa_blocos_secao_sp_prefeito_2024.png"))
+gerar_mapa("PREFEITO", focado=False, saida=_ROOT / "outputs/mapa_blocos_secao_sp_prefeito_2024.png")
 
 print("\n--- Vereador (corredor, com rótulos) ---")
 gerar_mapa(
     "VEREADOR",
     focado=True,
-    saida=Path("outputs/mapa_blocos_secao_corredor_vereador_2024.png"),
+    saida=_ROOT / "outputs/mapa_blocos_secao_corredor_vereador_2024.png",
     rotular=True,
 )
 
@@ -315,6 +322,6 @@ print("\n--- Prefeito (corredor, com rótulos) ---")
 gerar_mapa(
     "PREFEITO",
     focado=True,
-    saida=Path("outputs/mapa_blocos_secao_corredor_prefeito_2024.png"),
+    saida=_ROOT / "outputs/mapa_blocos_secao_corredor_prefeito_2024.png",
     rotular=True,
 )

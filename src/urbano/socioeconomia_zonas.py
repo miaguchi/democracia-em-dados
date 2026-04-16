@@ -22,18 +22,18 @@ import geopandas as gpd
 import matplotlib.pyplot as plt
 import pandas as pd
 
+import sys
+
+_ROOT = Path(__file__).resolve().parents[2]
+if str(_ROOT) not in sys.path:
+    sys.path.insert(0, str(_ROOT))
+
 from src.partidario.analise_volatilidade import carregar_sp_vereador, carregar_sp_prefeito
 from src.partidario.ideologia import ESCORE_BOLOGNESI
 
-CSV_BASICO = Path(
-    "data/raw/censo2010/extraido/Basico_SP1.csv"
-)
-CSV_RENDA = Path(
-    "data/raw/censo2010/extraido/DomicilioRenda_SP1.csv"
-)
-SHAPEFILE_LV = Path(
-    "data/raw/shapes/EL2022_LV_ESP_CEM_V2/EL2022_LV_ESP_CEM_V2.shp"
-)
+CSV_BASICO = _ROOT / "data/raw/censo2010/extraido/Basico_SP1.csv"
+CSV_RENDA = _ROOT / "data/raw/censo2010/extraido/DomicilioRenda_SP1.csv"
+SHAPEFILE_LV = _ROOT / "data/raw/shapes/EL2022_LV_ESP_CEM_V2/EL2022_LV_ESP_CEM_V2.shp"
 
 
 def carregar_dados_censitarios() -> pd.DataFrame:
@@ -149,6 +149,6 @@ if __name__ == "__main__":
         print(f"  renda_pc × {col}: r = {r:.3f}")
 
     # Salva
-    out = Path("outputs/socioeconomia_por_zona.csv")
+    out = _ROOT / "outputs/socioeconomia_por_zona.csv"
     tab_ord.to_csv(out)
     print(f"\nCSV: {out}")

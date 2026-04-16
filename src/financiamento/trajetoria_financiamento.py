@@ -13,9 +13,15 @@ Três eras de regra de financiamento:
 """
 
 from pathlib import Path
+import sys
+
+_ROOT = Path(__file__).resolve().parents[2]
+if str(_ROOT) not in sys.path:
+    sys.path.insert(0, str(_ROOT))
+
 import pandas as pd
 
-PASTA = Path("data/raw/prestacao_contas")
+PASTA = _ROOT / "data/raw/prestacao_contas"
 OUT = Path("outputs")
 
 

@@ -10,15 +10,21 @@ import matplotlib.pyplot as plt
 from esda.moran import Moran_Local
 from libpysal.weights import KNN
 
+import sys
+
+_ROOT = Path(__file__).resolve().parents[2]
+if str(_ROOT) not in sys.path:
+    sys.path.insert(0, str(_ROOT))
+
 from src.partidario.analise_volatilidade import (
     carregar_sp_prefeito,
     pedersen_por_zona,
     votos_por_zona_partido,
 )
 
-SHAPEFILE = Path("data/raw/shapes/EL2022_LV_ESP_CEM_V2/EL2022_LV_ESP_CEM_V2.shp")
-SAIDA_MAPA = Path("outputs/mapa_volatilidade_sp_prefeito_2020_2024.png")
-SAIDA_LISA = Path("outputs/lisa_volatilidade_sp_prefeito_2020_2024.png")
+SHAPEFILE = _ROOT / "data/raw/shapes/EL2022_LV_ESP_CEM_V2/EL2022_LV_ESP_CEM_V2.shp"
+SAIDA_MAPA = _ROOT / "outputs/mapa_volatilidade_sp_prefeito_2020_2024.png"
+SAIDA_LISA = _ROOT / "outputs/lisa_volatilidade_sp_prefeito_2020_2024.png"
 K_VIZINHOS = 6
 N_PERMUTACOES = 999
 ALPHA = 0.05
@@ -120,6 +126,7 @@ ax.set_axis_off()
 ax.legend(loc="lower left", fontsize=9, framealpha=0.9)
 plt.tight_layout()
 plt.savefig(SAIDA_LISA, dpi=150, bbox_inches="tight")
+plt.show()
 print(f"Mapa LISA salvo: {SAIDA_LISA}")
 
 # --- Zonas nominais dos clusters ----------------------------------------------

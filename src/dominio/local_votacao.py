@@ -6,14 +6,17 @@ documentada em reports/inventario_cem_placebo.md (2026-04-16).
 """
 
 from pathlib import Path
+import sys
 from typing import Tuple
+
+_ROOT = Path(__file__).resolve().parents[2]
+if str(_ROOT) not in sys.path:
+    sys.path.insert(0, str(_ROOT))
 
 import geopandas as gpd
 import pandas as pd
 
-SHAPEFILE_CEM = Path(
-    "data/raw/shapes/EL2022_LV_ESP_CEM_V2/EL2022_LV_ESP_CEM_V2.shp"
-)
+SHAPEFILE_CEM = _ROOT / "data/raw/shapes/EL2022_LV_ESP_CEM_V2/EL2022_LV_ESP_CEM_V2.shp"
 
 # Tipos explicitamente não-educacionais (por LV_TIPO).
 _NAO_EDUCACIONAL: set[str] = {

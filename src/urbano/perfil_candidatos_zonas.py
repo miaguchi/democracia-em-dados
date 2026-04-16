@@ -15,14 +15,20 @@ from pathlib import Path
 
 import pandas as pd
 
+import sys
+
+_ROOT = Path(__file__).resolve().parents[2]
+if str(_ROOT) not in sys.path:
+    sys.path.insert(0, str(_ROOT))
+
 from src.ingestao.tse_downloader import TSEDownloader
 
 
 def carregar_cand():
     """consulta_cand com metadados (baixa se não tiver)."""
-    p = Path("data/processed/consulta_cand_2024_SP.parquet")
+    p = _ROOT / "data/processed/consulta_cand_2024_SP.parquet"
     if not p.exists():
-        d = TSEDownloader(raw_dir=Path("data/raw"), processed_dir=Path("data/processed"))
+        d = TSEDownloader(raw_dir=_ROOT / "data/raw", processed_dir=_ROOT / "data/processed")
         d.ingerir("consulta_cand", 2024, uf="SP")
     df = pd.read_parquet(p)
     df = df[

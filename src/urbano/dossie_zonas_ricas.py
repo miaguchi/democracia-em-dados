@@ -19,6 +19,12 @@ from pathlib import Path
 
 import pandas as pd
 
+import sys
+
+_ROOT = Path(__file__).resolve().parents[2]
+if str(_ROOT) not in sys.path:
+    sys.path.insert(0, str(_ROOT))
+
 from src.partidario.analise_volatilidade import (
     carregar_sp_prefeito,
     carregar_sp_vereador,
@@ -46,7 +52,7 @@ ZONAS_ALVO = {
     346: "Butantã",
 }
 
-SAIDA_CSV = Path("outputs/dossie_zonas_ricas.csv")
+SAIDA_CSV = _ROOT / "outputs/dossie_zonas_ricas.csv"
 
 
 def nep(votos: pd.Series) -> float:

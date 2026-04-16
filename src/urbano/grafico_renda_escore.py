@@ -1,12 +1,18 @@
 """Scatter renda per capita × escore ideológico por zona eleitoral de SP."""
 
 from pathlib import Path
+import sys
+
+_ROOT = Path(__file__).resolve().parents[2]
+if str(_ROOT) not in sys.path:
+    sys.path.insert(0, str(_ROOT))
+
 
 import matplotlib.pyplot as plt
 import pandas as pd
 
-CSV = Path("outputs/socioeconomia_por_zona.csv")
-SAIDA = Path("outputs/scatter_renda_escore.png")
+CSV = _ROOT / "outputs/socioeconomia_por_zona.csv"
+SAIDA = _ROOT / "outputs/scatter_renda_escore.png"
 
 
 tab = pd.read_csv(CSV).set_index("NR_ZONA")
@@ -91,4 +97,5 @@ fig.suptitle(
 plt.tight_layout()
 SAIDA.parent.mkdir(parents=True, exist_ok=True)
 plt.savefig(SAIDA, dpi=150, bbox_inches="tight")
+plt.show()
 print(f"Gráfico salvo: {SAIDA}")

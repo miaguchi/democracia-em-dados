@@ -15,6 +15,11 @@ import geopandas as gpd
 import matplotlib.patches as mpatches
 import matplotlib.pyplot as plt
 
+
+_ROOT = Path(__file__).resolve().parents[2]
+if str(_ROOT) not in sys.path:
+    sys.path.insert(0, str(_ROOT))
+
 from src.dominio.local_votacao import carregar_cem, filtrar_locais_cem
 
 ZONAS_ALVO = {
@@ -29,7 +34,7 @@ ZONAS_ALVO = {
 }
 
 CODIGO_IBGE_SP = 3550308
-SAIDA = Path("outputs/mapa_placebo_nao_educacional.png")
+SAIDA = _ROOT / "outputs/mapa_placebo_nao_educacional.png"
 
 # Subgrupos funcionais para coloração
 _SUBGRUPO: dict[str, str] = {
