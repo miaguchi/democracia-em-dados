@@ -1,7 +1,11 @@
-"""Carrega anos eleitorais adicionais (2010 e 2014) no MySQL.
+"""Carrega anos eleitorais adicionais no MySQL.
 
 Reusa o esquema e funções de carregar_mysql.py, mas insere apenas os
 parquets dos anos especificados, sem duplicar o que já está no banco.
+
+Uso:
+    python -m src.ingestao.carregar_anos_adicionais 2010 2014
+    python -m src.ingestao.carregar_anos_adicionais  # default: 2010, 2014
 """
 
 from pathlib import Path
@@ -20,7 +24,6 @@ from src.ingestao.carregar_mysql import (
     inserir_fato,
 )
 
-ANOS = [2010, 2014]
 DATA_DIR = _ROOT / "data/processed"
 
 
@@ -43,13 +46,15 @@ def carregar_parquets_anos(anos: list[int]) -> pd.DataFrame:
     return pd.concat(dfs, ignore_index=True)
 
 
-def main() -> None:
+def main(anos: list[int] | None = None) -> None:
+    if anos is None:
+        anos = [2010, 2014]
     print("=" * 60)
-    print(f"CARGA DE ANOS ADICIONAIS: {ANOS}")
+    print(f"CARGA DE ANOS ADICIONAIS: {anos}")
     print("=" * 60)
 
     print("\nCarregando parquets...")
-    df = carregar_parquets_anos(ANOS)
+    df = carregar_parquets_anos(anos)
     print(f"Total: {len(df)} linhas")
 
     conn = conectar(DATABASE)
@@ -61,7 +66,7 @@ def main() -> None:
     print(f"\nAnos já no banco: {anos_existentes}")
 
     # Filtrar só os anos novos
-    anos_novos = [a for a in ANOS if a not in anos_existentes]
+    anos_novos = [a for a in anos if a not in anos_existentes]
     if not anos_novos:
         print("Todos os anos já estão no banco. Nada a fazer.")
         cursor.close()
@@ -101,4 +106,5 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    main()
+    args_anos = [int(a) for a in sys.argv[1:]] if len(sys.argv) > 1 else None
+    main(args_anos)
