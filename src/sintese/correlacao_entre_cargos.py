@@ -7,15 +7,16 @@ ano mais recente disponível, em cada cargo:
 - Vereador: 2012 → 2024
 - Deputado federal: 2010 → 2022
 - Governador: 2010 → 2022
+- Presidente: 2010 → 2022
 - Prefeito: 2012 → 2024
 
-Em seguida, computa a matriz 4×4 de correlação de Pearson entre as
+Em seguida, computa a matriz 5×5 de correlação de Pearson entre as
 variações e gera heatmap.
 
-Hipótese: se as zonas que perdem esquerda no vereador também perdem
-em outros cargos, a dinâmica é "estrutural" (perfil ideológico da
-zona). Se as correlações forem fracas, sugere voto diferenciado
-por nível.
+Hipótese: presidente, governador e deputado federal devem formar um
+"bloco federal" com correlações altas (~0.9+). Vereador e prefeito
+formam o bloco municipal. Correlação entre blocos deve ser moderada,
+suportando a tese de voto diferenciado por nível.
 """
 
 from pathlib import Path
@@ -43,6 +44,7 @@ CARGOS = [
     ("Vereador",      13, 2012, 2024),
     ("Dep. Federal",   6, 2010, 2022),
     ("Governador",     3, 2010, 2022),
+    ("Presidente",     1, 2010, 2022),
     ("Prefeito",      11, 2012, 2024),
 ]
 
@@ -116,7 +118,7 @@ def main() -> None:
     print(f"CSV variações:  outputs/tables/variacoes_por_cargo.csv")
 
     # Heatmap
-    fig, ax = plt.subplots(figsize=(7, 6), dpi=120)
+    fig, ax = plt.subplots(figsize=(8, 7), dpi=120)
     im = ax.imshow(corr.values, cmap="RdBu_r", vmin=-1, vmax=1, aspect="auto")
     ax.set_xticks(range(len(cols)))
     ax.set_yticks(range(len(cols)))
