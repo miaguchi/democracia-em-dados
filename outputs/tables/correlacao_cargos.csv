@@ -1,0 +1,5 @@
+,Vereador,Dep. Federal,Governador,Prefeito
+Vereador,1.0,0.558,0.502,0.813
+Dep. Federal,0.558,1.0,0.957,0.484
+Governador,0.502,0.957,1.0,0.495
+Prefeito,0.813,0.484,0.495,1.0
