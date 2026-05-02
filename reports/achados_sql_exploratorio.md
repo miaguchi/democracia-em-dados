@@ -248,3 +248,85 @@ Implicações:
    - Controle por renda em regressão múltipla (Teste A com renda
      como covariável).
    - Análise de resíduos: quais zonas mais escapam do modelo.
+
+---
+
+# Síntese conceitual — esquerda × direita: dois mecanismos diferentes
+
+A análise comparativa Bolsonaro × Tarcísio (2022, SP capital, 1º
+turno) revela que o índice institucional opera por mecanismos
+distintos nos dois blocos:
+
+| Bloco | Função do índice institucional | R²/r |
+|---|---|---|
+| **Esquerda** | Prediz **onde o voto cresce** | R² = 0.313 (variação % vereador 2012→2024) |
+| **Direita** | Prediz **como o voto se transfere** entre cargos | r = +0.60 (razão Tarcísio/Bolsonaro) |
+
+## Duas lógicas de adesão
+
+**Esquerda — ambiente institucional gera voto adicional.** Zonas
+com mais universidades, escolas progressistas e instituições
+culturais internacionais produzem voto novo de esquerda
+independentemente do nível eleitoral. A relação é positiva e
+estruturalmente significativa (Teste A: β=+2.32, p<1e-5).
+
+**Direita — ambiente socioeconômico modula personalismo.** O voto
+para a direita não cresce com o índice (R²=0.01). Mas a
+**transferência presidente → governador depende fortemente do
+território:**
+
+- **Zonas centrais/ricas** (Pinheiros, Jd Paulista, Perdizes, V.
+  Mariana, Bela Vista, Indianópolis): Tarcísio fica apenas 10-16%
+  atrás de Bolsonaro. Transferência alta — voto pragmático/técnico.
+- **Zonas periféricas** (Cidade Tiradentes, Parelheiros, Grajaú,
+  Guaianases, Brasilândia): Tarcísio fica 25-27% atrás. Transferência
+  baixa — voto personalista em Bolsonaro com baixo "downstream"
+  para o governador.
+
+A diferença é estatisticamente forte: r=+0.597, p<1e-6 entre o
+índice institucional e a "diff% Tarc relativa a Bolso".
+
+## Diálogo com a literatura
+
+Esta assimetria é coerente com a tese de Singer sobre o **"primeiro
+espírito" do lulismo**: voto de classe na periferia, simbolicamente
+investido na figura presidencial. **O bolsonarismo periférico tem a
+mesma estrutura — personalismo presidencial concentrado, com baixa
+transferência partidária para baixo da chapa.** O voto "técnico" em
+Tarcísio é fenômeno da classe média/alta paulistana; não da
+periferia bolsonarista.
+
+## A surpresa: Indianópolis (Z258)
+
+Z258 (Indianópolis) tem índice institucional zero mas se comporta
+como zona central na transferência Bolso→Tarc (-12,8%, junto com
+Pinheiros e Jd Paulista). No Capítulo III ela já era o caso anômalo:
+**rica mas sem ambiente cultural-progressista**. Agora aparece como
+**anômala do outro lado também**: a direita ali é "técnica", não
+"militante".
+
+Indianópolis é zona de renda alta sem identidade ideológica forte
+em nenhuma direção. Comportamento eleitoral pragmático, não
+identitário, em ambos os polos. **É o caso ideal para sustentar
+que a relevância do índice institucional não é apenas um efeito
+de renda.**
+
+## Formulação para a dissertação
+
+> O desalinhamento vertical opera por mecanismos distintos nos dois
+> blocos. Na esquerda, o ambiente institucional cultural-progressista
+> gera voto adicional independente do nível de eleição (R²=0.31).
+> Na direita, o gradiente é socioeconômico: zonas periféricas
+> apresentam voto mais personalista (transferência Bolsonaro→Tarcísio
+> cai 25-27%), enquanto zonas de renda alta transferem com perda
+> mínima (10-16%). O índice institucional prediz a transferência na
+> direita (r=0.60) mas não o volume de votos (R²=0.01) — relação
+> oposta à da esquerda.
+
+## Implicação metodológica
+
+A análise simétrica não revelou um espelho do efeito esquerda:
+revelou um mecanismo diferente. Isso aponta para a necessidade de
+**modelos separados por bloco** em qualquer análise futura.
+Tratar "ideologia" como variável contínua simétrica subestima a
+heterogeneidade dos mecanismos de adesão entre os polos.
