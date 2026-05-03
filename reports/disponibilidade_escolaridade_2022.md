@@ -94,3 +94,46 @@ alfabetização por % superior (variável correlacionada mas mais forte),
 o ganho marginal pode cair, mas dificilmente desaparece — porque o
 índice institucional captura presença física de instituições, não só
 densidade de pessoas educadas que moram ali.
+
+## Tentativa em 2026-05-03 — refinamento abortado
+
+Tentou-se refinar o controle de escolaridade. Resultados:
+
+1. **Censo 2022 amostra (microdados)**: IBGE adiou divulgação. Status
+   em maio/2026: ainda não disponível no FTP. Última nota oficial
+   (28/11/2025): "data oportuna a ser definida".
+2. **Censo 2022 setor (universo)**: confirmado — só tem alfabetização.
+   Os 1411 variáveis cobrem só Alfabetização, Características do
+   Domicílio, Cor/Raça, Demografia, Parentesco, Óbitos. Educação
+   formal é sample-only.
+3. **Censo 2010 setor (universo)**: idem. Pessoa11 é "Idade, homens"
+   (não instrução). Pessoa11-13 cobrem demografia/alfabetização.
+4. **SIDRA tabelas 10063-10065 (Censo 2022 amostra)**: % superior
+   completo por município. Para SP capital = 1 valor único, inútil
+   para análise por zona.
+5. **SIDRA tabela 5919**: é PNAD Contínua, não Censo. Município.
+
+### Caminho viável remanescente
+
+**Censo 2010 amostra microdados** (já disponível, antigo):
+- Download de ~1 GB, formato ASCII fixo.
+- Parser dos campos via dicionário.
+- Filtrar SP capital, calcular % superior 25+ por área de ponderação
+  com pesos amostrais.
+- Shapefile das áreas de ponderação 2010 (geobr ou IBGE).
+- Spatial join área de ponderação × zona eleitoral (com ponderação
+  por interseção/população).
+
+**Estimativa: 3-5h de ETL séria.** Recomendado fazer só se controle
+por escolaridade real for crítico para a banca. Como o resultado
+provável (índice mantém efeito acima de escolaridade real) já é
+razoavelmente esperado pela teoria, o ROI da ETL é baixo.
+
+### Decisão registrada (2026-05-03)
+
+Manter alfabetização como proxy. Reportar transparentemente no
+capítulo metodológico que % superior completo por zona eleitoral
+não está disponível com a granularidade necessária no Censo 2022,
+e que o controle por alfabetização (proxy mais fraco) ainda
+preserva efeito significativo do índice institucional (+9.4 pp de
+R² no modelo M7).
